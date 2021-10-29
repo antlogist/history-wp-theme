@@ -18,9 +18,17 @@ function history_menu() {
 }
 
 function get_menu() {
+  if (!wp_get_nav_menu_items('main')) {
+    $answer = [];
+    return $answer;
+  }
   return wp_get_nav_menu_items('main');
 }
 
 function get_footer_menu() {
+  if (!wp_get_nav_menu_items('footer')) {
+    $answer = [];
+    return $answer;
+  }
   return wp_get_nav_menu_items('footer');
 }
