@@ -5,5 +5,7 @@ const mix = require("laravel-mix");
 mix.sass("resources/assets/sass/app.scss", "dist/css/all.css");
 
 mix.js([
-  "resources/assets/js/baseObject.js"
+  "resources/assets/js/baseObject.js",
+  "resources/assets/js/nav/nav.js",
+  "resources/assets/js/init.js"
 ], "dist/js/all.js");
