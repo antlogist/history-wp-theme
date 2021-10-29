@@ -5,6 +5,6 @@ if ( ! defined ('ABSPATH') ) {
   exit;
 }
 
-function chip_customize_register( $wp_customize ) {
+function history_customize_register( $wp_customize ) {
 
 }
