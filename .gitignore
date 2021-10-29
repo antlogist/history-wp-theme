@@ -1,2 +1,5 @@
 node_modules
+images
 package-lock.json
+mix-manifest.json
+/resources/assets/libs/
