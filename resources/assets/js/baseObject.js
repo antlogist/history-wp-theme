@@ -4,4 +4,4 @@
   window.BASEOBJECT = {
     nav: {}
   }
-})
+})();
