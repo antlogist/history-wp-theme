@@ -14,3 +14,6 @@ mix.js([
   "resources/assets/js/nav/nav.js",
   "resources/assets/js/init.js"
 ], "dist/js/all.js");
+
+mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
+mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js']);
