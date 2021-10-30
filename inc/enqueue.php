@@ -18,5 +18,5 @@ function history_styles_and_scripts() {
 
 function history_customizer_script() {
   //custom js
-  wp_enqueue_script('history-customizer-js', get_theme_file_uri('dist/js/theme-customize.min.js'), array( 'jquery','customize-preview' ), microtime(), true);
+  wp_enqueue_script('history-customizer-js', get_theme_file_uri('dist/js/theme-customize.js'), array( 'jquery','customize-preview' ), microtime(), true);
 }
