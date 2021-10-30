@@ -10,7 +10,7 @@ function history_styles_and_scripts() {
   wp_enqueue_style('history-lib-css', get_theme_file_uri('dist/css/libs.min.css'));
 
   //custom CSS
-  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.min.css'), NULL, microtime());
+  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.css'), NULL, microtime());
 
   //custom js
   wp_enqueue_script('history-app-js', get_theme_file_uri('dist/js/all.min.js'), null, microtime(), true);

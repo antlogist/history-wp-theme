@@ -6,3 +6,76 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
+//Toggle button
+
+#navToggleButton {
+  display: block;
+  width: 30px;
+  height: 30px;
+  z-index: 101;
+}
+
+#navToggleButton {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+  //iPad ver
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+//Nav button
+#navToggleButton {
+  &.active {
+    .toggle-line {
+      background-color: #000;
+    }
+
+    .toggle-line-1,
+    .toggle-line-3 {
+      top: 50%;
+      margin-top: -1px;
+    }
+
+    .toggle-line-1 {
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    .toggle-line-2 {
+      display: none;
+    }
+
+    .toggle-line-3 {
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.toggle-line {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #000;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.toggle-line-1 {
+  top: 0;
+}
+
+.toggle-line-2 {
+  top: 50%;
+  margin-top: -1px;
+}
+
+.toggle-line-3 {
+  bottom: 0;
+}
