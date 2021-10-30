@@ -1,10 +1,20 @@
 $color:#eebf3e;
+$color-2: #23363e;
 
 body {
   background-color: #ffffff;
   font-family: 'Raleway', sans-serif;
   background-size: cover;
   background-attachment: fixed;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 //Toggle button
@@ -31,7 +41,7 @@ body {
 #navToggleButton {
   &.active {
     .toggle-line {
-      background-color: #000;
+      background-color: $color;
     }
 
     .toggle-line-1,
@@ -63,7 +73,7 @@ body {
   position: absolute;
   height: 2px;
   width: 100%;
-  background-color: #000;
+  background-color: $color;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -78,4 +88,161 @@ body {
 
 .toggle-line-3 {
   bottom: 0;
+}
+
+
+//Nav
+nav {
+  display: block;
+  position: relative;
+  background-color: $color-2;
+  min-height: 41px;
+
+  @media (min-width: 1024px) {
+    min-height: 41px;
+  }
+
+  .nav-wrapper {
+    display: none;
+    z-index: 100;
+    padding-top: 44px;
+
+    //iPad hor
+    @media (min-width: 1024px) {
+      display: block;
+      padding-top: 0;
+    }
+
+    &.active {
+      display: block;
+
+      &.container {
+
+        //before iPad hor
+        @media (max-width: 1023px) {
+          max-width: none;
+        }
+      }
+
+      ul.nav-ul-main {
+        li.li-nav {}
+      }
+    }
+
+    //ul Parent
+    ul.nav-ul-main {
+      padding: 0;
+      margin: 0;
+      display: block;
+      width: 100%;
+
+      //iPad hor
+      @media (min-width: 1024px) {}
+
+      //li Parent
+      li.li-nav {
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        list-style-type: none;
+
+        @media (min-width: 1024px) {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        a.nav-link {
+          display: inline-block;
+          position: relative;
+          padding: 0.75rem 1rem 0.75rem 1rem;
+          color: #ffffff;
+          width: 100%;
+          font-size: 12px;
+          font-weight: 600;
+
+          @media (min-width: 1024px) {
+            width: auto;
+            height: 41px;
+          }
+
+          &.parent-link {
+            padding-right: 1.25rem;
+
+            &::after {
+              content: "";
+              position: absolute;
+              right: 3px;
+              top: 50%;
+              margin-top: -2px;
+              height: 4px;
+              width: 4px;
+              border-left: 4px solid transparent;
+              border-right: 4px solid transparent;
+              border-top: 4px solid #ffffff;
+            }
+          }
+
+          &.current {
+            background-color: $color;
+            color: $color-2;
+
+            &.parent-link {
+              padding-right: 1.25rem;
+
+              &::after {
+                border-top-color: $color;
+              }
+            }
+          }
+        }
+
+        //ul submenu
+        ul.ul-nav-child {
+          display: none;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background-color: transparent;
+
+          @media (min-width: 1024px) {
+            top: 40px;
+            min-width: 200px;
+            max-width: 450px;
+            position: absolute;
+            left: 0;
+            z-index: 102;
+            background-color: $color-2;
+          }
+
+          &.show {
+            display: block;
+          }
+
+          li.li-nav-child {
+            list-style-type: none;
+
+            a {
+              display: inline-block;
+              padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+              color: #ffffff;
+              width: 100%;
+              font-size: 12px;
+              font-weight: 600;
+
+              @media (min-width: 1024px) {
+                font-size: 12px;
+                padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+              }
+
+              &.current {
+                background-color: $color;
+                color: $color-2;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
