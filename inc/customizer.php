@@ -63,4 +63,19 @@ function history_customize_register( $wp_customize ) {
         'settings' => 'header_logo',
     ) ));
 
+  //About link setting
+    $wp_customize->add_setting('shop_id',array(
+        'default'=>'',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport' => 'refresh'
+    ));
+
+    //About link control
+    $wp_customize->add_control('shop_id_control',array(
+        'label'=>'Shop Page',
+        'type'=>'dropdown-pages',
+        'section'=>'header_section',
+        'settings'=>'shop_id',
+    ));
+
 }

@@ -30,7 +30,6 @@ button {
       -ms-user-select: none;
           user-select: none;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
@@ -157,7 +156,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link {
   color: #ffffff;
   width: 100%;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
 }
 @media (min-width: 1024px) {
   nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link {
@@ -220,7 +219,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
   color: #ffffff;
   width: 100%;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
 }
 @media (min-width: 1024px) {
   nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {

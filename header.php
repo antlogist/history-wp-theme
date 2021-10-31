@@ -34,7 +34,7 @@ wp_head(); ?>
     </div>
   </nav>
 
-  <!--Header-->
+  <!--Front Header-->
   <header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
     <div class="container header-container">
       <div class="row">
@@ -44,7 +44,7 @@ wp_head(); ?>
             <div>
               <h1 class="header-title" id="headerTitle"><?php if (!get_theme_mod("header_title")) {echo "Website title";} else {echo get_theme_mod("header_title");} ?></h1>
               <div class="header-buttons-wrapper">
-                <a href="#" class="btn">Shop</a>
+                <a href="<?php if (!get_theme_mod('shop_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('shop_id')) ); } ?>" class="btn">Shop</a>
               </div>
             </div>
           </div>
@@ -53,5 +53,5 @@ wp_head(); ?>
       </div>
     </div>
   </header>
-  <!--/Header-->
+  <!--/Front Header-->
 
