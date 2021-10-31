@@ -13,6 +13,16 @@
       $('#header').css("background-image", "url(".concat(newval, ")"));
     });
   });
+  wp.customize('header_title', function (value) {
+    value.bind(function (newval) {
+      $('#headerTitle').html(newval);
+    });
+  });
+  wp.customize('header_logo', function (value) {
+    value.bind(function (newval) {
+      $('#headerLogo').attr("src", newval);
+    });
+  });
 })(jQuery);
 
 /***/ }),

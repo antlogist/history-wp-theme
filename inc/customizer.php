@@ -34,4 +34,33 @@ function history_customize_register( $wp_customize ) {
       'settings' => 'header_img',
   ) ));
 
+  //Header title setting
+  $wp_customize->add_setting('header_title',array(
+      'default'=>'Website Title',
+      'sanitize_callback' => 'sanitize_text_field',
+      'transport' => 'postMessage'
+  ));
+
+  //Header title control
+  $wp_customize->add_control('header_title_control',array(
+      'label'=>'Header Title',
+      'type'=>'text',
+      'section'=>'header_section',
+      'settings'=>'header_title',
+  ));
+
+  //Header logo setting
+  $wp_customize ->add_setting('header_logo', array(
+    'default' => '',
+    'transport' => 'postMessage'
+    ));
+
+    //Header logo control
+    $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'header_logo_control', array(
+        'label'=>'Header Logo',
+        'mime_type' => 'image',
+        'section'=>'header_section',
+        'settings' => 'header_logo',
+    ) ));
+
 }

@@ -202,3 +202,51 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
   background-color: #eebf3e;
   color: #23363e;
 }
+
+header {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(238, 191, 62, 0.15);
+}
+header .header-container {
+  z-index: 100;
+}
+header .header-title-outer-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  header .header-title-outer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+header .header-title-outer-wrapper .header-logo {
+  width: 100%;
+  max-width: 320px;
+}
+header .header-title-outer-wrapper .header-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 60px;
+}
+@media (min-width: 1024px) {
+  header .header-title-outer-wrapper .header-title {
+    padding: 1rem;
+  }
+}
