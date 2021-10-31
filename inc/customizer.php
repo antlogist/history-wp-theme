@@ -37,7 +37,7 @@ function history_customize_register( $wp_customize ) {
   //Header title setting
   $wp_customize->add_setting('header_title',array(
       'default'=>'Website Title',
-      'sanitize_callback' => 'sanitize_text_field',
+      'sanitize_callback' => 'wp_kses_post',
       'transport' => 'postMessage'
   ));
 

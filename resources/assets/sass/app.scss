@@ -1,5 +1,5 @@
-$color:#eebf3e;
-$color-2: #23363e;
+$color:#deb325;
+$color-2: #172726;
 
 body {
   background-color: #ffffff;
@@ -280,7 +280,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   &::before {
     content: "";
     position: absolute;
@@ -288,7 +288,7 @@ header {
     height: 100%;
     left: 0;
     top: 0;
-    background-color: rgba(238, 191, 62, 0.15);
+    background-color: rgba(23, 39, 38, 0.15);
   }
   .header-container {
     z-index: 100;
@@ -309,9 +309,31 @@ header {
     .header-title {
       text-align: center;
       color: #ffffff;
-      font-size: 60px;
+      font-size: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-indent: 1px;
+      font-weight: 400;
+      padding: 1rem 0;
       @media (min-width: 1024px) {
         padding: 1rem;
+        font-size: 60px;
+        letter-spacing: 4px;
+        text-indent: 4px;
+      }
+      span {
+        display: block;
+        font-size: 22px;
+        letter-spacing: 2px;
+        text-indent: 2px;
+        padding: 0;
+        font-weight: 400;
+        @media (min-width: 1024px) {
+          padding: 0;
+          font-size: 35px;
+          letter-spacing: 4px;
+          text-indent: 4px;
+        }
       }
     }
   }
@@ -319,7 +341,7 @@ header {
     text-align: center;
     @media (min-width: 1024px) {
       text-align: right;
-      padding-right: 1rem;
+      padding-right: 2rem;
     }
   }
 }
