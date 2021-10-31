@@ -13,6 +13,36 @@ a:hover {
   opacity: 0.75;
 }
 
+.btn,
+button {
+  color: #23363e;
+  background-color: #eebf3e;
+  border: 1px solid transparent;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-indent: 1px;
+}
+.btn:hover,
+button:hover {
+  color: #eebf3e;
+  background-color: #23363e;
+  border: 1px solid #eebf3e;
+}
+
 #navToggleButton {
   display: block;
   width: 30px;
@@ -248,5 +278,14 @@ header .header-title-outer-wrapper .header-title {
 @media (min-width: 1024px) {
   header .header-title-outer-wrapper .header-title {
     padding: 1rem;
+  }
+}
+header .header-buttons-wrapper {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  header .header-buttons-wrapper {
+    text-align: right;
+    padding-right: 1rem;
   }
 }
