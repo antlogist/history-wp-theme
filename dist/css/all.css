@@ -15,7 +15,7 @@ a:hover {
 
 .btn,
 button {
-  color: #172726;
+  color: #253f46;
   background-color: #deb325;
   border: 1px solid transparent;
   display: inline-block;
@@ -38,7 +38,7 @@ button {
 .btn:hover,
 button:hover {
   color: #deb325;
-  background-color: #172726;
+  background-color: #253f46;
   border: 1px solid #deb325;
 }
 
@@ -103,7 +103,7 @@ button:hover {
 nav {
   display: block;
   position: relative;
-  background-color: #172726;
+  background-color: #253f46;
   min-height: 41px;
 }
 @media (min-width: 1024px) {
@@ -181,7 +181,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.parent-link::after {
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current {
   background-color: #deb325;
-  color: #172726;
+  color: #253f46;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link {
   padding-right: 1.25rem;
@@ -204,7 +204,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child {
     position: absolute;
     left: 0;
     z-index: 102;
-    background-color: #172726;
+    background-color: #253f46;
   }
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child.show {
@@ -229,7 +229,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.current {
   background-color: #deb325;
-  color: #172726;
+  color: #253f46;
 }
 
 header {
@@ -248,7 +248,7 @@ header::before {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(23, 39, 38, 0.15);
+  background-color: rgba(222, 179, 37, 0.35);
 }
 header .header-container {
   z-index: 100;

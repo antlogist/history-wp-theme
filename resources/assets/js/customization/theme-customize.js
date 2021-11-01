@@ -12,9 +12,27 @@
     });
   });
 
-  wp.customize('header_logoo', function (value) {
+  wp.customize('header_logo', function (value) {
     value.bind(function (newval) {
       $('#headerLogo').attr("src", newval);
+    });
+  });
+
+  wp.customize('about_img', function (value) {
+    value.bind(function (newval) {
+      $('#aboutImg').attr("src", newval);
+    });
+  });
+
+  wp.customize('about_text', function (value) {
+    value.bind(function (newval) {
+      $('#aboutText').html(newval);
+    });
+  });
+
+  wp.customize('about_title', function (value) {
+    value.bind(function (newval) {
+      $('#aboutTitle').html(newval);
     });
   });
 
