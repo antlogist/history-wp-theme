@@ -13,6 +13,35 @@ a:hover {
   opacity: 0.75;
 }
 
+.btn,
+button {
+  color: #172726;
+  background-color: #deb325;
+  border: 1px solid transparent;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-indent: 1px;
+}
+.btn:hover,
+button:hover {
+  color: #deb325;
+  background-color: #172726;
+  border: 1px solid #deb325;
+}
+
 #navToggleButton {
   display: block;
   width: 30px;
@@ -32,7 +61,7 @@ a:hover {
 }
 
 #navToggleButton.active .toggle-line {
-  background-color: #eebf3e;
+  background-color: #deb325;
 }
 #navToggleButton.active .toggle-line-1,
 #navToggleButton.active .toggle-line-3 {
@@ -54,7 +83,7 @@ a:hover {
   position: absolute;
   height: 2px;
   width: 100%;
-  background-color: #eebf3e;
+  background-color: #deb325;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -74,7 +103,7 @@ a:hover {
 nav {
   display: block;
   position: relative;
-  background-color: #23363e;
+  background-color: #172726;
   min-height: 41px;
 }
 @media (min-width: 1024px) {
@@ -127,7 +156,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link {
   color: #ffffff;
   width: 100%;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
 }
 @media (min-width: 1024px) {
   nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link {
@@ -151,14 +180,14 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.parent-link::after {
   border-top: 4px solid #ffffff;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current {
-  background-color: #eebf3e;
-  color: #23363e;
+  background-color: #deb325;
+  color: #172726;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link {
   padding-right: 1.25rem;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link::after {
-  border-top-color: #eebf3e;
+  border-top-color: #deb325;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child {
   display: none;
@@ -175,7 +204,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child {
     position: absolute;
     left: 0;
     z-index: 102;
-    background-color: #23363e;
+    background-color: #172726;
   }
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child.show {
@@ -190,7 +219,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
   color: #ffffff;
   width: 100%;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
 }
 @media (min-width: 1024px) {
   nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
@@ -199,8 +228,8 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
   }
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.current {
-  background-color: #eebf3e;
-  color: #23363e;
+  background-color: #deb325;
+  color: #172726;
 }
 
 header {
@@ -210,7 +239,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
 header::before {
   content: "";
@@ -219,7 +248,7 @@ header::before {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(238, 191, 62, 0.15);
+  background-color: rgba(23, 39, 38, 0.15);
 }
 header .header-container {
   z-index: 100;
@@ -243,10 +272,43 @@ header .header-title-outer-wrapper .header-logo {
 header .header-title-outer-wrapper .header-title {
   text-align: center;
   color: #ffffff;
-  font-size: 60px;
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-indent: 1px;
+  font-weight: 400;
+  padding: 1rem 0;
 }
 @media (min-width: 1024px) {
   header .header-title-outer-wrapper .header-title {
     padding: 1rem;
+    font-size: 60px;
+    letter-spacing: 4px;
+    text-indent: 4px;
+  }
+}
+header .header-title-outer-wrapper .header-title span {
+  display: block;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-indent: 2px;
+  padding: 0;
+  font-weight: 400;
+}
+@media (min-width: 1024px) {
+  header .header-title-outer-wrapper .header-title span {
+    padding: 0;
+    font-size: 35px;
+    letter-spacing: 4px;
+    text-indent: 4px;
+  }
+}
+header .header-buttons-wrapper {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  header .header-buttons-wrapper {
+    text-align: right;
+    padding-right: 2rem;
   }
 }
