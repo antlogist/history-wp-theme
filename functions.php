@@ -21,6 +21,9 @@ include( get_template_directory() . '/inc/customizer/newsletter.php');
 //REST menu
 include( get_template_directory() . '/inc/REST/rest_menu.php');
 
+//History pages CPT
+include( get_template_directory() . '/inc/CPT/history_pages.php');
+
 /*===HOOKS===*/
 //Theme features
 add_action('after_setup_theme', 'history_theme_support');
@@ -42,3 +45,6 @@ add_action( 'customize_preview_init', 'history_customizer_script' );
 
 //REST menu
 add_action( 'rest_api_init', 'history_menu' );
+
+//History Pages post type
+add_action('init', 'historypages_cpt');

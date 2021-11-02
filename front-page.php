@@ -71,6 +71,16 @@ get_header();
   </div>
 </section>
 
+<section id="historyPages">
+  <div class="container mt-5 mb-2 text-center">
+    <h1 id="newsletterTitle">
+      <?php if (!get_theme_mod('historypages_title')) {
+        echo "History Pages";
+      } else { echo get_theme_mod('historypages_title'); }; ?>
+    </h1>
+  </div>
+</section>
+
 
 <?php
 

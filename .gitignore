@@ -2,9 +2,9 @@ node_modules
 images
 package-lock.json
 mix-manifest.json
+style.css
 /resources/assets/libs/
 /dist/js/pdf.js
 /dist/js/pdf.js.map
 /dist/js/pdf.worker.js
 /dist/js/pdf.worker.js.map
-
