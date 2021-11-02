@@ -17,6 +17,7 @@ wp_head(); ?>
 
 <script>
   const baseUrl = "<?php echo get_site_url(); ?>";
+  const themeUrl = "<?php echo get_template_directory_uri(); ?>"
 
 </script>
 

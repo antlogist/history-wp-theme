@@ -2,6 +2,7 @@
   "use strict";
 
   window.BASEOBJECT = {
-    nav: {}
+    nav: {},
+    pdf: {}
   }
 })();
