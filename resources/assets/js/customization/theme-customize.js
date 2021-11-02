@@ -36,4 +36,10 @@
     });
   });
 
+  wp.customize('newsletter_title', function (value) {
+    value.bind(function (newval) {
+      $('#newsletterTitle').html(newval);
+    });
+  });
+
 })(jQuery);

@@ -3,3 +3,8 @@ images
 package-lock.json
 mix-manifest.json
 /resources/assets/libs/
+/dist/js/pdf.js
+/dist/js/pdf.js.map
+/dist/js/pdf.worker.js
+/dist/js/pdf.worker.js.map
+

@@ -13,7 +13,10 @@ function history_styles_and_scripts() {
   wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.css'), NULL, microtime());
 
   //custom js
-  wp_enqueue_script('history-app-js', get_theme_file_uri('dist/js/all.min.js'), null, microtime(), true);
+  wp_enqueue_script('pdf-app-js', get_theme_file_uri('dist/js/pdf.js'), null, microtime(), false);
+
+  //custom js
+  wp_enqueue_script('history-app-js', get_theme_file_uri('dist/js/all.js'), null, microtime(), true);
 }
 
 function history_customizer_script() {

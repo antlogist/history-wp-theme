@@ -16,6 +16,7 @@ include( get_template_directory() . '/inc/enqueue.php' );
 include( get_template_directory() . '/inc/customizer.php');
 include( get_template_directory() . '/inc/customizer/header.php');
 include( get_template_directory() . '/inc/customizer/about.php');
+include( get_template_directory() . '/inc/customizer/newsletter.php');
 
 //REST menu
 include( get_template_directory() . '/inc/REST/rest_menu.php');

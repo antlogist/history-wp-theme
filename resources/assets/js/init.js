@@ -9,7 +9,7 @@
   const body = document.body;
   switch (body.id) {
     case "frontPage":
-      console.log("front-page");
+      BASEOBJECT.pdf.init();
   }
 
 })();
