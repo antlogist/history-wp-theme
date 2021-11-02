@@ -355,7 +355,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   "use strict";
 
   BASEOBJECT.pdf.init = function () {
-    // const url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf';
     var url = currentPdf;
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
     pdfjsLib.GlobalWorkerOptions.workerSrc = "".concat(themeUrl, "/dist/js/pdf.worker.js");
@@ -421,7 +420,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         e.preventDefault();
         onNextPage();
       }
-    }); // document.getElementById('prev').addEventListener('click', onPrevPage);
+    });
 
     function onNextPage() {
       if (pageNum >= pdfDoc.numPages) {
@@ -430,8 +429,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       pageNum++;
       queueRenderPage(pageNum);
-    } // document.getElementById('next').addEventListener('click', onNextPage);
-
+    }
 
     pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
       pdfDoc = pdfDoc_;
