@@ -157,6 +157,8 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link {
   width: 100%;
   font-size: 12px;
   font-weight: 400;
+  letter-spacing: 1px;
+  text-indent: 1px;
 }
 @media (min-width: 1024px) {
   nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link {
@@ -318,4 +320,15 @@ header .header-buttons-wrapper {
   direction: ltr;
   width: 100%;
   max-width: 491px;
+}
+
+footer {
+  background-color: #253f46;
+  color: #c4c4c4;
+}
+footer a {
+  color: #c4c4c4;
+}
+footer a:hover {
+  color: #deb325;
 }

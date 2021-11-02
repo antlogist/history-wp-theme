@@ -3,6 +3,7 @@ images
 package-lock.json
 mix-manifest.json
 style.css
+footer.php
 /resources/assets/libs/
 /dist/js/pdf.js
 /dist/js/pdf.js.map
