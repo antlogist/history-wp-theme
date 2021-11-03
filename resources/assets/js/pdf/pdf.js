@@ -7,7 +7,7 @@
 
     const pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = `${themeUrl}/dist/js/pdf.worker.js`;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = `${themeUrl}/dist/js/pdf-legacy/pdf.worker.js`;
 
     let pdfDoc = null;
     let pageNum = 1;
