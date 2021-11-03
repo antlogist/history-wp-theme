@@ -185,6 +185,8 @@ nav {
           width: 100%;
           font-size: 12px;
           font-weight: 400;
+          letter-spacing: 1px;
+          text-indent: 1px;
 
           @media (min-width: 1024px) {
             width: auto;
@@ -354,4 +356,13 @@ header {
   max-width: 491px;
 }
 
-
+footer {
+  background-color: $color-2;
+  color: #c4c4c4;
+  a {
+    color: #c4c4c4;
+    &:hover {
+      color: $color;
+    }
+  }
+}

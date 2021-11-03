@@ -3,7 +3,7 @@ const mix = require("laravel-mix");
 //mix.copy('images/', 'dist/images/', false);
 
 mix.sass("resources/assets/sass/app.scss", "dist/css/all.css");
-// mix.sass("resources/assets/sass/libs.scss", "dist/css/libs.css");
+mix.sass("resources/assets/sass/libs.scss", "dist/css/libs.css");
 
 mix.js([
   "resources/assets/js/customization/theme-customize.js"
@@ -20,5 +20,5 @@ mix.js([
 // mix.copy("resources/assets/libs/pdf/pdf.js", "dist/js/");
 // mix.copy("resources/assets/libs/pdf/pdf.worker.js", "dist/js/");
 
-// mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
-// mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js']);
+mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
+mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js', 'dist/js/pdf.js']);

@@ -42,4 +42,10 @@
     });
   });
 
+  wp.customize('historypages_title', function (value) {
+    value.bind(function (newval) {
+      $('#historypagesTitle').html(newval);
+    });
+  });
+
 })(jQuery);

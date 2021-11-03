@@ -44,8 +44,9 @@ $labels = array(
     'public'                    => true,
     'menu_position'             => 11,
     'menu_icon'                 => 'dashicons-archive',
-    'supports'                  => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author'),
+    'supports'                  => array( 'title', 'editor', 'thumbnail', 'author'),
+    // 'show_in_rest'              => true,
   );
 
-  register_post_type( 'history-pages', $args );
+  register_post_type( 'history-page', $args );
 }

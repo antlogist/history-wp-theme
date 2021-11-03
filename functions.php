@@ -17,6 +17,7 @@ include( get_template_directory() . '/inc/customizer.php');
 include( get_template_directory() . '/inc/customizer/header.php');
 include( get_template_directory() . '/inc/customizer/about.php');
 include( get_template_directory() . '/inc/customizer/newsletter.php');
+include( get_template_directory() . '/inc/customizer/historypages.php');
 
 //REST menu
 include( get_template_directory() . '/inc/REST/rest_menu.php');
@@ -48,3 +49,6 @@ add_action( 'rest_api_init', 'history_menu' );
 
 //History Pages post type
 add_action('init', 'historypages_cpt');
+
+/*===FILTERS===*/
+add_filter( 'script_loader_tag', 'add_async_attribute', 10, 2 );
