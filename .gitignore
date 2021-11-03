@@ -7,9 +7,6 @@ footer.php
 screenshot.jpg
 history-wp-theme.zip
 /resources/assets/libs/
-/dist/js/pdf.js
-/dist/js/pdf.min.js
-/dist/js/pdf.js.map
-/dist/js/pdf.worker.js
-/dist/js/pdf.worker.js.map
+/dist/js/pdf
+/dist/js/pdf-legacy
 /dist/js/masonry.pkgd.min.js

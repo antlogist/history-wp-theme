@@ -357,7 +357,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   BASEOBJECT.pdf.init = function () {
     var url = currentPdf;
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "".concat(themeUrl, "/dist/js/pdf.worker.js");
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "".concat(themeUrl, "/dist/js/pdf-legacy/pdf.worker.js");
     var pdfDoc = null;
     var pageNum = 1;
     var pageRendering = false;
