@@ -8,7 +8,7 @@ get_header();
 
 ?>
 <!--Content-->
-<div class="container">
+<div class="container py-5">
   <div class="content-wrapper">
     <div class="row g-0">
       <div class="col-md-12">
