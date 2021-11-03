@@ -1,5 +1,7 @@
 $color:#deb325;
+// $color:#e8d3ab;
 $color-2: #253f46;
+$color-3: #152529;
 
 body {
   background-color: #ffffff;
@@ -39,6 +41,7 @@ button {
     color: $color;
     background-color: $color-2;
     border: 1px solid $color;
+    opacity: 1;
   }
 }
 
@@ -349,6 +352,11 @@ header {
 }
 
 //Newsletter section
+.pdf-section {
+  background-color: $color-3;
+  color: #fff;
+}
+
 #pdf-canvas {
   border: 1px solid black;
   direction: ltr;
@@ -357,7 +365,7 @@ header {
 }
 
 footer {
-  background-color: $color-2;
+  background-color: $color-3;
   color: #c4c4c4;
   a {
     color: #c4c4c4;
