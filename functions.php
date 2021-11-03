@@ -37,6 +37,7 @@ add_action( 'wp_head', 'add_viewport_meta_tag' , '1' );
 
 //Styles and scrpts
 add_action( 'wp_enqueue_scripts', 'history_styles_and_scripts' );
+add_filter( 'script_loader_tag', 'add_async_attribute', 10, 2 );
 
 //Theme customizer
 add_action( 'customize_register', 'history_customize_register' );
@@ -50,5 +51,3 @@ add_action( 'rest_api_init', 'history_menu' );
 //History Pages post type
 add_action('init', 'historypages_cpt');
 
-/*===FILTERS===*/
-add_filter( 'script_loader_tag', 'add_async_attribute', 10, 2 );

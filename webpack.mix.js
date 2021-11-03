@@ -17,8 +17,10 @@ mix.js([
 ], "dist/js/all.js");
 
 //pdf
-mix.copy("resources/assets/libs/pdf/pdf.js", "dist/js/");
-mix.copy("resources/assets/libs/pdf/pdf.worker.js", "dist/js/");
+mix.copy("resources/assets/libs/pdf/pdf.js", "dist/js/pdf/");
+mix.copy("resources/assets/libs/pdf/pdf.worker.js", "dist/js/pdf/");
+mix.copy("resources/assets/libs/pdf-legacy/pdf.js", "dist/js/pdf-legacy/");
+mix.copy("resources/assets/libs/pdf-legacy/pdf.worker.js", "dist/js/pdf-legacy/");
 
 mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
-mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js', 'dist/js/pdf/pdf.js']);
+mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js', 'dist/js/pdf/pdf.js', 'dist/js/pdf-legacy/pdf.js']);
