@@ -25,6 +25,12 @@ include( get_template_directory() . '/inc/REST/rest_menu.php');
 //History pages CPT
 include( get_template_directory() . '/inc/CPT/history_pages.php');
 
+//Newsletter CPT
+include( get_template_directory() . '/inc/CPT/newsletter.php');
+
+//PDF metabox
+include( get_template_directory() . '/inc/metaboxes/pdf_metabox.php');
+
 /*===HOOKS===*/
 //Theme features
 add_action('after_setup_theme', 'history_theme_support');
@@ -51,3 +57,8 @@ add_action( 'rest_api_init', 'history_menu' );
 //History Pages post type
 add_action('init', 'historypages_cpt');
 
+//Newsletter post type
+add_action('init', 'newsletter_cpt');
+
+//Admin scripts
+add_action( 'admin_enqueue_scripts', 'history_admin_scripts' );
