@@ -44,3 +44,17 @@ function body_id() {
     return ' id="archivePage"';
   }
 }
+
+function add_async_attribute($tag, $handle) {
+  $handles = array(
+    'masonry-js',
+  );
+
+  foreach( $handles as $defer_script) {
+    if ( $defer_script === $handle ) {
+       return str_replace( ' src', ' async="async" src', $tag );
+    }
+  }
+
+  return $tag;
+}

@@ -20,5 +20,5 @@ mix.js([
 // mix.copy("resources/assets/libs/pdf/pdf.js", "dist/js/");
 // mix.copy("resources/assets/libs/pdf/pdf.worker.js", "dist/js/");
 
-// mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
-// mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js']);
+mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
+mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js', 'dist/js/pdf.js']);

@@ -72,42 +72,44 @@ get_header();
 </section>
 
 <section id="historyPages">
-  <div class="container-fluid mt-5 mb-2 text-center">
+
+  <div class="container mt-5 mb-2 text-center">
+
     <h1 id="historypagesTitle">
-      <?php if (!get_theme_mod('historypages_title')) {
-        echo "History Pages";
-      } else { echo get_theme_mod('historypages_title'); }; ?>
+        <?php if (!get_theme_mod('historypages_title')) {
+          echo "History Pages";
+        } else { echo get_theme_mod('historypages_title'); }; ?>
     </h1>
 
     <div class="row" data-masonry='{"percentPosition": true }'>
 
-    <?php
-      $historyPages = new WP_Query(array(
-        'posts_per_page' => get_theme_mod('historypages_posts_per_page'),
-        'post_type' => 'history-page'
-      ));
+      <?php
+        $historyPages = new WP_Query(array(
+          'posts_per_page' => get_theme_mod('historypages_posts_per_page'),
+          'post_type' => 'history-page'
+        ));
 
-      while($historyPages->have_posts()) {
-        $historyPages->the_post(); ?>
+        while($historyPages->have_posts()) {
+          $historyPages->the_post(); ?>
 
-        <div class="col-sm-6 col-lg-4 mb-4">
-          <div class="card p-3">
-            <a href="<?php the_permalink(); ?>">
-              <img class="card-img-top w-100" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
-            </a>
-            <div class="card-body">
-              <h5 class="mt-2"><?php the_title(); ?></h5>
-              <p><?php echo wp_trim_words(get_the_content(), 18); ?></p>
-              <div class="buttons-wrapper">
-                <a href="<?php the_permalink(); ?>" class="btn">Learn more</a>
+          <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card p-3">
+              <a href="<?php the_permalink(); ?>">
+                <img class="card-img-top w-100" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
+              </a>
+              <div class="card-body">
+                <h5 class="mt-2"><?php the_title(); ?></h5>
+                <p><?php echo wp_trim_words(get_the_content(), 18); ?></p>
+                <div class="buttons-wrapper">
+                  <a href="<?php the_permalink(); ?>" class="btn">Learn more</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-      <?php }
+        <?php }
 
-    ?>
+      ?>
 
     </div>
   </div>

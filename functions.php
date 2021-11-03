@@ -49,3 +49,6 @@ add_action( 'rest_api_init', 'history_menu' );
 
 //History Pages post type
 add_action('init', 'historypages_cpt');
+
+/*===FILTERS===*/
+add_filter( 'script_loader_tag', 'add_async_attribute', 10, 2 );
