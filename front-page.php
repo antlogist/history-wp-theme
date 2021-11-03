@@ -13,7 +13,26 @@ get_header();
   const currentPdf = "<?php if(!get_theme_mod("newsletter_pdf")) { echo "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf"; } else { echo get_theme_mod("newsletter_pdf"); } ?>";
 </script>
 
-<section id="frontAbout">
+<header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
+  <div class="container header-container">
+    <div class="row">
+      <div class="col-12">
+        <div class="header-title-outer-wrapper">
+          <img class="header-logo" id="headerLogo" src="<?php if (!get_theme_mod('header_logo')) { echo get_template_directory_uri() . "/images/logo.png"; } else { echo esc_url(get_theme_mod('header_logo')); }; ?>" alt="">
+          <div>
+            <h1 class="header-title" id="headerTitle"><?php if (!get_theme_mod("header_title")) {echo "Website title";} else {echo get_theme_mod("header_title");} ?></h1>
+            <div class="header-buttons-wrapper">
+              <a href="<?php if (!get_theme_mod('shop_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('shop_id')) ); } ?>" class="btn">Shop</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="frontAbout" class="py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-6 order-md-2">
@@ -42,8 +61,8 @@ get_header();
   </div>
 </section>
 
-<section id="pdfSection">
-  <div class="container mt-5 mb-2 text-center">
+<section id="pdfSection" class="pdf-section py-5" style="background-image: url(<?php echo get_template_directory_uri() . '/images/fabric-plaid-b.png'?>); ">
+  <div class="container mb-2 text-center">
     <h1 id="historyPagesTitle">
       <?php if (!get_theme_mod('newsletter_title')) {
         echo "Newsletters";
@@ -71,9 +90,9 @@ get_header();
   </div>
 </section>
 
-<section id="historyPages">
+<section id="historyPages" class="py-5">
 
-  <div class="container mt-5 mb-2 text-center">
+  <div class="container-fluid mb-2 text-center">
 
     <h1 id="historypagesTitle">
         <?php if (!get_theme_mod('historypages_title')) {

@@ -40,6 +40,7 @@ button:hover {
   color: #deb325;
   background-color: #253f46;
   border: 1px solid #deb325;
+  opacity: 1;
 }
 
 #navToggleButton {
@@ -315,6 +316,11 @@ header .header-buttons-wrapper {
   }
 }
 
+.pdf-section {
+  background-color: #152529;
+  color: #fff;
+}
+
 #pdf-canvas {
   border: 1px solid black;
   direction: ltr;
@@ -323,7 +329,7 @@ header .header-buttons-wrapper {
 }
 
 footer {
-  background-color: #253f46;
+  background-color: #152529;
   color: #c4c4c4;
 }
 footer a {

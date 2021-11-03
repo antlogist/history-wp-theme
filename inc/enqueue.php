@@ -14,7 +14,7 @@ function history_styles_and_scripts() {
 
   //pdf js
   // wp_enqueue_script('pdf-app-js', get_theme_file_uri('dist/js/pdf/pdf.min.js'), null, microtime(), false);
-  wp_enqueue_script('pdf-app-js', get_theme_file_uri('dist/js/pdf-legacy/pdf.js'), null, microtime(), false);
+  wp_enqueue_script('pdf-app-js', get_theme_file_uri('dist/js/pdf-legacy/pdf.min.js'), null, microtime(), false);
 
   //custom js
   wp_enqueue_script('history-app-js', get_theme_file_uri('dist/js/all.min.js'), array( 'jquery' ), microtime(), true);
@@ -26,4 +26,12 @@ function history_styles_and_scripts() {
 function history_customizer_script() {
   //custom js
   wp_enqueue_script('history-customizer-js', get_theme_file_uri('dist/js/theme-customize.min.js'), array( 'jquery','customize-preview' ), microtime(), true);
+}
+
+function history_admin_scripts() {
+  if (!did_action('wp_enqueue_media')) {
+    wp_enqueue_media();
+  }
+
+  wp_enqueue_script('pdf-metabox', get_theme_file_uri('dist/admin/js/pdf/pdfMetabox.js'), array('jquery'), microtime(), false);
 }
