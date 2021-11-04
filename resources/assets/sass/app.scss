@@ -315,7 +315,7 @@ header {
     .header-title {
       text-align: center;
       color: #ffffff;
-      font-size: 40px;
+      font-size: 30px;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-indent: 1px;
@@ -373,6 +373,9 @@ footer {
     &:hover {
       color: $color;
     }
+  }
+  .jst-link {
+    white-space: nowrap;
   }
 }
 
