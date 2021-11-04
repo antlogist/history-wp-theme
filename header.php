@@ -13,7 +13,18 @@ if ( ! defined ("ABSPATH") ) {
 
 <?php
 
-wp_head(); ?>
+wp_head();
+
+$id = false;
+switch(get_post_type()) {
+  case 'newsletter':
+    $id = 'newsletterPage';
+    break;
+  default:
+    $id = false;
+}
+
+?>
 
 <script>
   const baseUrl = "<?php echo get_site_url(); ?>";
@@ -21,7 +32,7 @@ wp_head(); ?>
 
 </script>
 
-<body <?php echo body_id(); body_class(); ?> >
+<body <?php if($id){echo 'id=' . $id . ' ';}else{echo body_id();}; body_class(); ?> >
 
   <!--Nav-->
   <nav id="navMain">
