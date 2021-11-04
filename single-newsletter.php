@@ -10,7 +10,7 @@ get_header();
 
 ?>
 <script>
-  const pdfUrl = '<?php echo $pdfUrl; ?>';
+  const currentPdf = '<?php echo $pdfUrl; ?>';
 </script>
 
 <header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
@@ -28,7 +28,32 @@ get_header();
 </header>
 
 <!--Content-->
-<div class="container py-5">
+<div class="container py-5 text-center">
+
+  <?php if ( wp_is_mobile() ) {?>
+    <section id="pdfSection">
+      <div class="pdf-pagination mb-2">
+        <button class="prev-pdf"><<</button>
+        <button class="next-pdf">>></button>
+      </div>
+      <div>
+        <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+      </div>
+
+      <canvas id="pdf-canvas"></canvas>
+
+      <div class="pdf-pagination mt-4">
+        <button class="prev-pdf"><<</button>
+        <button class="next-pdf">>></button>
+      </div>
+
+      <div class="buttons-wrapper mt-4">
+        <a href="<?php echo get_post_meta($post->ID, "custom_pdf", true); ?>" class="btn" target="_blank">Open PDF file</a>
+      </div>
+    </section>
+
+  <?php } else { ?>
+
   <div class="content-wrapper">
     <div class="row g-0">
       <div class="col-md-12">
@@ -41,6 +66,11 @@ get_header();
       </div>
     </div>
   </div>
+
+
+  <?php } ?>
+
+
 </div>
 <!--/Content-->
 

@@ -10,16 +10,16 @@ function history_styles_and_scripts() {
   wp_enqueue_style('history-lib-css', get_theme_file_uri('dist/css/libs.min.css'));
 
   //custom CSS
-  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.css'), null, microtime());
+  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.min.css'), null, microtime());
 
   //pdf js
-  if(is_front_page()) {
+  if(is_front_page() || 'newsletter' === get_post_type()) {
     // wp_enqueue_script('pdf-app-js', get_theme_file_uri('dist/js/pdf/pdf.min.js'), null, microtime(), false);
     wp_enqueue_script('pdf-app-js', get_theme_file_uri('dist/js/pdf-legacy/pdf.min.js'), null, microtime(), false);
   }
 
   //custom js
-  wp_enqueue_script('history-app-js', get_theme_file_uri('dist/js/all.min.js'), array( 'jquery' ), microtime(), true);
+  wp_enqueue_script('history-app-js', get_theme_file_uri('dist/js/all.js'), array( 'jquery' ), microtime(), true);
 
   //masonry js
   wp_enqueue_script('masonry-js', get_theme_file_uri('dist/js/masonry.pkgd.min.js'), null , '' , true);

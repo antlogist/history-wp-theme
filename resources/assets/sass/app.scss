@@ -13,6 +13,7 @@ body {
 a {
   text-decoration: none;
   color: #000;
+  transition-duration: 0.25s;
 
   &:hover {
     opacity: 0.75;
@@ -120,7 +121,7 @@ button {
 
 
 //Nav
-nav {
+nav#navMain {
   display: block;
   position: relative;
   background-color: $color-2;
@@ -152,9 +153,9 @@ nav {
         }
       }
 
-      ul.nav-ul-main {
-        li.li-nav {}
-      }
+      // ul.nav-ul-main {
+      //   li.li-nav {}
+      // }
     }
 
     //ul Parent
@@ -378,15 +379,43 @@ footer {
 //Newsletter archive
 .newsletter-archive-post-title {
   a {
-    transition-duration: 0.25s;
     &:hover {
-      letter-spacing: 1px;
-      text-indent: 1px;
+      color: $color;
     }
   }
 }
-img.newsletter-archive-post-image {
-  max-width: 512px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+a.newsletter-archive-post-image-link {
+  img.newsletter-archive-post-image {
+    max-width: 512px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+  }
 }
 
+
+//Archive pagination
+.archive-pagination-wrapper {
+  nav {
+    text-align: center;
+    .page-numbers {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background-color: $color-2;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 25px;
+      &.current {
+        background-color: $color;
+        color: #000000;
+      }
+      // &.prev {
+
+      // }
+      // &.next {
+
+      // }
+    }
+  }
+}
