@@ -1,4 +1,7 @@
 const mix = require("laravel-mix");
+
+// mix.options({ fileLoaderDirs: { fonts: 'dist/fonts' }, })
+
 //
 //mix.copy('images/', 'dist/images/', false);
 
@@ -21,8 +24,9 @@ mix.sass("resources/assets/sass/app.scss", "dist/css/all.css");
 // mix.copy("resources/assets/libs/pdf-legacy/pdf.js", "dist/js/pdf-legacy/");
 // mix.copy("resources/assets/libs/pdf-legacy/pdf.worker.js", "dist/js/pdf-legacy/");
 
+
 //Admin
-mix.copy("resources/assets/admin/js/pdfMetabox.js", "dist/admin/js/pdf/");
+// mix.copy("resources/assets/admin/js/pdfMetabox.js", "dist/admin/js/pdf/");
 
 
 //Minification

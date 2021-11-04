@@ -338,3 +338,8 @@ footer a {
 footer a:hover {
   color: #deb325;
 }
+
+.newsletter-archive-post-title a:hover {
+  letter-spacing: 2px;
+  text-indent: 2px;
+}

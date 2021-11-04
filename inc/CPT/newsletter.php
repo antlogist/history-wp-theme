@@ -45,6 +45,7 @@ $labels = array(
     'menu_position'             => 11,
     'menu_icon'                 => 'dashicons-text-page',
     'supports'                  => array( 'title', 'thumbnail'),
+    'has_archive'               => true
     // 'show_in_rest'              => true,
   );
 
