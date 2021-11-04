@@ -21,7 +21,10 @@ mix.sass("resources/assets/sass/app.scss", "dist/css/all.css");
 // mix.copy("resources/assets/libs/pdf-legacy/pdf.js", "dist/js/pdf-legacy/");
 // mix.copy("resources/assets/libs/pdf-legacy/pdf.worker.js", "dist/js/pdf-legacy/");
 
-mix.copy("resources/assets/js/pdf/pdfMetabox.js", "dist/admin/js/pdf/");
+//Admin
+mix.copy("resources/assets/admin/js/pdfMetabox.js", "dist/admin/js/pdf/");
 
+
+//Minification
 // mix.minify(['dist/css/all.css', 'dist/css/libs.css']);
 // mix.minify(['dist/js/theme-customize.js', 'dist/js/all.js', 'dist/js/pdf/pdf.js', 'dist/js/pdf-legacy/pdf.js']);
