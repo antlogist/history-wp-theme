@@ -57,8 +57,8 @@ button {
 
 #navToggleButton {
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: 10px;
+  right: 10px;
 
   //iPad ver
   @media (min-width: 1024px) {
@@ -125,7 +125,7 @@ nav#navMain {
   display: block;
   position: relative;
   background-color: $color-2;
-  min-height: 41px;
+  min-height: 50px;
 
   @media (min-width: 1024px) {
     min-height: 41px;
