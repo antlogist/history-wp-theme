@@ -45,6 +45,11 @@ function history_admin_scripts() {
     wp_enqueue_media();
   }
 
-  //PDF meta
-  wp_enqueue_script('pdf-metabox', get_theme_file_uri('dist/admin/js/pdf/pdfMetabox.js'), array('jquery'), microtime(), false);
+  //metaboxes JS
+  wp_enqueue_script('history-pdf-metabox', get_theme_file_uri('dist/admin/js/pdf/pdfMetabox.js'), array('jquery'), microtime(), false);
+  wp_enqueue_script('history-gallery-metabox', get_theme_file_uri('dist/admin/js/gallery/galleryMetabox.js'), array('jquery'), microtime(), false);
+
+  //admin styles
+  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/admin/css/app.min.css'), null, microtime());
+
 }

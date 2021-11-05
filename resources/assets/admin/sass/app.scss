@@ -22,3 +22,11 @@ li#menu-posts-photo-archive {
     }
   }
 }
+
+#photoArchiveUl {
+  button.button-delete {
+    background-color: $color;
+    color: $color-2;
+    border-color: $color-3
+  }
+}
