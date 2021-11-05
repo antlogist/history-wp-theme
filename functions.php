@@ -27,8 +27,9 @@ include( get_template_directory() . '/inc/CPT/history_pages.php');
 include( get_template_directory() . '/inc/CPT/newsletter.php');
 include( get_template_directory() . '/inc/CPT/photo_archive.php');
 
-//PDF metabox
+//Metaboxes
 include( get_template_directory() . '/inc/metaboxes/pdf_metabox.php');
+include( get_template_directory() . '/inc/metaboxes/gallery_metabox.php');
 
 /*===HOOKS===*/
 //Theme features
