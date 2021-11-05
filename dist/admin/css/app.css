@@ -1,0 +1,17 @@
+li#menu-posts-history-page a,
+li#menu-posts-newsletter a {
+  color: #deb325;
+}
+li#menu-posts-history-page a .wp-menu-image:before,
+li#menu-posts-newsletter a .wp-menu-image:before {
+  color: #deb325;
+}
+li#menu-posts-history-page.wp-menu-open a.wp-menu-open,
+li#menu-posts-newsletter.wp-menu-open a.wp-menu-open {
+  background-color: #deb325;
+  color: #fff;
+}
+li#menu-posts-history-page.wp-menu-open a.wp-menu-open .wp-menu-image:before,
+li#menu-posts-newsletter.wp-menu-open a.wp-menu-open .wp-menu-image:before {
+  color: #fff;
+}
