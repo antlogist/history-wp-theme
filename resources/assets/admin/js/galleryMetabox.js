@@ -18,6 +18,7 @@ jQuery(function($){
             attachment.map((image) => {
               const obj = {
                 url: image.url,
+                mediumUrl: image.sizes.medium ? image.sizes.medium.url : image.url,
                 title: image.title,
                 description: image.description
               }
@@ -36,6 +37,7 @@ jQuery(function($){
           $('#custom_gallery').val(JSON.stringify(val));
 
           renderPhotoArchive(val);
+          console.log(attachment);
 
       }).open();
   });
@@ -55,7 +57,7 @@ function renderPhotoArchive(val) {
         <div class="attachment-preview type-image portrait">
           <div class="thumbnail">
             <div class="centered">
-              <img src="${item.url}" alt="" draggable="false">
+              <img src="${item.mediumUrl}" alt="" draggable="false">
             </div>
           </div>
         </div>

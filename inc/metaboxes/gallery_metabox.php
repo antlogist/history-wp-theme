@@ -47,12 +47,11 @@ function render_gallery_custom_box( $post ) {
                     <div class="attachment-preview type-image portrait">
                       <div class="thumbnail">
                         <div class="centered">
-                          <img src="<?php echo $image->url; ?>" alt="" draggable="false">
+                          <img src="<?php echo $image->mediumUrl; ?>" alt="" draggable="false">
                         </div>
                       </div>
                     </div>
                   </li>
-
                 <?php } ?>
               </ul>
             </div>
