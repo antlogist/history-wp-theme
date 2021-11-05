@@ -92,7 +92,7 @@ get_header();
 
 <section id="historyPages" class="py-5">
 
-  <div class="container-fluid mb-2 text-center">
+  <div class="container mb-2 text-center">
 
     <h1 id="historypagesTitle">
         <?php if (!get_theme_mod('historypages_title')) {
