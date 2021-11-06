@@ -15,18 +15,6 @@ if ( ! defined ("ABSPATH") ) {
 
 wp_head();
 
-// $id = false;
-// switch(get_post_type()) {
-//   case 'newsletter':
-//     $id = 'newsletterPage';
-//     break;
-//   case 'photo-archive':
-//     $id = 'photoarchivePage';
-//     break;
-//   default:
-//     $id = false;
-// }
-
 ?>
 
 <script>
@@ -35,7 +23,6 @@ wp_head();
 
 </script>
 
-<body <?php //if($id){echo 'id=' . $id . ' ';}else{echo body_id();}; body_class(); ?> >
 <body <?php echo body_id() . ' '; body_class(); ?> >
   <!--Nav-->
   <nav id="navMain">
