@@ -32,6 +32,9 @@ include( get_template_directory() . '/inc/metaboxes/pdf_metabox.php');
 include( get_template_directory() . '/inc/metaboxes/gallery_metabox.php');
 
 /*===HOOKS===*/
+//Session start
+add_action('init', 'register_my_session');
+
 //Theme features
 add_action('after_setup_theme', 'history_theme_support');
 

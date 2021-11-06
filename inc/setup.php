@@ -5,6 +5,12 @@ if ( ! defined ("ABSPATH") ) {
   exit;
 }
 
+function register_my_session(){
+  if( ! session_id() ) {
+      session_start();
+  }
+}
+
 function add_viewport_meta_tag() {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 }
