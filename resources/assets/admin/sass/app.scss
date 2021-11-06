@@ -24,9 +24,19 @@ li#menu-posts-photo-archive {
 }
 
 #photoArchiveUl {
+  .buttons-wrapper {
+    position: relative;
+    z-index: 100;
+    text-align: right;
+    margin-bottom: -0.5rem;
+  }
   button.button-delete {
     background-color: $color;
     color: $color-2;
-    border-color: $color-3
+    border-color: $color-3;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-right: -10px;
   }
 }

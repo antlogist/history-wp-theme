@@ -20,6 +20,9 @@ switch(get_post_type()) {
   case 'newsletter':
     $id = 'newsletterPage';
     break;
+  case 'photo-archive':
+    $id = 'photoarchivePage';
+    break;
   default:
     $id = false;
 }

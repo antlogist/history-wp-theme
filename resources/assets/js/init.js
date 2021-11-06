@@ -15,7 +15,11 @@
       if(currentPdf !== false) {
         BASEOBJECT.pdf.init();
       }
-
+    break;
+    case "photoarchivePage":
+      if(singleGallery !== false) {
+        BASEOBJECT.gallery.init();
+      }
   }
 
 })();

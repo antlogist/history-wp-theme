@@ -47,7 +47,7 @@ function history_admin_scripts() {
 
   //metaboxes JS
   wp_enqueue_script('history-pdf-metabox', get_theme_file_uri('dist/admin/js/pdf/pdfMetabox.js'), array('jquery'), microtime(), false);
-  wp_enqueue_script('history-gallery-metabox', get_theme_file_uri('dist/admin/js/gallery/galleryMetabox.js'), array('jquery'), microtime(), false);
+  wp_enqueue_script('history-gallery-metabox', get_theme_file_uri('dist/admin/js/gallery/galleryMetabox.min.js'), array('jquery'), microtime(), false);
 
   //admin styles
   wp_enqueue_style('history-app-css', get_theme_file_uri('dist/admin/css/app.min.css'), null, microtime());
