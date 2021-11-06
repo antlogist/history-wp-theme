@@ -3,6 +3,7 @@
 
   window.BASEOBJECT = {
     nav: {},
-    pdf: {}
+    pdf: {},
+    gallery: {}
   }
 })();

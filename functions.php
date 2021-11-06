@@ -22,14 +22,14 @@ include( get_template_directory() . '/inc/customizer/historypages.php');
 //REST menu
 include( get_template_directory() . '/inc/REST/rest_menu.php');
 
-//History pages CPT
+//CPT
 include( get_template_directory() . '/inc/CPT/history_pages.php');
-
-//Newsletter CPT
 include( get_template_directory() . '/inc/CPT/newsletter.php');
+include( get_template_directory() . '/inc/CPT/photo_archive.php');
 
-//PDF metabox
+//Metaboxes
 include( get_template_directory() . '/inc/metaboxes/pdf_metabox.php');
+include( get_template_directory() . '/inc/metaboxes/gallery_metabox.php');
 
 /*===HOOKS===*/
 //Theme features
@@ -54,11 +54,10 @@ add_action( 'customize_preview_init', 'history_customizer_script' );
 //REST menu
 add_action( 'rest_api_init', 'history_menu' );
 
-//History Pages post type
+//CPT
 add_action('init', 'historypages_cpt');
-
-//Newsletter post type
 add_action('init', 'newsletter_cpt');
+add_action('init', 'photoarchive_cpt');
 
 //Admin scripts
 add_action( 'admin_enqueue_scripts', 'history_admin_scripts' );

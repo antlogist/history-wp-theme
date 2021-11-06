@@ -10,6 +10,16 @@
   switch (body.id) {
     case "frontPage":
       BASEOBJECT.pdf.init();
+    break;
+    case "newsletterPage":
+      if(currentPdf !== false) {
+        BASEOBJECT.pdf.init();
+      }
+    break;
+    case "photoarchivePage":
+      if(singleGallery !== false) {
+        BASEOBJECT.gallery.init();
+      }
   }
 
 })();
