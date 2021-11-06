@@ -12,7 +12,7 @@
       BASEOBJECT.pdf.init();
     break;
     case "newsletterPage":
-      if(currentPdf !== false) {
+      if(currentPdf !== false && isMobile) {
         BASEOBJECT.pdf.init();
       }
     break;
