@@ -51,7 +51,7 @@ function renderPhotoArchive(val) {
   val.map((item, index) => {
     const template = `
       <li id="photoArchiveLi${index}" aria-label="post-item" class="attachment">
-        <div class="buttons-wrapper" style="margin: 0.25rem;">
+        <div class="buttons-wrapper">
           <button data-index="${index}" onclick="deletePhotoArchive(event)" class="button button-small button-delete">x</button>
         </div>
         <div class="attachment-preview type-image portrait">

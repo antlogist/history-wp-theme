@@ -41,7 +41,7 @@ function render_gallery_custom_box( $post ) {
                 foreach(array_reverse($images) as $key => $image) { ?>
 
                   <li id="photoArchiveLi<?php echo (count($images) - $key - 1); ?>" aria-label="post-item" class="attachment">
-                    <div class="buttons-wrapper" style="margin: 0.25rem;">
+                    <div class="buttons-wrapper">
                       <button data-index="<?php echo (count($images) - $key - 1); ?>" onclick="deletePhotoArchive(event)" class="button button-small button-delete">x</button>
                     </div>
                     <div class="attachment-preview type-image portrait">
