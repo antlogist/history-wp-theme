@@ -53,6 +53,18 @@ button {
   }
 }
 
+button {
+  &.button-link {
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
 //Top Bar
 #topbarMain {
   display: block;
@@ -73,6 +85,15 @@ button {
     }
     &.login-ul-main {
       text-align: right;
+    }
+    button {
+      &.button-link {
+        opacity: 0.85;
+        &:hover {
+          background-color: transparent;
+          color:$color-2;
+        }
+      }
     }
   }
 }

@@ -70,5 +70,23 @@ class AuthController {
     Redirect::to($request->home_url . '/login/');
 
   }
+
+  public function logout() {
+    $request = Request::get('post');
+
+    if(CSRFToken::verifyCSRFToken($request->token)) {
+
+      if(isAuthenticated()){
+        Session::remove('SESSION_USER_ID');
+        Session::remove('SESSION_USER_NAME');
+
+        if(!Session::has('user_cart')){
+            session_destroy();
+            session_regenerate_id(true);
+        }
+      }
+      Redirect::to($request->home_url);
+    }
+  }
 }
 
