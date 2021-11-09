@@ -6,6 +6,12 @@ if ( ! defined ('ABSPATH') ) {
 }
 
 /*===INCLUDES===*/
+//App
+include_once( get_template_directory() . '/inc/app/Classes/Session.php' );
+include_once( get_template_directory() . '/inc/app/Classes/Redirect.php' );
+include_once( get_template_directory() . '/inc/app/functions/helper.php' );
+include_once( get_template_directory() . '/inc/app/Classes/CSRFToken.php' );
+
 //Theme features
 include( get_template_directory() . '/inc/setup.php' );
 
@@ -32,6 +38,9 @@ include( get_template_directory() . '/inc/metaboxes/pdf_metabox.php');
 include( get_template_directory() . '/inc/metaboxes/gallery_metabox.php');
 
 /*===HOOKS===*/
+//Session start
+add_action('init', 'register_my_session');
+
 //Theme features
 add_action('after_setup_theme', 'history_theme_support');
 

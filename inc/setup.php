@@ -5,6 +5,12 @@ if ( ! defined ("ABSPATH") ) {
   exit;
 }
 
+function register_my_session(){
+  if( ! session_id() ) {
+      session_start();
+  }
+}
+
 function add_viewport_meta_tag() {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 }
@@ -37,7 +43,16 @@ function body_id() {
   } elseif (is_home()) {
     return ' id="homePage"';
   } elseif (is_single()) {
-    return ' id="singlePage"';
+    switch(get_post_type()) {
+      case 'newsletter':
+        return ' id="newsletterPage"';
+        break;
+      case 'photo-archive':
+        return ' id="photoarchivePage"';
+        break;
+      default:
+      return ' id="singlePage"';
+    }
   } elseif (is_search()) {
     return ' id="searchPage"';
   } elseif (is_archive()) {
@@ -52,7 +67,7 @@ function add_async_attribute($tag, $handle) {
 
   foreach( $handles as $defer_script) {
     if ( $defer_script === $handle ) {
-       return str_replace( ' src', ' async="async" src', $tag );
+       return str_replace( ' src', ' async src', $tag );
     }
   }
 

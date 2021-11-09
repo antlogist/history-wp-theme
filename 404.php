@@ -13,7 +13,7 @@ get_header();
       <div class="col-12">
         <div class="header-title-outer-wrapper">
           <div>
-            <h1 class="header-title" id="headerTitle"><?php echo get_the_title(); ?></h1>
+            <h1 class="header-title" id="headerTitle">404</h1>
           </div>
         </div>
       </div>
@@ -28,16 +28,7 @@ get_header();
     <div class="row g-0">
       <div class="col-md-12">
         <div class="post-wrapper">
-          <?php
-            if ( have_posts() ) {
-            while ( have_posts() ) {
-              the_post();
-
-              the_content();
-
-              } // end while
-            } // end if
-          ?>
+          <h1 class="text-center">This page is under construction</h1>
         </div>
       </div>
     </div>

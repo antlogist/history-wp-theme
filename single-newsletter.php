@@ -11,6 +11,7 @@ get_header();
 ?>
 <script>
   const currentPdf = '<?php echo $pdfUrl; ?>';
+  const isMobile = '<?php echo wp_is_mobile(); ?>';
 </script>
 
 <header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
