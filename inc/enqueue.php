@@ -6,11 +6,15 @@ if ( ! defined ('ABSPATH') ) {
 }
 
 function history_styles_and_scripts() {
+
+  //Dashicons
+  wp_enqueue_style('dashicons');
+
   //libs CSS
   wp_enqueue_style('history-lib-css', get_theme_file_uri('dist/css/libs.min.css'));
 
   //custom CSS
-  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.min.css'), null, microtime());
+  wp_enqueue_style('history-app-css', get_theme_file_uri('dist/css/all.css'), null, microtime());
 
   //pdf js
   if(is_front_page() || 'newsletter' === get_post_type()) {
