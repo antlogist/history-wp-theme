@@ -13,6 +13,10 @@ body {
   }
 }
 
+.dashicons {
+  transition: none;
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -46,6 +50,30 @@ button {
     background-color: $color-2;
     border: 1px solid $color;
     opacity: 1;
+  }
+}
+
+//Top Bar
+#topbarMain {
+  display: block;
+  position: relative;
+  background-color: $color;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      padding-right: 5px;
+      display: inline-block;
+      a {
+        font-size: 14px;
+        color:$color-2;
+        opacity: 0.85;
+      }
+    }
+    &.login-ul-main {
+      text-align: right;
+    }
   }
 }
 
