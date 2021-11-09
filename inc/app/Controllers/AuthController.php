@@ -36,12 +36,11 @@ class AuthController {
       $result = (object) array_merge ((array) $result, ['checkout' => $checkout]);
       if ($result -> status == 'success') {
         if ($result -> data -> uuid) {
-          Session::add('SESSION_USER_UUID', $result -> data -> uuid);
-          Session::add('SESSION_USER_NAME', $result -> data -> name);
+          Session::add('SESSION_USER_UUID', $result->data->uuid);
+          Session::add('SESSION_USER_NAME', $result->data->name);
           if (Session::has('error')) {
             Session::remove('error');
           }
-          $output = $result;
           Redirect::to($request->home_url);
         }
       } else {
@@ -52,7 +51,6 @@ class AuthController {
           Session::remove('SESSION_USER_UUID');
         }
         Session::add('error', $result -> message);
-        $output = $result;
         Redirect::to($request->home_url . '/login/');
       }
 
@@ -82,11 +80,74 @@ class AuthController {
 
         if(!Session::has('user_cart')){
             session_destroy();
-            session_regenerate_id(true);
+            // session_regenerate_id(true);
         }
       }
       Redirect::to($request->home_url);
     }
   }
-}
 
+  public function register() {
+    $request = Request::get('post');
+
+    if(CSRFToken::verifyCSRFToken($request->token)) {
+      $firstname = $request->firstName;
+      $lastname = $request->lastName;
+      $email = $request->email;
+      $password = $request->password;
+      $confirm_pass = $request->confirmPassword;
+
+      if ($password === $confirm_pass) {
+
+        if ( strlen ($password) < 6 ) {
+
+          Session::add('error', "The password must be at least 6 characters");
+          Redirect::to($request->homeUrl . '/register/');
+          exit();
+
+        }
+
+        $api_url = api_url . '/api/v1/register?token=' . api_token;
+
+        $data = [
+          "firstname" => $firstname,
+          "lastname" => $lastname,
+          "email" => $email,
+          "password" => $password,
+        ];
+
+        $data_string = json_encode ($data);
+        $ch = curl_init ($api_url);
+        curl_setopt ($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt ($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen ( $data_string ) ]
+        );
+
+        $result = curl_exec ($ch);
+        $result = json_decode ($result);
+
+        if ($result->status->success == '1') {
+          Session::add('SESSION_USER_UUID', $result->status->message->uuid);
+          Session::add('SESSION_USER_NAME', $result->status->message->name);
+          Redirect::to($request->homeUrl);
+          exit();
+        } else {
+          Session::add('error', "Something went wrong");
+          Redirect::to($request->homeUrl . '/register/');
+        }
+      }
+
+      Session::add('error', "Password is not same as Confirm Password");
+      Redirect::to($request->homeUrl . '/register/');
+
+      exit();
+    }
+
+    Session::add('error', "Token mismatch");
+    Redirect::to($request->homeUrl . '/register/');
+  }
+
+}
