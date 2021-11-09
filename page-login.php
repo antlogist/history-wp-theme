@@ -34,7 +34,7 @@ get_header();
   <div class="row">
 
     <div class="col-md-6 offset-md-3">
-      <div class="message"><?php echo Session::get("error"); ?></div>
+      <div class="message error-message"><?php echo Session::get("error"); ?></div>
       <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Auth.php" method="post" class="w-100">
         <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
         <input type="hidden" name="home_url" value="<?php echo get_home_url(); ?>">
@@ -52,6 +52,7 @@ get_header();
           <input class="w-100" type='password' name='password' id='password' maxlength="50" required />
         </div>
         <p><input class="btn" type="submit" /></p>
+        <p><small><a href="<?php echo get_home_url(); ?>/register">New User Registration</a></small></p>
       </form>
 
     </div>
@@ -60,5 +61,7 @@ get_header();
 
 </div>
 
-<?php get_footer(); ?>
+<?php get_footer();
+
+Session::remove("error"); ?>
 
