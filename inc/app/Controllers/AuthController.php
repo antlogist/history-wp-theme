@@ -1,7 +1,5 @@
 <?php
 
-if(!isset($_SESSION)) session_start();
-
 include_once("../../../../../../wp-config.php");
 include_once('../Classes/Request.php');
 include_once('../Classes/CSRFToken.php');
@@ -170,7 +168,7 @@ class AuthController {
       curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt ($ch, CURLOPT_HTTPHEADER, [
           'Content-Type: application/json',
-          'Content-Length: ' . strlen ( $data_string ) ]
+          'Content-Length: ' . strlen ($data_string) ]
       );
 
       $result = curl_exec($ch);
@@ -179,7 +177,7 @@ class AuthController {
       if ($result->status->success == 1) {
         Session::add('pass_change_email', $email);
         Session::add('success', 'Check your ' . $email . ', please');
-        Redirect::to($request->homeUrl . '/forgot-password/');
+        Redirect::to($request->homeUrl . '/reset/');
         exit();
       }
 
@@ -187,6 +185,69 @@ class AuthController {
       Redirect::to($request->homeUrl . '/forgot-password/');
 
     }
+  }
+
+  public function reset() {
+    $request = Request::get('post');
+    if(CSRFToken::verifyCSRFToken($request->token)) {
+      $email = $request->email;
+      $password = $request->password;
+      $confirm_pass = $request->confirmPassword;
+      $otp_code = $request->otpCode;
+      if ($password === $confirm_pass) {
+        if ( strlen ($password) < 6 ) {
+          Session::add('error', "The password must be at least 6 characters");
+          Redirect::to($request->homeUrl . '/reset/');
+          exit();
+        }
+
+        $api_url = api_url . '/api/v1/reset-password?token=' . api_token;
+
+        $data = [
+          "email" => $email,
+          "password" => $password,
+          "confirm_password" => $confirm_pass,
+          "otp" => $otp_code
+        ];
+
+        $data_string = json_encode ($data);
+
+        $ch = curl_init ($api_url);
+        curl_setopt ($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt ($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen ($data_string) ]
+        );
+
+        $result = curl_exec($ch);
+        $result = json_decode ($result);
+
+        if ($result->status->success == 1) {
+          Session::add('success', 'Your Password reset request received. Please check your email ' . $email . ' for Verification code');
+          if (Session::has('SESSION_USER_NAME')) {
+            Session::remove('SESSION_USER_NAME');
+          }
+          if (Session::has('SESSION_USER_UUID')) {
+            Session::remove('SESSION_USER_UUID');
+          }
+          Redirect::to($request->homeUrl . '/reset/');
+          exit();
+        }
+
+        Session::add('error', "Something went wrong");
+        Redirect::to($request->homeUrl . '/reset/');
+        exit();
+      }
+
+      Session::add('error', "Password is not same as Confirm Password");
+      Redirect::to($request->homeUrl . '/reset/');
+      exit();
+    }
+
+    Session::add('error', "Token mismatch");
+    Redirect::to($request->homeUrl . '/reset/');
   }
 
 
