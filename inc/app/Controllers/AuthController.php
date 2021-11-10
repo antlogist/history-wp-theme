@@ -150,4 +150,44 @@ class AuthController {
     Redirect::to($request->homeUrl . '/register/');
   }
 
+
+  public function forgot() {
+    $request = Request::get('post');
+
+    if(CSRFToken::verifyCSRFToken($request->token)) {
+
+      $email = $request->email;
+      $api_url = api_url . '/api/v1/forgot-password?token=' . api_token;
+
+      $data = [
+        "email" => $email
+      ];
+
+      $data_string = json_encode ( $data );
+      $ch = curl_init ($api_url);
+      curl_setopt ($ch, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_setopt ($ch, CURLOPT_POSTFIELDS, $data_string);
+      curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt ($ch, CURLOPT_HTTPHEADER, [
+          'Content-Type: application/json',
+          'Content-Length: ' . strlen ( $data_string ) ]
+      );
+
+      $result = curl_exec($ch);
+      $result = json_decode ($result);
+
+      if ($result->status->success == 1) {
+        Session::add('pass_change_email', $email);
+        Session::add('success', 'Check your ' . $email . ', please');
+        Redirect::to($request->homeUrl . '/forgot-password/');
+        exit();
+      }
+
+      Session::add('error', "Something went wrong");
+      Redirect::to($request->homeUrl . '/forgot-password/');
+
+    }
+  }
+
+
 }
