@@ -85,8 +85,7 @@ class AuthController {
     }
   }
 
-  public function register() {
-    $request = Request::get('post');
+  private function register($request) {
 
     if(CSRFToken::verifyCSRFToken($request->token)) {
       $firstname = $request->firstName;
@@ -146,6 +145,11 @@ class AuthController {
 
     Session::add('error', "Token mismatch");
     Redirect::to($request->homeUrl . '/register/');
+  }
+
+  public function registerUser() {
+    $request = Request::get('post');
+    $this->register($request);
   }
 
 

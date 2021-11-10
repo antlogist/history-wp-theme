@@ -5,7 +5,7 @@ include_once('../Controllers/AuthController.php');
 
 if(Request::has('post')){
   $auth = new AuthController();
-  $auth->register();
+  $auth->registerUser();
 } else {
   return null;
 }
