@@ -73,7 +73,7 @@ class AuthController {
     if(CSRFToken::verifyCSRFToken($request->token)) {
 
       if(isAuthenticated()){
-        Session::remove('SESSION_USER_ID');
+        Session::remove('SESSION_USER_UUID');
         Session::remove('SESSION_USER_NAME');
 
         if(!Session::has('user_cart')){
