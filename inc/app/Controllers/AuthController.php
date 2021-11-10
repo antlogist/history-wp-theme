@@ -37,7 +37,7 @@ class AuthController {
       if ($result -> status == 'success') {
         if ($result -> data -> uuid) {
           Session::add('SESSION_USER_UUID', $result->data->uuid);
-          Session::add('SESSION_USER_NAME', $result->data->name);
+          Session::add('SESSION_USER_NAME', $result->data->billing_firstname);
           if (Session::has('error')) {
             Session::remove('error');
           }
