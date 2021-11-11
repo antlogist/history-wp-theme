@@ -5,14 +5,6 @@ if ( ! defined ('ABSPATH') ) {
   exit;
 }
 
-// unset($_SESSION['SESSION_USER_UUID']);
-// unset($_SESSION['SESSION_USER_NAME']);
-
-if(isAuthenticated()) {
-  Redirect::to(get_home_url());
-  exit;
-}
-
 get_header();
 
 ?>
@@ -36,25 +28,19 @@ get_header();
 
     <div class="col-md-6 offset-md-3">
       <div class="message error-message"><?php echo Session::get("error"); ?></div>
-      <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Auth.php" method="post" class="w-100">
+      <div class="message success-message"><?php echo Session::get("success"); ?></div>
+      <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Forgot.php" method="post" class="w-100">
         <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
-        <input type="hidden" name="home_url" value="<?php echo get_home_url(); ?>">
-        <div class="mb-2">
+        <input type="hidden" name="homeUrl" value="<?php echo get_home_url(); ?>">
+        <div class="mb-3">
           <div>
             <label for='email' >User Email*:</label>
           </div>
           <input class="w-100" type='email' name='email' id='email'  maxlength="50" required />
         </div>
 
-        <div class="mb-3">
-          <div>
-            <label for='password' >Password*:</label>
-          </div>
-          <input class="w-100" type='password' name='password' id='password' maxlength="50" required />
-        </div>
         <p><input class="btn" type="submit" /></p>
-        <p><small><a href="<?php echo get_home_url(); ?>/register">New User Registration</a></small></p>
-        <p><small><a href="<?php echo get_home_url(); ?>/forgot-password">Forgot Password</a></small></p>
+        <p><small>Don't have an account? <a href="<?php echo get_home_url(); ?>/register">Sign Up Here</a></small></p>
       </form>
 
     </div>
@@ -65,5 +51,5 @@ get_header();
 
 <?php get_footer();
 
-Session::remove("error"); ?>
-
+Session::remove("error");
+Session::remove("success"); ?>

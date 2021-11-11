@@ -29,13 +29,10 @@ wp_head();
   <div class="top-bar" id="topbarMain">
     <div class="container">
       <div class="row">
-        <div class="col-6">
-
-        </div>
-        <div class="col-6">
+        <div class="col-12">
           <ul class="login-ul-main">
             <?php if (isAuthenticated()) { ?>
-              <li><a href="<?php echo get_home_url(); ?>/user"><span class="dashicons dashicons-admin-users" style="padding-top: 2px;"></span><?php echo substr(Session::get("SESSION_USER_NAME"), 0, 15); ?></a> </li>
+              <li><a href="<?php echo get_home_url(); ?>/profile"><span class="dashicons dashicons-admin-users" style="padding-top: 2px;"></span><?php echo substr(Session::get("SESSION_USER_NAME"), 0, 20); ?></a> </li>
               <li>
                 <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Logout.php" method="post">
                   <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
