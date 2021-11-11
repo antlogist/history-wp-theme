@@ -34,9 +34,15 @@ class ProfileController {
       Redirect::to($this->homeUrl);
     }
 
+    if (!$this->profile->status->success == 1) {
+      Session::remove('SESSION_USER_UUID');
+      Session::remove('SESSION_USER_NAME');
+      Redirect::to($this->homeUrl);
+    }
+
   }
 
-  public function getProfile() {
+  public function getProfile() : Object {
     return $this->profile;
   }
 

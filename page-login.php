@@ -10,6 +10,7 @@ if ( ! defined ('ABSPATH') ) {
 
 if(isAuthenticated()) {
   Redirect::to(get_home_url());
+  exit;
 }
 
 get_header();
