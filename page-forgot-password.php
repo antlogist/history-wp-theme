@@ -36,7 +36,7 @@ get_header();
           <div>
             <label for='email' >User Email*:</label>
           </div>
-          <input class="w-100" type='email' name='email' id='email'  maxlength="50" required />
+          <input class="w-100 form-control" type='email' name='email' id='email'  maxlength="50" required />
         </div>
 
         <p><input class="btn" type="submit" /></p>

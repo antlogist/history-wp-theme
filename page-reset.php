@@ -37,28 +37,28 @@ get_header();
           <div>
             <label for='email' >User Email*:</label>
           </div>
-          <input class="w-100" type='email' name='email' id='email'  maxlength="50" required />
+          <input class="w-100 form-control" type='email' name='email' id='email'  maxlength="50" required />
         </div>
 
         <div class="mb-2">
           <div>
             <label for='password' >Enter New Password*:</label>
           </div>
-          <input class="w-100" type='password' name='password' id='password' maxlength="50" required />
+          <input class="w-100 form-control" type='password' name='password' id='password' maxlength="50" required />
         </div>
 
         <div class="mb-2">
           <div>
             <label for='confirmPassword' >Confirm New Password*:</label>
           </div>
-          <input class="w-100" type='password' name='confirmPassword' id='confirmPassword' maxlength="50" required />
+          <input class="w-100 form-control" type='password' name='confirmPassword' id='confirmPassword' maxlength="50" required />
         </div>
 
         <div class="mb-3">
           <div>
             <label for='otpCode' >Verification Code*:</label>
           </div>
-          <input class="w-100" type='otpCode' name='otpCode' id='otpCode'  maxlength="50" required />
+          <input class="w-100 form-control" type='otpCode' name='otpCode' id='otpCode'  maxlength="50" required />
         </div>
 
         <p><input class="btn" type="submit" /></p>

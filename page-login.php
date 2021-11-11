@@ -43,14 +43,14 @@ get_header();
           <div>
             <label for='email' >User Email*:</label>
           </div>
-          <input class="w-100" type='email' name='email' id='email'  maxlength="50" required />
+          <input class="w-100 form-control" type='email' name='email' id='email'  maxlength="50" required />
         </div>
 
         <div class="mb-3">
           <div>
             <label for='password' >Password*:</label>
           </div>
-          <input class="w-100" type='password' name='password' id='password' maxlength="50" required />
+          <input class="w-100 form-control" type='password' name='password' id='password' maxlength="50" required />
         </div>
         <p><input class="btn" type="submit" /></p>
         <p><small><a href="<?php echo get_home_url(); ?>/register">New User Registration</a></small></p>

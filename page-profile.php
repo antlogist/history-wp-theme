@@ -134,7 +134,7 @@ get_header();
 
   <div class="row">
     <div class="col-md-12 mb-2">
-      <h1>Shipping Details</h1>
+      <h2>Shipping Details</h2>
     </div>
     <div class="col-md-6">
       <div class="row">
