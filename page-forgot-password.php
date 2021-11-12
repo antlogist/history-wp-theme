@@ -32,11 +32,11 @@ get_header();
       <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Forgot.php" method="post" class="w-100">
         <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
         <input type="hidden" name="homeUrl" value="<?php echo get_home_url(); ?>">
-        <div class="mb-3">
+        <div class="mb-4">
           <div>
-            <label for='email' >User Email*:</label>
+            <label for='email' class="form-label">User Email*:</label>
           </div>
-          <input class="w-100" type='email' name='email' id='email'  maxlength="50" required />
+          <input class="w-100 form-control" type='email' name='email' id='email'  maxlength="50" required />
         </div>
 
         <p><input class="btn" type="submit" /></p>

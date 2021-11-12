@@ -20,6 +20,9 @@
       if(singleGallery !== false) {
         BASEOBJECT.gallery.init();
       }
+      break;
+    case "profilePage":
+      BASEOBJECT.profile.copyBillingDetails();
   }
 
 })();

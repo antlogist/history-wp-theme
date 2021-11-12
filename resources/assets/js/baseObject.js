@@ -4,6 +4,7 @@
   window.BASEOBJECT = {
     nav: {},
     pdf: {},
-    gallery: {}
+    gallery: {},
+    profile: {}
   }
 })();

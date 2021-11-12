@@ -57,6 +57,8 @@ function body_id() {
     return ' id="searchPage"';
   } elseif (is_archive()) {
     return ' id="archivePage"';
+  } elseif (is_page('profile')) {
+    return ' id="profilePage"';
   }
 }
 
