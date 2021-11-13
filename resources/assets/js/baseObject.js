@@ -5,6 +5,7 @@
     nav: {},
     pdf: {},
     gallery: {},
-    profile: {}
+    profile: {},
+    shop: {}
   }
 })();

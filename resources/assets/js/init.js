@@ -23,6 +23,10 @@
       break;
     case "profilePage":
       BASEOBJECT.profile.copyBillingDetails();
+      break;
+    case "shopPage":
+      BASEOBJECT.shop.shopProducts();
+      break;
   }
 
 })();
