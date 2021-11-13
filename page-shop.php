@@ -36,7 +36,8 @@ get_header();
               <h5 class="card-title mb-4">{{ product.title }}</h5>
             </a>
             <div class="buttons-wrapper">
-              <a href="#" class="btn"><small>Add to cart</small></a>
+              <a href="#" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-cart"></span></a>
+              <a href="#" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-search"></span></a>
             </div>
           </div>
         </div>
