@@ -17,6 +17,9 @@ BASEOBJECT.shop.shopProducts = function () {
           console.log(resp["data"]["data"]);
           app.products = resp["data"]["data"];
         })
+      },
+      addToCart(id, title, qty) {
+        BASEOBJECT.module.addItemToCart(id, title, qty);
       }
     },
     created: function(){

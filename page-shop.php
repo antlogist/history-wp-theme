@@ -24,6 +24,9 @@ get_header();
 </header>
 
 <div class="container py-5">
+  <div class="message error-message"><?php echo Session::get("error"); ?></div>
+  <div class="message success-message"><?php echo Session::get("success"); ?></div>
+  <div class="custom-token" data-token="<?php echo Session::get("token"); ?>"></div>
   <div id="shop">
     <div class="row">
       <div class="col-sm-6 col-md-4 mb-3" v-for="product in products" v-cloak>
@@ -36,7 +39,7 @@ get_header();
               <h5 class="card-title mb-4">{{ product.title }}</h5>
             </a>
             <div class="buttons-wrapper">
-              <a href="#" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-cart"></span></a>
+              <a href="#" class="btn" style="text-indent: 0;" @click.prevent="addToCart(product.id, product.title, 1)"><span class="dashicons dashicons-cart"></span></a>
               <a href="#" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-search"></span></a>
             </div>
           </div>
