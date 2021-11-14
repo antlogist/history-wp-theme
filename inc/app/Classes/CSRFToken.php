@@ -10,7 +10,7 @@ class CSRFToken {
    */
   static function _token() {
     if (!Session::has("token")) {
-      $randomToken = base64_encode(openssl_random_pseudo_bytes(32));
+      $randomToken = str_replace("=", "",base64_encode(openssl_random_pseudo_bytes(32)));
       Session::add("token", $randomToken);
     }
 
