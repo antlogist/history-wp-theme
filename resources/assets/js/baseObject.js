@@ -6,6 +6,7 @@
     pdf: {},
     gallery: {},
     profile: {},
-    shop: {}
+    shop: {},
+    cart: {}
   }
 })();
