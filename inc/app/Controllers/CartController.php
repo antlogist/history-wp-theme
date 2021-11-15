@@ -6,6 +6,7 @@ include_once('../Classes/CSRFToken.php');
 include_once('../Classes/Redirect.php');
 include_once('../Classes/Session.php');
 include_once('../Classes/APIRequest.php');
+include_once('../Classes/Cart.php');
 
 class CartController {
 
@@ -79,6 +80,9 @@ class CartController {
     $request = (object) $request;
     if (!$request->product_id) {
       Session::add('error', "Malicious Activity");
+      echo json_encode([
+        "fail" => "Malicious Activity"
+      ]);
       exit;
     }
     $index = 0;
@@ -108,6 +112,28 @@ class CartController {
         }
       }
     }
+  }
+  public function removeItem() {
+    $request = json_decode(file_get_contents('php://input'), true);
+    $request = (object) $request;
+    if ($request->item_index === "") {
+      Session::add('error', "Malicious Activity");
+      echo json_encode([
+        "fail" => "Malicious Activity"
+      ]);
+      exit;
+    }
+    Cart::removeItem($request->item_index);
 
+    if (count(Session::get("user_cart")) < 1) {
+      echo json_encode([
+        "fail" => "No items in the cart"
+      ]);
+      exit;
+    }
+
+    $countItems = count(Session::get("user_cart"));
+
+    echo json_encode(["success" => "Product removed from the cart", "countItems" => $countItems]);
   }
 }

@@ -1,4 +1,7 @@
 import axios from "axios";
+import Cart from "../Classes/Cart";
+
+const cart = new Cart();
 
 (function () {
 "use strict";
@@ -41,8 +44,14 @@ BASEOBJECT.cart.cart = function () {
       removeItem(index) {
         axios.post(`${themeUrl}/inc/app/Routes/RemoveCartItem.php`, JSON.stringify(
           { item_index: index }
-        )).then(function(resp) {
+        )).then(function(response) {
+          console.log(response);
           app.displayItems();
+          if(response.data.fail) {
+            window.location.reload();
+          } else {
+            cart.updateHeaderCart(response.data.countItems);
+          }
         });
       },
     },
