@@ -14,15 +14,21 @@ class ShopController {
       if (!$request->product_id) {
 
         Session::add('error', "Malicious Activity");
+        echo json_encode(["fail" => "Malicious Activity"]);
         exit;
       }
       Cart::add($request);
 
+      $countItems = count(Session::get("user_cart"));
+
       Session::add('success', "Product added to cart successfully");
+
+      echo json_encode(["success" => "Product added to cart successfully", "countItems" => $countItems]);
       exit;
     }
 
     Session::add('error', "Token mismatch");
+    echo json_encode(["fail" => "Token mismatch"]);
     exit;
   }
 }

@@ -38,4 +38,18 @@ class Cart {
     }
   }
 
+  static function removeItem($index) {
+    if (count(Session::get("user_cart")) <= 1) {
+      //empty cart
+      self::clear();
+    } else {
+      unset($_SESSION["user_cart"][$index]);
+      sort($_SESSION["user_cart"]);
+    }
+  }
+
+  static function clear() {
+    Session::remove("user_cart");
+  }
+
 }

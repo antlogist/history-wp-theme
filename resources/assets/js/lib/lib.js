@@ -1,4 +1,8 @@
 import axios from "axios";
+import Cart from "../Classes/Cart";
+
+const cart = new Cart();
+
 
 (function(){
   "use strict";
@@ -13,9 +17,12 @@ import axios from "axios";
         qty: qty,
         token: token,
         homeUrl: baseUrl,
-        })).then(function(resp){
-          console.log(resp);
-          window.location.reload();
+        })).then(function(response){
+          if(response.data.fail) {
+            window.location.reload();
+          } else {
+            cart.updateHeaderCart(response.data.countItems);
+          }
         });
     }
   }
