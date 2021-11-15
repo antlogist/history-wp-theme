@@ -51,7 +51,11 @@ wp_head();
                   </button>
                 </form>
               </li>
-              <li><a href="<?php echo get_home_url(); ?>/cart"><span class="dashicons dashicons-cart" style="padding-top: 2px;"></span></a> </li>
+              <li><a href="<?php echo get_home_url(); ?>/cart"><span class="dashicons dashicons-cart" style="padding-top: 2px;"></span>
+                <span class="cart-count-outer-wrapper">
+                  <span class="cart-count"><?php echo count(Session::get("user_cart")); ?></span>
+                </span>
+              </a> </li>
             <?php } else { ?>
               <li><a href="<?php echo get_home_url(); ?>/login">
               <svg style="width: 19px;padding-bottom: 1px; padding-right: 1px;"
@@ -67,7 +71,7 @@ wp_head();
               <li>
                 <a href="<?php echo get_home_url(); ?>/cart"><span class="dashicons dashicons-cart" style="padding-top: 2px;"></span>
                 <span class="cart-count-outer-wrapper">
-                  <span class="cart-count">1</span>
+                  <span class="cart-count"><?php echo count(Session::get("user_cart")); ?></span>
                 </span>
 
                 </a>
