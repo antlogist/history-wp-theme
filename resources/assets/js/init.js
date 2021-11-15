@@ -27,6 +27,9 @@
     case "shopPage":
       BASEOBJECT.shop.shopProducts();
       break;
+    case "cartPage":
+      BASEOBJECT.cart.cart();
+      break;
   }
 
 })();

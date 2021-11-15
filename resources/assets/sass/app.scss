@@ -77,10 +77,27 @@ button {
       list-style-type: none;
       padding-right: 5px;
       display: inline-block;
+      position: relative;
       a {
         font-size: 14px;
         color:$color-2;
         opacity: 0.85;
+      }
+      .cart-count-outer-wrapper {
+        margin-left: 10px;
+        .cart-count {
+          background-color: red;
+          width: 20px;
+          height: 20px;
+          display: block;
+          position: absolute;
+          top: -3px;
+          right: 0;
+          text-align: center;
+          line-height: 20px;
+          border-radius: 50%;
+          font-size: 10px;
+        }
       }
     }
     &.login-ul-main {

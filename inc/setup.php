@@ -61,6 +61,8 @@ function body_id() {
     return ' id="profilePage"';
   } elseif (is_page('shop')) {
     return ' id="shopPage"';
+  } elseif (is_page('cart')) {
+    return ' id="cartPage"';
   }
 }
 
