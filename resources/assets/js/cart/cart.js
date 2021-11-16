@@ -17,9 +17,12 @@ BASEOBJECT.cart.cart = function () {
       vat: 0,
       fail: false,
       authenticated: false,
+      isFirstLoading: true,
+      isLoading: false
     },
     methods: {
       displayItems() {
+        this.isLoading = true;
         axios.get(`${themeUrl}/inc/app/Routes/GetCartItems.php`).then (function(response){
           if(response.data.fail) {
             app.fail = true;
@@ -32,6 +35,8 @@ BASEOBJECT.cart.cart = function () {
             app.authenticated = response.data.authenticated;
             app.currency = response.data.currency;
           }
+          app.isFirstLoading = false;
+          app.isLoading = false;
         })
       },
       updateQuantity(product_id, operator) {
