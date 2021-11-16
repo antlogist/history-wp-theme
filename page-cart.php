@@ -52,7 +52,7 @@ get_header();
             <th scope="row">{{ item.index + 1 }}</th>
             <td><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></td>
             <td>{{ item.title }}</td>
-            <td>{{ item.currency }}{{ item.vat_price }}</td>
+            <td>{{ item.currency }}{{ item.price }}</td>
             <td>
               <button @click.prevent="updateQuantity(item.id, '-')" style="cursor: pointer; padding: 0; width: 25px; height: 25px;"> - </button>
                 {{ item.quantity}}
