@@ -9,6 +9,8 @@ get_header();
 
 ?>
 
+<div class="loader"></div>
+
 <header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
   <div class="container header-container">
     <div class="row">
@@ -39,7 +41,7 @@ get_header();
               <h5 class="card-title mb-4">{{ product.title }}</h5>
             </a>
             <div class="buttons-wrapper">
-              <a href="#" class="btn" style="text-indent: 0;" @click.prevent="addToCart(product.id, product.title, 1)"><span class="dashicons dashicons-cart"></span></a>
+              <a href="#" class="btn" style="text-indent: 0;" @click.prevent="addToCart(product.id, product.title, 1, product.price, product.vat_price, product.vat_percent)"><span class="dashicons dashicons-cart"></span></a>
               <a href="#" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-search"></span></a>
             </div>
           </div>

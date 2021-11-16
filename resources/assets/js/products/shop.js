@@ -18,8 +18,8 @@ BASEOBJECT.shop.shopProducts = function () {
           app.products = resp["data"]["data"];
         })
       },
-      addToCart(id, title, qty) {
-        BASEOBJECT.module.addItemToCart(id, title, qty);
+      addToCart(id, title, qty, price, vat_price, vat_percent) {
+        BASEOBJECT.module.addItemToCart(id, title, qty, price, vat_price, vat_percent);
       }
     },
     created: function(){
