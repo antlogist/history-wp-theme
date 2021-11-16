@@ -128,7 +128,7 @@ class AuthController {
 
         if ($result->status->success == '1') {
           Session::add('SESSION_USER_UUID', $result->status->message->uuid);
-          Session::add('SESSION_USER_NAME', $result->status->message->name);
+          Session::add('SESSION_USER_NAME', $result->status->message->billing_firstname);
           Redirect::to($request->homeUrl);
           exit();
         } else {
