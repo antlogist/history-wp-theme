@@ -37,52 +37,95 @@ get_header();
 
   } else { ?>
     <div id="shoppingCart">
-      <div class="table-responsive">
-        <table class="table align-middle">
-          <thead>
-            <th>#</th>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Unit Price</th>
-            <th>Qty</th>
-            <th>Total</th>
-            <th style="text-align: center;">Action</th>
-          </thead>
-          <tr v-for="item in items">
-            <th scope="row">{{ item.index + 1 }}</th>
-            <td><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></td>
-            <td>{{ item.title }}</td>
-            <td>{{ item.currency }}{{ item.vat_price }}</td>
-            <td>
-              <button @click.prevent="updateQuantity(item.id, '-')" style="cursor: pointer; padding: 0; width: 25px; height: 25px;"> - </button>
-                {{ item.quantity}}
-              <button @click.prevent="updateQuantity(item.id, '+')" style="cursor: pointer; padding: 0; width: 25px; height: 25px;"> + </button>
-            </td>
-            <td>{{ item.currency }}{{ item.total }}</td>
-            <td style="text-align: center;">
-              <button @click="removeItem(item.index)" style="cursor: pointer; padding: 0; width: 25px; height: 25px;">x</button>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 offset-md-6">
+      <div v-if="isFirstLoading" class="loader">
+        <div class="table-responsive mb-5">
           <table class="table align-middle">
-            <tr>
-              <td>Subtotal:</td>
-              <td style="text-align: right;">{{ currency }}{{ cartTotal }}</td>
-            </tr>
-            <tr>
-              <td>Tax:</td>
-              <td style="text-align: right;">{{ currency }}{{ vat }}</td>
-            </tr>
-            <tr>
-              <td><b>Total <small>(vat included)</small>:</b></td>
-              <td style="text-align: right;"><b>{{ currency }}{{ cartTotalVat }}</b></td>
+            <thead>
+              <th>#</th>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th style="text-align: center;">Action</th>
+            </thead>
+            <tr v-for="item in 5">
+              <th scope="row">
+                <div class="mb-4 color" style="width: 30px; height: 1rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+              </th>
+              <td>
+                <div class="mb-4 color" style="width: 50px; height: 1rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+              </td>
+              <td>
+                <div class="mb-4 color" style="width: 500px; height: 1rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+              </td>
+              <td>
+                <div class="mb-4 color" style="width: 109px; height: 1rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+              </td>
+              <td>
+                <button class="color" style="padding: 0; width: 25px; height: 25px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png');">+</button>
+                <button class="color" style="padding: 0; width: 25px; height: 25px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png');">-</button>
+              </td>
+              <td>
+                <div class="mb-4 color" style="width: 79px; height: 1rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+              </td>
+              <td style="text-align: center;">
+                <button class="btn color" style="padding: 0; width: 25px; height: 25px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png');">x</button>
             </tr>
           </table>
         </div>
+      </div>
+
+      <div v-else class="tables-wrapper">
+
+        <div class="table-responsive mb-5">
+          <table class="table align-middle">
+            <thead>
+              <th>#</th>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th style="text-align: center;">Action</th>
+            </thead>
+            <tr v-for="item in items">
+              <th scope="row">{{ item.index + 1 }}</th>
+              <td><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></td>
+              <td style="min-width: 200px;">{{ item.title }}</td>
+              <td>{{ item.currency }}{{ item.price }}</td>
+              <td style="min-width: 100px;">
+                <button @click.prevent="updateQuantity(item.id, '-')" style="cursor: pointer; padding: 0; width: 25px; height: 25px;"> - </button>
+                  {{ item.quantity}}
+                <button @click.prevent="updateQuantity(item.id, '+')" style="cursor: pointer; padding: 0; width: 25px; height: 25px;"> + </button>
+              </td>
+              <td>{{ item.currency }}{{ item.total }}</td>
+              <td style="text-align: center;">
+                <button @click="removeItem(item.index)" style="cursor: pointer; padding: 0; width: 25px; height: 25px;">x</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 offset-md-6">
+            <table class="table align-middle">
+              <tr>
+                <td>Subtotal:</td>
+                <td style="text-align: right;">{{ currency }}{{ cartTotal }}</td>
+              </tr>
+              <tr>
+                <td>Tax:</td>
+                <td style="text-align: right;">{{ currency }}{{ vat }}</td>
+              </tr>
+              <tr>
+                <td><b>Total <small>(vat included)</small>:</b></td>
+                <td style="text-align: right;"><b>{{ currency }}{{ cartTotalVat }}</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
       </div>
 
     </div>

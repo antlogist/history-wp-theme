@@ -45,6 +45,7 @@ button {
   font-size: 12px;
   letter-spacing: 1px;
   text-indent: 1px;
+  overflow: hidden;
   &:hover {
     color: $color;
     background-color: $color-2;
@@ -115,6 +116,24 @@ button {
     }
   }
 }
+
+//Loader
+.loader {
+  filter: blur(1px);
+  .color {
+    background-color: white;
+  }
+  .btn,
+  button {
+    color: gray;
+    background-color: white;
+    &:hover {
+      color: gray;
+      background-color: white;
+    }
+  }
+}
+
 
 //Toggle button
 
@@ -533,6 +552,22 @@ a.newsletter-archive-post-image-link {
       @media (min-width: 1024px) {
         padding: 3rem;
       }
+    }
+  }
+}
+
+.dashicons {
+  position: relative;
+  .dashicons.adding-in-cart {
+    position: absolute;
+    margin-top: -30px;
+    font-size: 10px;
+    left: 50%;
+    margin-left: -8px;
+    &.active {
+      margin-top: 0;
+      transition-duration: 0.75s;
+      transition-property: margin-top;
     }
   }
 }
