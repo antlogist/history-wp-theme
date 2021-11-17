@@ -439,7 +439,7 @@ header {
   }
   .header-title-outer-wrapper {
     background-color: rgba(0,0,0,0.5);
-    padding: 2rem;
+    padding: 4.5rem 2rem;
     text-align: center;
     @media (min-width: 1024px) {
       display: flex;
@@ -448,7 +448,7 @@ header {
     }
     .header-logo {
       width: 100%;
-      max-width: 320px;
+      max-width: 256px;
     }
     .header-title {
       text-align: center;
