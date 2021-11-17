@@ -517,6 +517,16 @@ footer {
   }
 }
 
+//Talks front section
+
+.talks-section {
+  background-color: $color-3;
+  color: $color;
+  h1 {
+    font-family: 'Abril Fatface', cursive;
+  }
+}
+
 //Newsletter archive
 .newsletter-archive-post-title {
   a {
