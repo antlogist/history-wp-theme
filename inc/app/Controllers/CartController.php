@@ -40,9 +40,16 @@ class CartController {
         $cartTotal = $totalPrice + $cartTotal;
         $totalPrice = number_format($totalPrice, 2);
 
-        $totalPriceVat = $item->data->vat_price * $quantity;
-        $cartTotalVat = $totalPriceVat + $cartTotalVat;
-        $totalPriceVat = number_format($totalPriceVat, 2);
+        if($item->data->vat_price > 0 ) {
+          $totalPriceVat = $item->data->vat_price * $quantity;
+          $cartTotalVat = $totalPriceVat + $cartTotalVat;
+          $totalPriceVat = number_format($totalPriceVat, 2);
+        } else {
+          $totalPriceVat = $item->data->price * $quantity;
+          $cartTotalVat = $totalPrice + $cartTotalVat;
+          $totalPriceVat = number_format($totalPriceVat, 2);
+        }
+
 
         array_push($result, [
           "index" => $index,

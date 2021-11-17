@@ -37,6 +37,11 @@ get_header();
 
   } else { ?>
     <div id="shoppingCart">
+
+      <div v-if="isLoading" class="event-loader">
+        <div class="lds-ripple"><div></div><div></div></div>
+      </div>
+
       <div v-if="isFirstLoading" class="loader">
         <div class="table-responsive mb-5">
           <table class="table align-middle">

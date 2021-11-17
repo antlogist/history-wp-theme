@@ -18,5 +18,5 @@ function history_customize_register( $wp_customize ) {
   history_about_customize_register($wp_customize);
   history_newsletter_customize_register($wp_customize);
   history_historypages_customize_register($wp_customize);
-
+  history_talks_customize_register($wp_customize);
 }
