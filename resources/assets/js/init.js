@@ -8,9 +8,9 @@
 
   const body = document.body;
   switch (body.id) {
-    case "frontPage":
-      BASEOBJECT.pdf.init();
-    break;
+    // case "frontPage":
+    //   BASEOBJECT.pdf.init();
+    // break;
     case "newsletterPage":
       if(currentPdf !== false && isMobile) {
         BASEOBJECT.pdf.init();
