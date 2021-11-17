@@ -48,4 +48,10 @@
     });
   });
 
+  wp.customize('talks_tagline', function (value) {
+    value.bind(function (newval) {
+      $('#talksTagline').html(newval);
+    });
+  });
+
 })(jQuery);

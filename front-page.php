@@ -61,7 +61,18 @@ get_header();
   </div>
 </section>
 
-<?php get_template_part('template-parts/pdf', 'base'); ?>
+<section id="talksSection" class="talks-section py-5" style="background-image: url(<?php echo get_template_directory_uri() . '/images/fabric-plaid-b.png'?>); ">
+  <div class="container mb-2 text-center py-5">
+    <h1 id="talksTagline">
+      <?php if (!get_theme_mod('talks_tagline')) {
+                echo "Talks";
+      } else { echo get_theme_mod('talks_tagline'); }; ?>
+    </h1>
+    <div class="buttons-wrapper mt-5">
+      <a href="<?php if (!get_theme_mod('talks_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('talks_id')) ); } ?>" class="btn">Talks</a>
+    </div>
+  </div>
+</section>
 
 <section id="historyPages" class="py-5">
 

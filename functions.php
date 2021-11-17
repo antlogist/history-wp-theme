@@ -24,6 +24,7 @@ include( get_template_directory() . '/inc/customizer/header.php');
 include( get_template_directory() . '/inc/customizer/about.php');
 include( get_template_directory() . '/inc/customizer/newsletter.php');
 include( get_template_directory() . '/inc/customizer/historypages.php');
+include( get_template_directory() . '/inc/customizer/talks.php');
 
 //REST menu
 include( get_template_directory() . '/inc/REST/rest_menu.php');
