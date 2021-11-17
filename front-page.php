@@ -22,7 +22,7 @@ get_header();
           <div>
             <h1 class="header-title" id="headerTitle"><?php if (!get_theme_mod("header_title")) {echo "Website title";} else {echo get_theme_mod("header_title");} ?></h1>
             <div class="header-buttons-wrapper">
-              <a href="<?php if (!get_theme_mod('shop_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('shop_id')) ); } ?>" class="btn">Shop</a>
+              <a href="<?php if (!get_theme_mod('shop_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('shop_id')) ); } ?>" class="btn">Talks</a>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ get_header();
 
 <section id="pdfSection" class="pdf-section py-5" style="background-image: url(<?php echo get_template_directory_uri() . '/images/fabric-plaid-b.png'?>); ">
   <div class="container mb-2 text-center">
-    <h1 id="historyPagesTitle">
+    <h1 id="newsletterTitle">
       <?php if (!get_theme_mod('newsletter_title')) {
         echo "Newsletters";
       } else { echo get_theme_mod('newsletter_title'); }; ?>
