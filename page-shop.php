@@ -30,9 +30,9 @@ get_header();
 
     <div v-if="isLoading" class="loader">
       <div class="row">
-        <div class="col-sm-6 col-md-4 mb-3" v-for="item in 6" v-cloak>
+        <div class="col-sm-6 col-md-3 mb-3" v-for="item in 6" v-cloak>
           <div class="card">
-            <div class="color" style="width: 100%; height: 15rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+            <div class="color" style="width: 100%; height: 378px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
             <div class="card-body" style="min-height: 150px;">
               <div class="mb-4 color" style="width: 100%; height: 2rem; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
               <div class="buttons-wrapper text-center">
@@ -47,10 +47,10 @@ get_header();
 
 
     <div v-else class="row">
-      <div class="col-sm-6 col-md-4 mb-3" v-for="product in products" v-cloak>
+      <div class="col-sm-6 col-md-3 mb-3" v-for="product in products" v-cloak>
         <div class="card">
           <a href="#">
-            <div :style="{ width: '100%', height: '15rem', backgroundImage: 'url(<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0] + ')', backgroundRepeat: 'no-repeat', backgrountPosition:' center center', backgroundSize: 'cover'}"></div>
+            <img style="width: 100%" :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0]">
           </a>
           <div class="card-body text-center" style="min-height: 150px;">
             <a href="#">
