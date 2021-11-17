@@ -17,7 +17,7 @@ get_header();
       <div class="col-12">
         <div class="header-title-outer-wrapper">
           <div>
-            <h1 class="header-title" id="headerTitle">Newsletters</h1>
+            <h1 class="header-title" id="headerTitle">History Newsletters</h1>
           </div>
         </div>
       </div>
