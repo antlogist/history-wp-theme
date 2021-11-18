@@ -63,6 +63,8 @@ function body_id() {
     return ' id="shopPage"';
   } elseif (is_page('cart')) {
     return ' id="cartPage"';
+  } elseif (is_page('product')) {
+    return ' id="productPage"';
   }
 }
 
