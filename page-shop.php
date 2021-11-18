@@ -49,18 +49,18 @@ get_header();
     <div v-else class="row">
       <div class="col-sm-6 col-md-3 mb-3" v-for="product in products" v-cloak>
         <div class="card">
-          <a href="#">
+          <a :href="'./product/?id=' + product.slug">
             <img style="width: 100%" :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0]">
           </a>
           <div class="card-body text-center" style="min-height: 150px;">
-            <a href="#">
+            <a :href="'./product/?id=' + product.slug">
               <h5 class="card-title mb-4">{{ product.title }}</h5>
             </a>
             <div class="buttons-wrapper">
               <a href="#" class="btn" style="text-indent: 0;" @click.prevent="addToCart(product.id, product.title, 1, product.price, product.vat_price, product.vat_percent)">
                 <span class="dashicons dashicons-cart"><span class="dashicons dashicons-arrow-down-alt adding-in-cart" :class="{active: inCart == product.id }"></span></span>
               </a>
-              <a href="#" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-search"></span></a>
+              <a :href="'./product/?id=' + product.slug" class="btn" style="text-indent: 0;"><span class="dashicons dashicons-search"></span></a>
             </div>
           </div>
         </div>

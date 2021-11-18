@@ -27,6 +27,9 @@
     case "shopPage":
       BASEOBJECT.shop.shopProducts();
       break;
+    case "productPage":
+      BASEOBJECT.product.init();
+      break;
     case "cartPage":
       BASEOBJECT.cart.cart();
       break;

@@ -41,7 +41,7 @@ $gallery = get_post_meta($post->ID, "custom_gallery", true);
                 $images = json_decode($gallery);
                 foreach(array_reverse($images) as $key => $image) { ?>
                   <div class="col-12 col-md-3 mb-2 d-flex align-items-center p-3">
-                    <img data-url="<?php echo $image->url; ?>" class="archive-gallery-img w-100 p-2" src="<?php echo $image->mediumUrl; ?>" alt="">
+                    <img data-index="<?php echo $key; ?>" data-url="<?php echo $image->url; ?>" class="archive-gallery-img w-100 p-2" src="<?php echo $image->mediumUrl; ?>" alt="">
                   </div>
                 <?php } ?>
               </div>
@@ -57,6 +57,12 @@ $gallery = get_post_meta($post->ID, "custom_gallery", true);
     <div class="container py-5">
       <a href="#" class="close-modal-button">x</a>
       <div class="container archive-gallery-img-container d-flex align-items-center"></div>
+      <?php if(count($images) > 1) { ?>
+        <div class="buttons-wrapper text-center">
+          <button class="btn left-button" style="text-indent: 0; letter-spacing: 0;"><span class="dashicons dashicons-arrow-left-alt2 text-center"></span></button>
+          <button class="btn right-button" style="text-indent: 0; letter-spacing: 0;"><span class="dashicons dashicons-arrow-right-alt2 text-center"></span></button>
+        </div>
+      <?php } ?>
     </div>
 
   </div>

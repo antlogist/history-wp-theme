@@ -15,7 +15,6 @@ BASEOBJECT.shop.shopProducts = function () {
     methods: {
       getProducts() {
         axios.get(`${themeUrl}/inc/app/Routes/Shop.php`).then (function(resp){
-          console.log(resp["data"]["data"]);
           app.products = resp["data"]["data"];
           app.isLoading = false;
         })

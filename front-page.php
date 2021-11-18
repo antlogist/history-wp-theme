@@ -121,5 +121,6 @@ get_header();
 <?php
 
 get_footer();
-
+Session::remove("error");
+Session::remove("success");
 ?>
