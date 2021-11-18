@@ -54,8 +54,11 @@ get_header();
           </a>
           <div class="card-body text-center" style="min-height: 150px;">
             <a :href="'./product/?id=' + product.slug">
-              <h5 class="card-title mb-4">{{ product.title }}</h5>
+              <h5 class="card-title mb-2">{{ product.title }}</h5>
             </a>
+            <div class="price-wrapper text-center mb-3">
+              <h5>{{ currency }}{{ product.price }}</h5>
+            </div>
             <div class="buttons-wrapper">
               <a href="#" class="btn" style="text-indent: 0;" @click.prevent="addToCart(product.id, product.title, 1, product.price, product.vat_price, product.vat_percent)">
                 <span class="dashicons dashicons-cart"><span class="dashicons dashicons-arrow-down-alt adding-in-cart" :class="{active: inCart == product.id }"></span></span>

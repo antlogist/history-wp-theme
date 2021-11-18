@@ -10,12 +10,14 @@ BASEOBJECT.shop.shopProducts = function () {
       products: {},
       count: 0,
       isLoading: true,
-      inCart: ""
+      inCart: "",
+      currency: ""
     },
     methods: {
       getProducts() {
         axios.get(`${themeUrl}/inc/app/Routes/Shop.php`).then (function(resp){
           app.products = resp["data"]["data"];
+          app.currency = resp['data']['currency']['symbol'];
           app.isLoading = false;
         })
       },
