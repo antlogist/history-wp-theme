@@ -7,6 +7,7 @@
     gallery: {},
     profile: {},
     shop: {},
+    product: {},
     cart: {}
   }
 })();
