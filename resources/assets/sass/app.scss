@@ -9,7 +9,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   &.active {
-    position: fixed;
+    overflow: hidden;
   }
 }
 
