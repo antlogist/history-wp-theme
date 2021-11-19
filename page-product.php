@@ -67,9 +67,9 @@ get_header();
           <img style="width: 100%" :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0]">
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 mt-4 mt-md-0">
         <h2>{{ currency }}{{ product.price }}</h2>
-        <div class="descr ьи-4" v-html="product.description"></div>
+        <div class="descr mb-4" v-html="product.description"></div>
         <div class="buttons-wrapper">
           <a href="#" class="btn" style="text-indent: 0;" @click.prevent="addToCart(product.id, product.title, 1, product.price, product.vat_price, product.vat_percent)">
             <span class="dashicons dashicons-cart"><span class="dashicons dashicons-arrow-down-alt adding-in-cart" :class="{active: inCart == product.id }"></span></span>

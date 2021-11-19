@@ -17,6 +17,7 @@ BASEOBJECT.product.init = function () {
       getProduct() {
         const tokenEl = document.querySelector(".custom-token");
         const token = tokenEl.dataset.token;
+        const title = document.querySelector("#headerTitle");
         axios.post(`${themeUrl}/inc/app/Routes/Product.php`, JSON.stringify(
           { slug: productSlug, token: token } )).then (function(resp){
           if(resp.data.fail) {
@@ -25,6 +26,7 @@ BASEOBJECT.product.init = function () {
             app.product = resp['data']['data'];
             app.currency = resp['data']['currency']['symbol'];
             app.isFirstLoading = false;
+            title.innerHTML = app.product.title;
           }
         })
       },
