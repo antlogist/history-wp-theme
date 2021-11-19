@@ -59,6 +59,9 @@ BASEOBJECT.cart.cart = function () {
           }
         });
       },
+      redirectToCheckout() {
+        window.location.href = "./checkout";
+      }
     },
     created: function(){
       this.displayItems();

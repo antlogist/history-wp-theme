@@ -128,6 +128,11 @@ get_header();
                 <td style="text-align: right;"><b>{{ currency }}{{ cartTotalVat }}</b></td>
               </tr>
             </table>
+
+            <div class="buttons-wrapper my-4">
+              <a herf="#" class="btn" @click="redirectToCheckout()">Check out</a>
+            </div>
+
           </div>
         </div>
 
