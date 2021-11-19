@@ -2,7 +2,7 @@
   "use strict";
 
   BASEOBJECT.profile.copyBillingDetails = function () {
-    const body = document.querySelector("#profilePage");
+    const body = document.querySelector("#profileInfo");
     const billingEls = document.querySelectorAll(".billing-input");
     const shippingEls = document.querySelectorAll(".shipping-input");
 
