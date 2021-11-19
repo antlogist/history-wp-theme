@@ -13,7 +13,7 @@ class ProfileController {
 
   function __construct(string $homeUrl) {
     $this->homeUrl = $homeUrl;
-    if (Session::has('SESSION_USER_UUID')) {
+    if (Session::has('SESSION_USER_UUID') && Session::has('token')) {
       $uuid = Session::get('SESSION_USER_UUID');
       $api_url = api_url . '/api/v1/get-profile?token=' . api_token;
       $data = ["uuid" => $uuid];
