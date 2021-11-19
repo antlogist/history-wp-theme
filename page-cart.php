@@ -96,8 +96,8 @@ get_header();
             </thead>
             <tr v-for="item in items">
               <th scope="row">{{ item.index + 1 }}</th>
-              <td><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></td>
-              <td style="min-width: 200px;">{{ item.title }}</td>
+              <td><a :href="'./shop/product/?id=' + item.slug"><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></a></td>
+              <td style="min-width: 200px;"><a :href="'./shop/product/?id=' + item.slug">{{ item.title }}</a></td>
               <td>{{ item.currency }}{{ item.price }}</td>
               <td style="min-width: 100px;">
                 <button @click.prevent="updateQuantity(item.id, '-')" style="cursor: pointer; padding: 0; width: 25px; height: 25px;"> - </button>
