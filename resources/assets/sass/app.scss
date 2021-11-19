@@ -333,6 +333,10 @@ nav#navMain {
           @media (min-width: 1024px) {
             width: auto;
             height: 41px;
+            font-size: 11px;
+          }
+          @media (min-width: 1200px) {
+            font-size: 12px;
           }
 
           &.parent-link {
