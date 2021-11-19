@@ -124,7 +124,7 @@ get_header();
                 <td style="text-align: right;">{{ currency }}{{ vat }}</td>
               </tr>
               <tr>
-                <td><b>Total <small>(vat included)</small>:</b></td>
+                <td><b>Total:</b></td>
                 <td style="text-align: right;"><b>{{ currency }}{{ cartTotalVat }}</b></td>
               </tr>
             </table>
