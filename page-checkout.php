@@ -54,16 +54,16 @@ get_header();
               <h5>Product Total</h5>
               <tr v-for="row in 5">
                 <td>
-                  <div class="color" style="width: 100%; height: 65px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+                  <div class="color" style="width: 100%; height: 35px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
                 </td>
                 <td>
-                  <div class="color" style="width: 100%; height: 65px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+                  <div class="color" style="width: 100%; height: 35px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
                 </td>
                 <td>
-                  <div class="color" style="width: 100%; height: 65px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+                  <div class="color" style="width: 100%; height: 35px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
                 </td>
                 <td>
-                  <div class="color" style="width: 100%; height: 65px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+                  <div class="color" style="width: 100%; height: 35px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
                 </td>
               </tr>
             </table>
