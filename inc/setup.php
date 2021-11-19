@@ -65,6 +65,8 @@ function body_id() {
     return ' id="cartPage"';
   } elseif (is_page('product')) {
     return ' id="productPage"';
+  } elseif (is_page('checkout')) {
+    return ' id="checkoutPage"';
   }
 }
 
