@@ -62,7 +62,8 @@ class CartController {
           "vat_price" => $item->data->vat_price,
           "total" => $totalPrice,
           "quantity" => $quantity,
-          "currency" => $item->currency->symbol
+          "currency" => $item->currency->symbol,
+          "slug" => $item->data->slug
         ]);
         $index++;
       }
