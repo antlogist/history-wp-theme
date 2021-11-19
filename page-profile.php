@@ -12,7 +12,7 @@ if(!isAuthenticated()) {
 
 include_once(get_template_directory() . '/inc/app/Controllers/ProfileController.php');
 
-$profileController = new ProfileController(get_home_url());
+$profileController = new ProfileController(get_home_url(), Session::get("token"));
 
 $profile = $profileController->getProfile()->data;
 
