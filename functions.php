@@ -11,6 +11,7 @@ include_once( get_template_directory() . '/inc/app/Classes/Session.php' );
 include_once( get_template_directory() . '/inc/app/Classes/Redirect.php' );
 include_once( get_template_directory() . '/inc/app/functions/helper.php' );
 include_once( get_template_directory() . '/inc/app/Classes/CSRFToken.php' );
+include_once( get_template_directory() . '/inc/app/Classes/APIRequest.php' );
 
 //Theme features
 include( get_template_directory() . '/inc/setup.php' );
