@@ -11,9 +11,9 @@ class ProfileController {
   private $profile;
   private $homeUrl;
 
-  function __construct(string $homeUrl, string $token) {
+  function __construct(string $homeUrl) {
     $this->homeUrl = $homeUrl;
-    if (Session::has('SESSION_USER_UUID') && Session::has('token') && CSRFToken::verifyCSRFToken($token)) {
+    if (Session::has('SESSION_USER_UUID')) {
       $uuid = Session::get('SESSION_USER_UUID');
       $api_url = api_url . '/api/v1/get-profile?token=' . api_token;
       $data = ["uuid" => $uuid];
@@ -32,6 +32,7 @@ class ProfileController {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
       Redirect::to($this->homeUrl);
+      exit;
     }
 
     if (!$this->profile->status->success == 1) {

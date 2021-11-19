@@ -33,6 +33,10 @@
     case "cartPage":
       BASEOBJECT.cart.cart();
       break;
+    case "checkoutPage":
+      BASEOBJECT.checkout.init();
+      BASEOBJECT.profile.copyBillingDetails();
+      break;
   }
 
 })();

@@ -8,6 +8,7 @@
     profile: {},
     shop: {},
     product: {},
-    cart: {}
+    cart: {},
+    checkout: {}
   }
 })();
