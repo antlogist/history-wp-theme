@@ -14,6 +14,7 @@ function history_customize_register( $wp_customize ) {
   ));
 
 
+  history_social_customize_register($wp_customize);
   history_header_customize_register($wp_customize);
   history_about_customize_register($wp_customize);
   history_newsletter_customize_register($wp_customize);
