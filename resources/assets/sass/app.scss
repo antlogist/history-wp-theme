@@ -71,6 +71,14 @@ button {
   display: block;
   position: relative;
   background-color: $color;
+  .social-icons {
+    a {
+      font-size: 14px;
+      color:$color-2;
+      opacity: 0.85;
+      margin-right: 3px;
+    }
+  }
   ul {
     margin: 0;
     padding: 0;
