@@ -37,7 +37,6 @@ get_header();
 <div class="container py-5">
   <div id="checkout">
 
-
     <div v-if="isLoading" class="event-loader">
       <div class="lds-ripple"><div></div><div></div></div>
     </div>
@@ -99,7 +98,7 @@ get_header();
               <tfoot>
                 <tr>
                   <td colspan="4">
-                    <b>Total: {{ currency }}{{ cartTotalVat }}</b>
+                    <b>Subtotal: {{ currency }}{{ cartTotalVat }}</b>
                   </td>
 
                 </tr>
@@ -123,16 +122,20 @@ get_header();
           </div>
 
           <div v-else>
-            <div class="mb-2">
-              <h5>Shipping Types</h5>
-            </div>
 
-            <div class="form-check" v-for="checkbox in shippingTypes">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" :id="'check' + checkbox.type_id">
-              <label class="form-check-label" :for="'check' + checkbox.type_id">
-                {{ checkbox.name }} {{ currency }}{{ checkbox.price }}
-              </label>
-            </div>
+            <form id="shippingTypesForm">
+              <div class="mb-2">
+                <h5>Shipping Types</h5>
+              </div>
+
+              <div class="form-check" v-for="checkbox in shippingTypes">
+                <input :value="checkbox.type_id" class="form-check-input" type="radio" name="shipping" :id="'check' + checkbox.type_id">
+                <label class="form-check-label" :for="'check' + checkbox.type_id">
+                  {{ checkbox.name }} {{ currency }}{{ checkbox.price }}
+                </label>
+              </div>
+            </form>
+
           </div>
 
         </div>
