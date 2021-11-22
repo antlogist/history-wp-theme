@@ -10,6 +10,7 @@ BASEOBJECT.checkout.init = function () {
       items: [],
       currency: "",
       cartTotal: 0,
+      cartTotalShipping: 0,
       cartTotalVat: 0,
       vat: 0,
       fail: false,
@@ -63,6 +64,7 @@ BASEOBJECT.checkout.init = function () {
         const display = async() => {
           await getCartItems();
           await getShippingTypes();
+
           app.isFirstLoading = false;
           app.isLoading = false;
           console.log(app.shippingTypes);
@@ -70,6 +72,22 @@ BASEOBJECT.checkout.init = function () {
 
         display();
 
+      },
+      updateShipping(shipping) {
+        this.isLoading = true;
+
+        axios.post(`${themeUrl}/inc/app/Routes/UpdateShippingType.php`, JSON.stringify({
+          shipping_type: shipping.type_id,
+          shipping_code: shipping.code,
+          shipping_price: shipping.price,
+          shipping_name: shipping.name,
+        })).then(function(resp) {
+          console.log(resp);
+          app.cartTotalShipping = resp["data"];
+        });
+
+
+        this.isLoading = false;
       },
       placeOrder() {
 
@@ -115,7 +133,13 @@ BASEOBJECT.checkout.init = function () {
       shippingTypes.addEventListener("click", function(e) {
         const target = e.target;
         if(target.classList.contains("form-check-input")) {
-          app.displayItems();
+          const shipping_id = target.value;
+          // console.log(app.shippingTypes);
+          app.shippingTypes.map((shipping)=>{
+            if(shipping.type_id == shipping_id) {
+              app.updateShipping(shipping);
+            }
+          })
         }
       })
 
