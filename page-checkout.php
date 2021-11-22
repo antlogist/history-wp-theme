@@ -10,10 +10,6 @@ if(!isAuthenticated() || !Session::has("user_cart") || count(Session::get("user_
   exit;
 }
 
-
-
-
-
 include_once(get_template_directory() . '/inc/app/Controllers/ProfileController.php');
 include_once(get_template_directory() . '/inc/app/Controllers/CheckoutController.php');
 
@@ -41,15 +37,21 @@ get_header();
 <div class="container py-5">
   <div id="checkout">
 
+
+    <div v-if="isLoading" class="event-loader">
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+
     <div class="row">
 
       <div class="col-md-4 order-2">
+
         <div id="orderDetails">
           <div class="mb-2">
             <h2>Order Details</h2>
           </div>
 
-          <div v-if="isFirstLoading">
+          <div v-if="isProductsLoading">
             <table class="table table-bordered">
               <h5>Product Total</h5>
               <tr v-for="row in 5">
@@ -105,36 +107,68 @@ get_header();
             </table>
           </div>
 
-          <div class="check-wrapper my-4">
+        </div>
 
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="newsletterCheck">
-              <label class="form-check-label" for="newsletterCheck">
-                Newsletter
-              </label>
-            </div>
+        <div id="shippingTypes">
 
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="acceptCheck">
-              <label class="form-check-label" for="acceptCheck">
-                Accept terms and conditions
-              </label>
-            </div>
+          <div v-if="isShippingLoading">
+            <table class="table table-bordered">
+            <h5>Shipping Types</h5>
+              <tr v-for="row in 2">
+                <td>
+                  <div class="color" style="width: 100%; height: 35px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+                </td>
+              </tr>
+            </table>
           </div>
 
-          <div class="buttons-wrapper mb-3">
-            <button class="btn">Place Order</button>
+          <div v-else>
+            <div class="mb-2">
+              <h5>Shipping Types</h5>
+            </div>
+
+            <div class="form-check" v-for="checkbox in shippingTypes">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" :id="'check' + checkbox.type_id">
+              <label class="form-check-label" :for="'check' + checkbox.type_id">
+                {{ checkbox.name }} {{ currency }}{{ checkbox.price }}
+              </label>
+            </div>
           </div>
 
         </div>
+
+        <div class="checkboxes">
+          <div class="check-wrapper my-4">
+              <form id="checkboxesForm">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Yes" id="newsletterCheck" name="Newsletter">
+                  <label class="form-check-label" for="newsletterCheck">
+                    Newsletter
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Yes" id="acceptCheck" name="Accept_terms_and_conditions">
+                  <label class="form-check-label" for="acceptCheck">
+                    Accept terms and conditions
+                  </label>
+                </div>
+              </form>
+            </div>
+        </div>
+
+
+
+        <div class="buttons-wrapper mb-3">
+            <button class="btn" @click="placeOrder();">Place Order</button>
+          </div>
       </div>
 
       <div class="col-md-8 order-1">
-          <form class="w-100" id="profileInfo">
-
-            <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
-            <input type="hidden" name="homeUrl" value="<?php echo get_home_url(); ?>">
-
+          <form class="w-100" id="profileInfo" name="profileInfo">
+            <input type="hidden" name="user_id" value="<?php echo $profile->id; ?>">
+            <input type="hidden" name="billing_email" value="<?php echo $profile->email; ?>">
+            <input type="hidden" name="delivery_email" value="<?php echo $profile->email; ?>">
             <div class="row mb-5">
               <div class="col-md-12 mb-2">
                 <h2>Billing Details</h2>
@@ -145,14 +179,14 @@ get_header();
                       <div>
                         <label for="billingFirstName" class="form-label">First Name</label>
                       </div>
-                      <input class="w-100 form-control billing-input" type='text' name='billingFirstname' id='billingFirstname' maxlength="50" value="<?php echo $profile->billing_firstname; ?>" />
+                      <input class="w-100 form-control billing-input" type='text' name='billing_firstname' id='billingFirstname' maxlength="50" value="<?php echo $profile->billing_firstname; ?>" />
                     </div>
 
                     <div class="mb-3 col-md-6">
                       <div>
                         <label for="billingLastname" class="form-label">Last Name</label>
                       </div>
-                      <input class="w-100 form-control billing-input" type='text' name='billingLastname' id='billingLastname' maxlength="50" value="<?php echo $profile->billing_lastname; ?>" />
+                      <input class="w-100 form-control billing-input" type='text' name='billing_lastname' id='billingLastname' maxlength="50" value="<?php echo $profile->billing_lastname; ?>" />
                     </div>
                 </div>
 
@@ -162,28 +196,28 @@ get_header();
                   <div>
                     <label for="billingAddress" class="form-label">Address</label>
                   </div>
-                  <input class="w-100 form-control billing-input" type='text' name='billingAddress' id='billingAddress' maxlength="50" value="<?php echo $profile->billing_address; ?>" />
+                  <input class="w-100 form-control billing-input" type='text' name='billing_address' id='billingAddress' maxlength="50" value="<?php echo $profile->billing_address; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="billingCity" class="form-label">City</label>
                   </div>
-                  <input class="w-100 form-control billing-input" type='text' name='billingCity' id='billingCity' maxlength="50" value="<?php echo $profile->billing_city; ?>" />
+                  <input class="w-100 form-control billing-input" type='text' name='billing_city' id='billingCity' maxlength="50" value="<?php echo $profile->billing_city; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="billingCounty" class="form-label">County</label>
                   </div>
-                  <input class="w-100 form-control billing-input" type='text' name='billingCounty' id='billingCounty' maxlength="50" value="<?php echo $profile->billing_county; ?>" />
+                  <input class="w-100 form-control billing-input" type='text' name='billing_county' id='billingCounty' maxlength="50" value="<?php echo $profile->billing_county; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="billingCountry" class="form-label">Country</label>
                   </div>
-                  <select class="w-100 form-select billing-input" name="billingCountry" id="billingCountry">
+                  <select class="w-100 form-select billing-input" name="billing_country" id="billingCountry">
                     <option value="">Select a country...</option>
                     <?php echo countriesOption($profile->billing_country); ?>
                   </select>
@@ -193,27 +227,27 @@ get_header();
                   <div>
                     <label for="billingZipcode" class="form-label">Zip Code</label>
                   </div>
-                  <input class="w-100 form-control billing-input" type='text' name='billingZipcode' id='billingZipcode' maxlength="50" value="<?php echo $profile->billing_zipcode; ?>" />
+                  <input class="w-100 form-control billing-input" type='text' name='billing_post_code' id='billingZipcode' maxlength="50" value="<?php echo $profile->billing_zipcode; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="billingPhone" class="form-label">Phone Number</label>
                   </div>
-                  <input class="w-100 form-control billing-input" type='text' name='billingPhone' id='billingPhone' maxlength="50" value="<?php echo $profile->billing_phone; ?>" />
+                  <input class="w-100 form-control billing-input" type='text' name='billing_phone' id='billingPhone' maxlength="50" value="<?php echo $profile->billing_phone; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="billingCompany" class="form-label">Company</label>
                   </div>
-                  <input class="w-100 form-control billing-input" type='text' name='billingCompany' id='billingCompany' maxlength="50" value="<?php echo $profile->billing_company; ?>" />
+                  <input class="w-100 form-control billing-input" type='text' name='billing_company' id='billingCompany' maxlength="50" value="<?php echo $profile->billing_company; ?>" />
                 </div>
 
             </div>
 
             <div class="buttons-wrapper mb-5 d-flex align-items-center">
-              <button class="btn copy-billing" id="copyBilling">Copy</button>
+              <a href="#" class="btn copy-billing" id="copyBilling">Copy</a>
               <small style="margin-left: 1rem;">Shipping Address same as Billing Address</small>
             </div>
 
@@ -227,14 +261,14 @@ get_header();
                       <div>
                         <label for="shippingFirstname" class="form-label">First Name</label>
                       </div>
-                      <input class="w-100 form-control shipping-input" type='text' name='shippingFirstname' id='shippingFirstname' maxlength="50" value="<?php echo $profile->shipping_firstname; ?>" />
+                      <input class="w-100 form-control shipping-input" type='text' name='delivery_firstname' id='shippingFirstname' maxlength="50" value="<?php echo $profile->shipping_firstname; ?>" />
                     </div>
 
                     <div class="mb-3 col-md-6">
                       <div>
                         <label for="shippingLastname" class="form-label">Last Name</label>
                       </div>
-                      <input class="w-100 form-control shipping-input" type='text' name='shippingLastname' id='shippingLastname' maxlength="50" value="<?php echo $profile->shipping_lastname; ?>" />
+                      <input class="w-100 form-control shipping-input" type='text' name='delivery_lastname' id='shippingLastname' maxlength="50" value="<?php echo $profile->shipping_lastname; ?>" />
                     </div>
                 </div>
 
@@ -244,28 +278,28 @@ get_header();
                   <div>
                     <label for="shippingAddress" class="form-label">Address</label>
                   </div>
-                  <input class="w-100 form-control shipping-input" type='text' name='shippingAddress' id='shippingAddress' maxlength="50" value="<?php echo $profile->shipping_address; ?>" />
+                  <input class="w-100 form-control shipping-input" type='text' name='delivery_address' id='shippingAddress' maxlength="50" value="<?php echo $profile->shipping_address; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="shippingCity" class="form-label">City</label>
                   </div>
-                  <input class="w-100 form-control shipping-input" type='text' name='shippingCity' id='shippingCity' maxlength="50" value="<?php echo $profile->shipping_city; ?>" />
+                  <input class="w-100 form-control shipping-input" type='text' name='delivery_city' id='shippingCity' maxlength="50" value="<?php echo $profile->shipping_city; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="shippingCounty" class="form-label">County</label>
                   </div>
-                  <input class="w-100 form-control shipping-input" type='text' name='shippingCounty' id='shippingCounty' maxlength="50" value="<?php echo $profile->shipping_county; ?>" />
+                  <input class="w-100 form-control shipping-input" type='text' name='delivery_county' id='shippingCounty' maxlength="50" value="<?php echo $profile->shipping_county; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="shippingCountry" class="form-label">Country</label>
                   </div>
-                  <select class="w-100 form-select shipping-input" name="shippingCountry" id="shippingCountry">
+                  <select class="w-100 form-select shipping-input" name="delivery_country" id="shippingCountry">
                     <option value="">Select a country...</option>
                     <?php echo countriesOption($profile->shipping_country); ?>
                   </select>
@@ -275,21 +309,21 @@ get_header();
                   <div>
                     <label for="shippingZipcode" class="form-label">Zip Code</label>
                   </div>
-                  <input class="w-100 form-control shipping-input" type='text' name='shippingZipcode' id='shippingZipcode' maxlength="50" value="<?php echo $profile->shipping_zipcode; ?>" />
+                  <input class="w-100 form-control shipping-input" type='text' name='delivery_post_code' id='shippingZipcode' maxlength="50" value="<?php echo $profile->shipping_zipcode; ?>" />
                 </div>
 
                 <div class="mb-3 col-md-6">
                   <div>
                     <label for="shippingPhone" class="form-label">Phone Number</label>
                   </div>
-                  <input class="w-100 form-control shipping-input" type='text' name='shippingPhone' id='shippingPhone' maxlength="50" value="<?php echo $profile->shipping_phone; ?>" />
+                  <input class="w-100 form-control shipping-input" type='text' name='delivery_phone' id='shippingPhone' maxlength="50" value="<?php echo $profile->shipping_phone; ?>" />
                 </div>
 
                 <div class="mb-4 col-md-6">
                   <div>
                     <label for="shippingCompany" class="form-label">Company</label>
                   </div>
-                  <input class="w-100 form-control shipping-input" type='text' name='shippingCompany' id='shippingCompany' maxlength="50" value="<?php echo $profile->shipping_company; ?>" />
+                  <input class="w-100 form-control shipping-input" type='text' name='delivery_company' id='shippingCompany' maxlength="50" value="<?php echo $profile->shipping_company; ?>" />
                 </div>
 
             </div>
