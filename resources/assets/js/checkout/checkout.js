@@ -102,6 +102,7 @@ BASEOBJECT.checkout.init = function () {
     mounted() {
       const shippingCountry = document.querySelector("#shippingCountry");
       const shippingZipcode = document.querySelector("#shippingZipcode");
+      const shippingTypes = document.querySelector("#shippingTypes");
 
       shippingCountry.addEventListener("change", function(e) {
         app.displayItems();
@@ -110,6 +111,13 @@ BASEOBJECT.checkout.init = function () {
       shippingZipcode.addEventListener("change", function(e) {
         app.displayItems();
       });
+
+      shippingTypes.addEventListener("click", function(e) {
+        const target = e.target;
+        if(target.classList.contains("form-check-input")) {
+          app.displayItems();
+        }
+      })
 
     }
   });
