@@ -10,6 +10,12 @@ if(!isAuthenticated() || !Session::has("user_cart") || count(Session::get("user_
   exit;
 }
 
+// unset($_SESSION['shipping']);
+
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+
 include_once(get_template_directory() . '/inc/app/Controllers/ProfileController.php');
 include_once(get_template_directory() . '/inc/app/Controllers/CheckoutController.php');
 
@@ -129,13 +135,30 @@ get_header();
               </div>
 
               <div class="form-check" v-for="checkbox in shippingTypes">
-                <input :value="checkbox.type_id" class="form-check-input" type="radio" name="shipping" :id="'check' + checkbox.type_id">
+                <input :checked="<?php if ($_SESSION["shipping"]) { echo $_SESSION["shipping"]["type"];} else { echo 0; }  ?> == checkbox.type_id" :value="checkbox.type_id" class="form-check-input" type="radio" name="shipping" :id="'check' + checkbox.type_id">
                 <label class="form-check-label" :for="'check' + checkbox.type_id">
                   {{ checkbox.name }} {{ currency }}{{ checkbox.price }}
                 </label>
               </div>
             </form>
+          </div>
 
+        </div>
+
+        <div id="cartTotalShipping" class="mt-4">
+
+          <div v-if="isShippingLoading">
+            <table class="table table-bordered">
+              <tr>
+                <td>
+                  <div class="color" style="width: 100%; height: 35px; background-image: url('<?php echo get_template_directory_uri(); ?>/images/fabric-plaid.png')"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div v-else>
+            <h2>Total: {{ currency }}{{ cartTotalShipping == 0 ? '<?php echo $_SESSION["cartTotalShipping"]; ?>' : cartTotalShipping }}</h2>
           </div>
 
         </div>
