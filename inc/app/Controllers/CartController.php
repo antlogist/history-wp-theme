@@ -52,18 +52,27 @@ class CartController {
 
 
         array_push($result, [
-          "index" => $index,
-          "id" => $item->data->id,
-          "title" => $item->data->title,
-          "image" => $item->data->thumb,
+          "artwork" => null,
+          "currency" => $item->currency->symbol,
           "description" => $item->data->description,
+          "external_info" => $item->data->external_info,
+          "height" => $item->data->height,
+          "id" => $item->data->id,
+          "image" => $item->data->thumb,
+          "image_name" => null,
+          "index" => $index,
           "price" => $item->data->price,
+          "quantity" => $quantity,
+          "slug" => $item->data->slug,
+          "title" => $item->data->title,
+          "total" => $totalPrice,
+          "type" => $item->data->product_type,
+          "user_questions" => null,
+          "variations" => $item->data->variations,
           "vat_percent" => $item->data->vat_percent,
           "vat_price" => $item->data->vat_price,
-          "total" => $totalPrice,
-          "quantity" => $quantity,
-          "currency" => $item->currency->symbol,
-          "slug" => $item->data->slug
+          "width" => $item->data->width,
+          "weight" => $item->data->weight,
         ]);
         $index++;
       }

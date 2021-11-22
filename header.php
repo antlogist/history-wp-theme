@@ -29,10 +29,23 @@ wp_head();
   <div class="top-bar py-1" id="topbarMain">
     <div class="container">
       <div class="row">
-        <div class="col-12">
+
+        <div class="col-4 social-icons">
+          <a href="<?php if (!get_theme_mod('facebook_link')) { echo "https://www.facebook.com/";} else { echo get_theme_mod('facebook_link'); }; ?>" target="_blank">
+            <span class="dashicons dashicons-facebook" style="padding-top: 2px;"></span>
+          </a>
+          <a href="<?php if (!get_theme_mod('instagram_link')) { echo "https://www.instagram.com/";} else { echo get_theme_mod('instagram_link'); }; ?>" target="_blank">
+            <span class="dashicons dashicons-instagram" style="padding-top: 2px;"></span>
+          </a>
+          <a href="<?php if (!get_theme_mod('youtube_link')) { echo "https://www.youtube.com/";} else { echo get_theme_mod('youtube_link'); }; ?>" target="_blank">
+            <span class="dashicons dashicons-youtube" style="padding-top: 2px;"></span>
+          </a>
+        </div>
+
+        <div class="col-8">
           <ul class="login-ul-main">
             <?php if (isAuthenticated()) { ?>
-              <li><a href="<?php echo get_home_url(); ?>/profile"><span class="dashicons dashicons-admin-users" style="padding-top: 2px;"></span><?php echo substr(Session::get("SESSION_USER_NAME"), 0, 20); ?></a> </li>
+              <li><a href="<?php echo get_home_url(); ?>/profile"><span class="dashicons dashicons-admin-users" style="padding-top: 2px;"></span><?php echo substr(Session::get("SESSION_USER_NAME"), 0, 12); ?></a> </li>
               <li>
                 <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Logout.php" method="post">
                   <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
