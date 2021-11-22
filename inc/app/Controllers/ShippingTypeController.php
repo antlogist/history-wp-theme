@@ -35,7 +35,7 @@ class ShippingTypeController {
 
   }
 
-  public function getTypes() {
+  public function getShippingType() {
     $request = json_decode(file_get_contents('php://input'), true);
     $request = (object) $request;
 
@@ -54,5 +54,27 @@ class ShippingTypeController {
     $this->typesRequest($request->country, $weight, $request->post_code, $productIds);
 
     echo json_encode($this->types);
+  }
+
+  public function updateShippingType() {
+    $request = json_decode(file_get_contents('php://input'), true);
+    $request = (object) $request;
+
+    $shipping = [
+      "code" =>$request->shipping_code,
+      "name" =>$request->shipping_name,
+      "price" =>$request->shipping_price,
+      "type" =>$request->shipping_type,
+    ];
+
+    if(!Session::has("shipping")) {
+      Session::add("shipping", $shipping);
+      Session::add("cartTotalShipping", number_format($_SESSION["cartTotal"] + $shipping["price"], 2));
+    } else {
+      $_SESSION["cartTotalShipping"] = number_format($_SESSION["cartTotal"] + $shipping["price"], 2);
+      $_SESSION["shipping"] = $shipping;
+    }
+
+    echo json_encode($_SESSION["cartTotalShipping"]);
   }
 }

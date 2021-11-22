@@ -6,7 +6,7 @@ include_once('../Controllers/ShippingTypeController.php');
 
 if(Request::has('post')){
   $types = new ShippingTypeController();
-  $types->getShippingType();
+  $types->updateShippingType();
 } else {
   return null;
 }
