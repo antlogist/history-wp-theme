@@ -83,6 +83,7 @@ class CartController {
       $vat = number_format($vat, 2);
 
       Session::add("cartTotal", $cartTotal);
+      Session::add("cartTotalShipping", $cartTotal);
 
       echo json_encode(["items" => $result, "cartTotal" => $cartTotal, "currency" => $currency, "cartTotalVat" => $cartTotalVat, "vat" => $vat, "authenticated" => isAuthenticated()]);
       exit;
