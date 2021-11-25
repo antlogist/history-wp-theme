@@ -91,6 +91,8 @@ BASEOBJECT.checkout.init = function () {
       },
       placeOrder() {
 
+        this.isLoading = true;
+
         const data = {};
 
         const profileForm = document.querySelector("#profileInfo").elements;
@@ -98,18 +100,19 @@ BASEOBJECT.checkout.init = function () {
           data[item.name] = item.value;
         });
 
-        data.checkboxes = [];
-        const checkboxItems = document.querySelector("#checkboxesForm").elements;
-        [...checkboxItems].map(({name, value}) => {
-          data.checkboxes.push({
-            [name]: value
-          })
-        });
+        // data.checkboxes = [];
+        // const checkboxItems = document.querySelector("#checkboxesForm").elements;
+        // [...checkboxItems].map(({name, value}) => {
+        //   data.checkboxes.push({
+        //     [name]: value
+        //   })
+        // });
 
         axios.post(`${themeUrl}/inc/app/Routes/Checkout.php`, JSON.stringify(
           data
         )).then(function(resp) {
           console.log(resp);
+          app.isLoading = false;
         });
 
       }
