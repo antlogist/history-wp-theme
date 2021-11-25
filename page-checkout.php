@@ -10,11 +10,9 @@ if(!isAuthenticated() || !Session::has("user_cart") || count(Session::get("user_
   exit;
 }
 
-// unset($_SESSION['shipping']);
-
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
+unset($_SESSION['shipping']);
+$_SESSION["cartTotalShipping"] = $_SESSION["cartTotal"];
+// unset($_SESSION['cartTotalShipping']);
 
 include_once(get_template_directory() . '/inc/app/Controllers/ProfileController.php');
 include_once(get_template_directory() . '/inc/app/Controllers/CheckoutController.php');
