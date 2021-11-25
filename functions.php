@@ -35,6 +35,7 @@ include( get_template_directory() . '/inc/REST/rest_menu.php');
 include( get_template_directory() . '/inc/CPT/history_pages.php');
 include( get_template_directory() . '/inc/CPT/newsletter.php');
 include( get_template_directory() . '/inc/CPT/photo_archive.php');
+include( get_template_directory() . '/inc/CPT/wills.php');
 
 //Metaboxes
 include( get_template_directory() . '/inc/metaboxes/pdf_metabox.php');
@@ -69,6 +70,7 @@ add_action( 'rest_api_init', 'history_menu' );
 //CPT
 add_action('init', 'historypages_cpt');
 add_action('init', 'newsletter_cpt');
+add_action('init', 'will_cpt');
 add_action('init', 'photoarchive_cpt');
 
 //Admin scripts

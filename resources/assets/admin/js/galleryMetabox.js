@@ -37,7 +37,6 @@ jQuery(function($){
           $('#custom_gallery').val(JSON.stringify(val));
 
           renderPhotoArchive(val);
-          console.log(attachment);
 
       }).open();
   });

@@ -6,11 +6,11 @@ if ( ! defined ('ABSPATH') ) {
 }
 
 function add_pdf_meta_boxes() {
-  $screens = [ 'newsletter' ];
+  $screens = [ 'newsletter', 'will' ];
   foreach ( $screens as $screen ) {
     add_meta_box(
         'pdf_box_id',
-        'PDF Newsletter',
+        'PDF',
         'render_pdf_custom_box',
         $screen
     );
@@ -25,8 +25,9 @@ function render_pdf_custom_box( $post ) {
   $pdf = get_post_meta($post->ID, 'custom_pdf', true);
   ?>
   <div style="margin: 1rem 0;">
-    <a href="#" class="upload_pdf_button button button-primary"><?php echo 'Upload PDF Newsletter'; ?></a>
+    <a href="#" class="upload_pdf_button button button-primary"><?php echo 'Upload PDF'; ?></a>
     <input readonly type="text" name="custom_pdf" id="custom_pdf" value="<?php echo $pdf; ?>" style="width: 100%; margin-top: 1rem;" />
+    <object id="pdfViewer" style="width: 100%; height: 512px; margin-top: 1rem;" data="<?php echo $pdf; ?>" type="application/pdf"></object>
   </div>
 
   <?php

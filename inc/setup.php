@@ -50,6 +50,9 @@ function body_id() {
       case 'photo-archive':
         return ' id="photoarchivePage"';
         break;
+      case 'will':
+        return ' id="willPage"';
+        break;
       default:
       return ' id="singlePage"';
     }
