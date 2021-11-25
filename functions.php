@@ -70,8 +70,8 @@ add_action( 'rest_api_init', 'history_menu' );
 //CPT
 add_action('init', 'historypages_cpt');
 add_action('init', 'newsletter_cpt');
-add_action('init', 'photoarchive_cpt');
 add_action('init', 'will_cpt');
+add_action('init', 'photoarchive_cpt');
 
 //Admin scripts
 add_action( 'admin_enqueue_scripts', 'history_admin_scripts' );
