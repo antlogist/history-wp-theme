@@ -12,7 +12,15 @@ jQuery(function($){
       }).on('select', function() {
           var attachment = pdf_uploader.state().get('selection').first().toJSON();
           $('#custom_pdf').val(attachment.url);
+
+          renderPdf(attachment.url);
       })
       .open();
   });
 });
+
+function renderPdf(url) {
+  const pdfViewer = document.querySelector("#pdfViewer");
+  pdfViewer.data = url;
+  console.log(url);
+}
