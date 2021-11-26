@@ -45,33 +45,36 @@ get_header();
         </tr>
       </thead>
       <tbody>
-          <?php
-            // echo "<pre>";
-            // print_r($orders);
-            // echo "</pre>";
-            foreach($orders as $order) {
-              $created_at = $order->created_at;
-              $total_price = $order->total_price;
-              $payment_status = $order->payment_status;
-              $order_token = $order->order_token;
+      <?php
+        foreach($orders as $order) {
+          $created_at = $order->created_at;
+          $total_price = $order->total_price;
+          $payment_status = $order->payment_status;
+          $order_token = $order->order_token;
 
-              echo "<tr>";
-                echo "<td style='min-width: 150px;'> " . $created_at . "</td>";
-                echo "<td> " . $total_price . "</td>";
-                echo "<td class='text-center'> " . $payment_status . "</td>";
-                //Action
-                echo "<td class='text-end' style='min-width: 250px;' data-token='" . $order_token ."'>";
-                  if($payment_status === 'pending') {
-                    echo "<button class='btn mx-1 pay'>Pay</button>";
-                    echo "<button class='btn mx-1 view'>View</button>";
-                  } else {
-                    echo "<button class='btn view'>View</button>";
-                  }
-                echo "</td>";
-              echo "</tr>";
-            }
-          ?>
+          echo "<tr>";
+            echo "<td style='min-width: 150px;'> " . $created_at . "</td>";
+            echo "<td> " . $total_price . "</td>";
+            echo "<td class='text-center'> " . $payment_status . "</td>";
+            //Action
+            echo "<td class='text-end' style='min-width: 250px;' data-token='" . $order_token ."'>";
+              if($payment_status === 'pending') {
+                echo "<button class='btn mx-1 pay'>Pay</button>";
+                echo "<button class='btn mx-1 view'>View</button>";
+              } else {
+                echo "<button class='btn view'>View</button>";
+              }
+            echo "</td>";
+          echo "</tr>";
+        }
+
+        if(count($orders) < 1) {
+          echo "<tr><td class='text-center' colspan=4><h2>Orders not found</h2></td></tr>";
+        }
+      ?>
+
       </tbody>
+
     </table>
   </div>
 
