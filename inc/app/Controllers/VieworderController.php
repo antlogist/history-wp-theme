@@ -10,7 +10,7 @@ class VieworderController {
   private $orders;
   private $homeUrl;
 
-  function __construct(string $homeUrl) {
+  private function ordersRequest(string $homeUrl) {
     if (Session::has('SESSION_USER_UUID')) {
       $uuid = Session::get('SESSION_USER_UUID');
       $api_url = api_url . '/api/v1/get-orders?token=' . api_token;
@@ -34,10 +34,8 @@ class VieworderController {
     }
   }
 
-  public function getOrders() {
-    // echo "<pre>";
-    // print_r($this->orders);
-    // echo "</pre>";
+  public function getOrders(string $homeUrl) {
+    $this->ordersRequest($homeUrl);
     return $this->orders;
   }
 
