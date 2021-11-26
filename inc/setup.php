@@ -70,6 +70,8 @@ function body_id() {
     return ' id="productPage"';
   } elseif (is_page('checkout')) {
     return ' id="checkoutPage"';
+  } elseif (is_page('view-order')) {
+    return ' id="ordersPage"';
   }
 }
 
