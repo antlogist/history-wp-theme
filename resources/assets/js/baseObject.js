@@ -9,6 +9,7 @@
     shop: {},
     product: {},
     cart: {},
-    checkout: {}
+    checkout: {},
+    ordersView: {}
   }
 })();

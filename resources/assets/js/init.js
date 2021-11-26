@@ -39,6 +39,9 @@
       BASEOBJECT.checkout.init();
       BASEOBJECT.profile.copyBillingDetails();
       break;
+    case "ordersPage":
+      BASEOBJECT.ordersView.actions();
+      break;
   }
 
 })();
