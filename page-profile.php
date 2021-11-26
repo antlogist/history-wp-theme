@@ -35,6 +35,10 @@ get_header();
 </header>
 
 <div class="container py-5">
+
+  <div class="buttons-wrapper mb-5">
+    <a href="<?php echo get_home_url(); ?>/view-order/" class="btn">Orders</a>
+  </div>
 <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Profile.php" method="post" class="w-100" id="profileInfo">
 
   <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
