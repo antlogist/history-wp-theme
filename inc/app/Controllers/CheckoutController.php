@@ -44,7 +44,7 @@ class CheckoutController {
         'Content-Length: ' . strlen ( $data_string ) ]
     );
     $output = curl_exec ( $ch );
-    $this->requestResult = $output;
+    $this->requestResult = json_decode ( $output );
   }
 
   public function getGeneralSettings() {
@@ -106,6 +106,15 @@ class CheckoutController {
     $request->product = $product;
 
     $this->setOrder($request);
-    echo $this->requestResult;
+
+    if($this->requestResult->status->success === true) {
+      echo json_encode($this->requestResult->data->order_token);
+      exit;
+    } else {
+      echo json_encode([
+        "fail" => "Something went wrong"
+      ]);
+    }
+
   }
 }
