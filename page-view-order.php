@@ -19,13 +19,17 @@ get_header();
 
 ?>
 
+<script>
+  const token = "<?php echo $_SESSION["token"]; ?>";
+</script>
+
 <header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
   <div class="container header-container">
     <div class="row">
       <div class="col-12">
         <div class="header-title-outer-wrapper">
           <div>
-            <h1 class="header-title" id="headerTitle">ORders</h1>
+            <h1 class="header-title" id="headerTitle">Orders</h1>
           </div>
         </div>
       </div>
@@ -35,7 +39,7 @@ get_header();
 
 <div class="container py-5">
   <div class="table-responsive mb-5">
-    <table class="table align-middle">
+    <table class="table align-middle" id="ordersTable">
       <thead>
         <tr>
           <th class="text-left">Date</th>
@@ -51,21 +55,31 @@ get_header();
           $total_price = $order->total_price;
           $payment_status = $order->payment_status;
           $order_token = $order->order_token;
+          $status = $order->status;
+          if($status == "cancel"){
+            $payment_status = "canceled";
+          }
+          ?>
 
-          echo "<tr>";
-            echo "<td style='min-width: 150px;'> " . $created_at . "</td>";
-            echo "<td> " . $total_price . "</td>";
-            echo "<td class='text-center'> " . $payment_status . "</td>";
-            //Action
-            echo "<td class='text-end' style='min-width: 250px;' data-token='" . $order_token ."'>";
-              if($payment_status === 'pending') {
-                echo "<button class='btn mx-1 pay'>Pay</button>";
-                echo "<button class='btn mx-1 view'>View</button>";
-              } else {
-                echo "<button class='btn view'>View</button>";
-              }
-            echo "</td>";
-          echo "</tr>";
+          <tr>
+            <td style="min-width: 150px;"><?php echo $created_at; ?></td>
+            <td><?php echo $total_price; ?></td>
+            <td class="text-center"><?php echo $payment_status; ?></td>
+            <!--Action-->
+            <td class="text-end" style="min-width: 250px;">
+              <?php if($payment_status === 'pending') { ?>
+                <button class="btn mx-1 pay" @click="pay('<?php echo $order_token; ?>')"><small>Pay</small></button>
+                <button class="btn mx-1 cancel"><small>Cancel</small></button>
+                <button class="btn ms-1 view"><small>View</small></button>
+              <?php } else { ?>
+                <button class="ms-1 view"><small>View</small></button>
+              <?php } ?>
+            </td>
+          </tr>
+
+
+        <?php
+
         }
 
         if(count($orders) < 1) {
