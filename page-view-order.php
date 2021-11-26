@@ -12,8 +12,8 @@ if(!isAuthenticated()) {
 
 include_once(get_template_directory() . '/inc/app/Controllers/VieworderController.php');
 
-$vieworderController = new VieworderController(get_home_url());
-$orders = $vieworderController->getOrders();
+$vieworderController = new VieworderController();
+$orders = $vieworderController->getOrders(get_home_url());
 
 get_header();
 
@@ -50,6 +50,7 @@ get_header();
       </thead>
       <tbody>
       <?php
+
         foreach($orders as $order) {
           $created_at = $order->created_at;
           $total_price = $order->total_price;
@@ -62,19 +63,22 @@ get_header();
           ?>
 
           <tr>
+
             <td style="min-width: 150px;"><?php echo $created_at; ?></td>
             <td><?php echo $total_price; ?></td>
             <td class="text-center"><?php echo $payment_status; ?></td>
+
             <!--Action-->
             <td class="text-end" style="min-width: 250px;">
               <?php if($payment_status === 'pending') { ?>
                 <button class="btn mx-1 pay" @click="pay('<?php echo $order_token; ?>')"><small>Pay</small></button>
                 <button class="btn mx-1 cancel"><small>Cancel</small></button>
-                <button class="btn ms-1 view"><small>View</small></button>
+                <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
               <?php } else { ?>
-                <button class="ms-1 view"><small>View</small></button>
+                <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
               <?php } ?>
             </td>
+
           </tr>
 
 
