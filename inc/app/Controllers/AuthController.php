@@ -82,7 +82,9 @@ class AuthController {
         }
       }
       Redirect::to($request->home_url);
+      exit;
     }
+    Redirect::to($request->home_url);
   }
 
   private function register($request) {
