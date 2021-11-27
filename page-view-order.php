@@ -37,7 +37,12 @@ get_header();
   </div>
 </header>
 
-<div class="container py-5">
+<div class="container py-5" id="ordersContainer">
+
+  <div v-if="isLoading" class="event-loader">
+    <div class="lds-ripple"><div></div><div></div></div>
+  </div>
+
   <div class="table-responsive mb-5">
     <table class="table align-middle" id="ordersTable">
       <thead>
@@ -57,7 +62,7 @@ get_header();
           $payment_status = $order->payment_status;
           $order_token = $order->order_token;
           $status = $order->status;
-          if($status == "cancel"){
+          if($status == "canceled" || $status == "cancel"){
             $payment_status = "canceled";
           }
           ?>
@@ -66,13 +71,13 @@ get_header();
 
             <td style="min-width: 150px;"><?php echo $created_at; ?></td>
             <td><?php echo '£' . $total_price; ?></td>
-            <td class="text-center"><?php echo $payment_status; ?></td>
+            <td class="text-center" id="status<?php echo $order_token; ?>"><?php echo $payment_status; ?></td>
 
             <!--Action-->
             <td class="text-end" style="min-width: 250px;">
               <?php if($payment_status === 'pending') { ?>
-                <button class="btn mx-1 pay" @click="pay('<?php echo $order_token; ?>')"><small>Pay</small></button>
-                <button class="btn mx-1 cancel"><small>Cancel</small></button>
+                <button id="payButton<?php echo $order_token; ?>" class="btn mx-1 pay" @click="pay('<?php echo $order_token; ?>')"><small>Pay</small></button>
+                <button id="cancelButton<?php echo $order_token; ?>" class="btn mx-1 cancel" @click="cancel('<?php echo $order_token; ?>')"><small>Cancel</small></button>
                 <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
               <?php } else { ?>
                 <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
