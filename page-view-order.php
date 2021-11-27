@@ -65,7 +65,7 @@ get_header();
           <tr>
 
             <td style="min-width: 150px;"><?php echo $created_at; ?></td>
-            <td><?php echo $total_price; ?></td>
+            <td><?php echo '£' . $total_price; ?></td>
             <td class="text-center"><?php echo $payment_status; ?></td>
 
             <!--Action-->
