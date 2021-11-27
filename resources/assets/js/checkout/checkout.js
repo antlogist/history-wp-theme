@@ -84,10 +84,9 @@ BASEOBJECT.checkout.init = function () {
         })).then(function(resp) {
           console.log(resp);
           app.cartTotalShipping = resp["data"];
+          app.isLoading = false;
         });
 
-
-        this.isLoading = false;
       },
       placeOrder() {
 
