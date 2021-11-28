@@ -7,11 +7,30 @@ BASEOBJECT.ordersView.actions = function () {
   const app = new Vue({
     el: "#ordersContainer",
     data: {
-      isLoading: false
+      isLoading: false,
+      message: ''
     },
     methods: {
       pay(orderToken) {
-        console.log(orderToken);
+        this.isLoading = true;
+        axios.post(`${themeUrl}/inc/app/Routes/Payment.php`, JSON.stringify({
+          order_token: orderToken,
+          token: token,
+          home_url: baseUrl
+        })).then(function(resp) {
+
+          if(resp.data.fail) {
+            app.fail = true;
+            app.message = resp.data.fail;
+            window.location.reload();
+            return;
+          }
+
+          window.location.assign(resp.data);
+          console.log(resp);
+
+          app.isLoading = false;
+        });
       },
       cancel(orderToken) {
         this.isLoading = true;
@@ -32,9 +51,15 @@ BASEOBJECT.ordersView.actions = function () {
             cancelButton.remove();
           }
 
+          if(resp.data.fail) {
+            app.fail = true;
+            app.message = resp.data.fail;
+            window.location.reload();
+          }
+
           app.isLoading = false;
         });
-      }
+      },
     }
   })
 }
