@@ -39,6 +39,16 @@ get_header();
 
 <div class="container py-5" id="ordersContainer">
 
+<?php
+  if(Session::get("error")) {
+    echo '<div class="message error-message">' . Session::get("error") . '</div>';
+  }
+
+  if(Session::get("success")) {
+    echo '<div class="message error-message">' . Session::get("success") . '</div>';
+  }
+?>
+
   <div v-if="isLoading" class="event-loader">
     <div class="lds-ripple"><div></div><div></div></div>
   </div>
@@ -107,4 +117,3 @@ get_header();
 
 Session::remove("error");
 Session::remove("success"); ?>
-

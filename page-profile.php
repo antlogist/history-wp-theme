@@ -36,9 +36,19 @@ get_header();
 
 <div class="container py-5">
 
-  <div class="buttons-wrapper mb-5">
-    <a href="<?php echo get_home_url(); ?>/view-order/" class="btn">Orders</a>
-  </div>
+<?php
+  if(Session::get("error")) {
+    echo '<div class="message error-message">' . Session::get("error") . '</div>';
+  }
+
+  if(Session::get("success")) {
+    echo '<div class="message error-message">' . Session::get("success") . '</div>';
+  }
+?>
+
+<div class="buttons-wrapper mb-5">
+  <a href="<?php echo get_home_url(); ?>/view-order/" class="btn">Orders</a>
+</div>
 <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Profile.php" method="post" class="w-100" id="profileInfo">
 
   <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
@@ -46,8 +56,6 @@ get_header();
 
   <div class="row mb-5">
     <div class="col-md-6">
-      <div class="message error-message"><?php echo Session::get("error"); ?></div>
-      <div class="message success-message"><?php echo Session::get("success"); ?></div>
       <div class="mb-3">
         <div>
           <label for='email' class="form-label">User Email*:</label>
@@ -227,4 +235,3 @@ get_header();
 
 Session::remove("error");
 Session::remove("success"); ?>
-

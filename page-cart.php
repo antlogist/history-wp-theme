@@ -30,6 +30,16 @@ get_header();
 
 <div class="container py-5">
 
+<?php
+  if(Session::get("error")) {
+    echo '<div class="message error-message">' . Session::get("error") . '</div>';
+  }
+
+  if(Session::get("success")) {
+    echo '<div class="message error-message">' . Session::get("success") . '</div>';
+  }
+?>
+
   <?php if(count(Session::get("user_cart")) < 1) {
 
     echo "<h2 class='text-center mb-4'>Your shopping cart is empty</h2>";

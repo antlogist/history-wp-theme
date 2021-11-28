@@ -48,6 +48,16 @@ get_header();
 
 <div class="container py-5">
 
+<?php
+    if(Session::get("error")) {
+      echo '<div class="message error-message">' . Session::get("error") . '</div>';
+    }
+
+    if(Session::get("success")) {
+      echo '<div class="message error-message">' . Session::get("success") . '</div>';
+    }
+  ?>
+
   <div class="row mb-5">
     <h5 class="mb-3">Product(s) Information</h5>
     <?php
