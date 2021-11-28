@@ -78,7 +78,8 @@ class VieworderController {
     } else {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
-      Redirect::to($this->homeUrl);
+      Session::add('error', "Something went wrong");
+      echo json_encode(["fail" => "Something went wrong"]);
       exit;
     }
   }
@@ -101,7 +102,8 @@ class VieworderController {
       $this->orderCancelRequest($request->home_url, $request->order_token);
       exit;
     }
-    Redirect::to($request->home_url);
+    Session::add('error', "Token mismatch");
+    echo json_encode(["fail" => "Token mismatch"]);
   }
 
 }
