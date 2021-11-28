@@ -39,7 +39,7 @@ get_header();
   }
 
   if(Session::get("success")) {
-    echo '<div class="message error-message">' . Session::get("success") . '</div>';
+    echo '<div class="message success-message">' . Session::get("success") . '</div>';
   }
 ?>
 
