@@ -45,6 +45,16 @@ get_header();
       <div class="lds-ripple"><div></div><div></div></div>
     </div>
 
+    <?php
+      if(Session::get("error")) {
+        echo '<div class="message error-message">' . Session::get("error") . '</div>';
+      }
+
+      if(Session::get("success")) {
+        echo '<div class="message error-message">' . Session::get("success") . '</div>';
+      }
+    ?>
+
     <div class="row">
 
       <div class="col-md-4 order-2">

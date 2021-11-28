@@ -32,10 +32,20 @@ get_header();
 </header>
 
 <div class="container py-5">
+
+  <?php
+    if(Session::get("error")) {
+      echo '<div class="message error-message">' . Session::get("error") . '</div>';
+    }
+
+    if(Session::get("success")) {
+      echo '<div class="message error-message">' . Session::get("success") . '</div>';
+    }
+  ?>
+
   <div class="row">
 
     <div class="col-md-6 offset-md-3">
-      <div class="message error-message"><?php echo Session::get("error"); ?></div>
       <form action="<?php echo get_template_directory_uri(); ?>/inc/app/Routes/Auth.php" method="post" class="w-100">
         <input type="hidden" name="token" value="<?php echo $_SESSION["token"]; ?>">
         <input type="hidden" name="home_url" value="<?php echo get_home_url(); ?>">
