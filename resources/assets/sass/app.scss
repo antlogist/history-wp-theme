@@ -13,6 +13,22 @@ body {
   }
 }
 
+.message {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid;
+  text-align: center;
+  display: inline-block;
+  &.success-message {
+    border-color: green;
+    color: green;
+  }
+  &.error-message {
+    border-color: red;
+    color: red;
+  }
+}
+
 .dashicons {
   transition: none;
 }
