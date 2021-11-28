@@ -21,8 +21,6 @@ class ShopController {
 
       $countItems = count(Session::get("user_cart"));
 
-      Session::add('success', "Product added to cart successfully");
-
       echo json_encode(["success" => "Product added to cart successfully", "countItems" => $countItems]);
       exit;
     }
