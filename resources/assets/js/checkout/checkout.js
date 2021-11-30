@@ -93,15 +93,45 @@ BASEOBJECT.checkout.init = function () {
         let data = {};
 
         const profileForm = document.querySelector("#profileInfo").elements;
+
+        let emptyFields = [];
+
         [...profileForm].map((item) => {
+          if(!item.value && item.name !== "billing_company" && item.name !== "delivery_company") {
+            const id = item.id;
+            const label = document.querySelector(`label[for=${id}]`);
+            label.style.color = "red";
+            item.style.borderColor = "red";
+            console.log(label);
+            emptyFields.push("item.id");
+          }
           data[item.name] = item.value;
         });
 
+
+        if(emptyFields.length > 0) {
+          app.isLoading = false;
+          return;
+        }
+
+        //Checkboxes
         data.checkboxes = {};
         const checkboxItems = document.querySelector("#checkboxesForm").elements;
-        [...checkboxItems].map(({name, value}) => {
-          data.checkboxes[name] = value;
+        [...checkboxItems].map(({name, value, checked}) => {
+          if(checked) {
+            data.checkboxes[name] = value;
+          }
         });
+
+        //Terms and conditions
+        if (!data.checkboxes.Accept_terms_and_conditions) {
+          const checkbox = document.querySelector(`input[name=Accept_terms_and_conditions]`);
+          const id = checkbox.id;
+          const label = document.querySelector(`label[for=${id}]`);
+          label.style.color = "red";
+          app.isLoading = false;
+          return;
+        }
 
         axios.post(`${themeUrl}/inc/app/Routes/Checkout.php`, JSON.stringify(
           data
