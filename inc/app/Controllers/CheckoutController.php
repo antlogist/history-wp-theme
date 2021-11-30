@@ -109,8 +109,11 @@ class CheckoutController {
 
     if($this->requestResult->status->success === true) {
       echo json_encode($this->requestResult->data->order_token);
+      Session::remove("user_cart");
+      Session::add('success', "Your order is successful");
       exit;
     } else {
+      Session::add('error', "Something went wrong");
       echo json_encode([
         "fail" => "Something went wrong"
       ]);
