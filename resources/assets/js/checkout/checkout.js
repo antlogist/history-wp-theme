@@ -67,7 +67,6 @@ BASEOBJECT.checkout.init = function () {
 
           app.isFirstLoading = false;
           app.isLoading = false;
-          console.log(app.shippingTypes);
         }
 
         display();
@@ -82,7 +81,6 @@ BASEOBJECT.checkout.init = function () {
           shipping_price: shipping.price,
           shipping_name: shipping.name,
         })).then(function(resp) {
-          console.log(resp);
           app.cartTotalShipping = resp["data"];
           app.isLoading = false;
         });
@@ -92,26 +90,61 @@ BASEOBJECT.checkout.init = function () {
 
         this.isLoading = true;
 
-        const data = {};
+        let data = {};
 
         const profileForm = document.querySelector("#profileInfo").elements;
+
+        let emptyFields = [];
+
         [...profileForm].map((item) => {
+          if(!item.value && item.name !== "billing_company" && item.name !== "delivery_company") {
+            const id = item.id;
+            const label = document.querySelector(`label[for=${id}]`);
+            label.style.color = "red";
+            item.style.borderColor = "red";
+            console.log(label);
+            emptyFields.push("item.id");
+          }
           data[item.name] = item.value;
         });
 
-        // data.checkboxes = [];
-        // const checkboxItems = document.querySelector("#checkboxesForm").elements;
-        // [...checkboxItems].map(({name, value}) => {
-        //   data.checkboxes.push({
-        //     [name]: value
-        //   })
-        // });
+
+        if(emptyFields.length > 0) {
+          app.isLoading = false;
+          return;
+        }
+
+        //Checkboxes
+        data.checkboxes = {};
+        const checkboxItems = document.querySelector("#checkboxesForm").elements;
+        [...checkboxItems].map(({name, value, checked}) => {
+          if(checked) {
+            data.checkboxes[name] = value;
+          }
+        });
+
+        //Terms and conditions
+        if (!data.checkboxes.Accept_terms_and_conditions) {
+          const checkbox = document.querySelector(`input[name=Accept_terms_and_conditions]`);
+          const id = checkbox.id;
+          const label = document.querySelector(`label[for=${id}]`);
+          label.style.color = "red";
+          app.isLoading = false;
+          return;
+        }
 
         axios.post(`${themeUrl}/inc/app/Routes/Checkout.php`, JSON.stringify(
           data
         )).then(function(resp) {
-          console.log(resp);
-          app.isLoading = false;
+          if(resp.data.fail) {
+            app.fail = true;
+            app.message = resp.data.fail;
+            window.location.reload();
+          }
+
+          window.location.assign(baseUrl + '/view-order/');
+
+          // app.isLoading = false;
         });
 
       }
@@ -136,7 +169,6 @@ BASEOBJECT.checkout.init = function () {
         const target = e.target;
         if(target.classList.contains("form-check-input")) {
           const shipping_id = target.value;
-          // console.log(app.shippingTypes);
           app.shippingTypes.map((shipping)=>{
             if(shipping.type_id == shipping_id) {
               app.updateShipping(shipping);

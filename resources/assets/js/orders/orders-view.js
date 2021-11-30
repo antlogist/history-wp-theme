@@ -5,7 +5,7 @@ import axios from "axios";
 
 BASEOBJECT.ordersView.actions = function () {
   const app = new Vue({
-    el: "#ordersContainer",
+    el: "#ordersTable",
     data: {
       isLoading: false,
       message: ''
@@ -29,7 +29,6 @@ BASEOBJECT.ordersView.actions = function () {
           window.location.assign(resp.data);
           console.log(resp);
 
-          app.isLoading = false;
         });
       },
       cancel(orderToken) {

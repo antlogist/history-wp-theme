@@ -37,7 +37,7 @@ get_header();
   </div>
 </header>
 
-<div class="container py-5" id="ordersContainer">
+<div class="container py-5">
 
 <?php
   if(Session::get("error")) {
@@ -48,68 +48,71 @@ get_header();
     echo '<div class="message success-message">' . Session::get("success") . '</div>';
   }
 ?>
-
+<div id="ordersTable">
   <div v-if="isLoading" class="event-loader">
-    <div class="lds-ripple"><div></div><div></div></div>
-  </div>
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>
 
-  <div class="table-responsive mb-5">
-    <table class="table align-middle" id="ordersTable">
-      <thead>
-        <tr>
-          <th class="text-left">Date</th>
-          <th>Price</th>
-          <th class="text-center">Payment Status</th>
-          <th class="text-end">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-      <?php
-
-        foreach($orders as $order) {
-          $created_at = $order->created_at;
-          $total_price = $order->total_price;
-          $payment_status = $order->payment_status;
-          $order_token = $order->order_token;
-          $status = $order->status;
-          if($status == "canceled" || $status == "cancel"){
-            $payment_status = "canceled";
-          }
-          ?>
-
+    <div class="table-responsive mb-5">
+      <table class="table align-middle" id="ordersTable">
+        <thead>
           <tr>
-
-            <td style="min-width: 150px;"><?php echo $created_at; ?></td>
-            <td><?php echo '£' . $total_price; ?></td>
-            <td class="text-center" id="status<?php echo $order_token; ?>"><?php echo $payment_status; ?></td>
-
-            <!--Action-->
-            <td class="text-end" style="min-width: 250px;">
-              <?php if($payment_status === 'pending') { ?>
-                <button id="payButton<?php echo $order_token; ?>" class="btn mx-1 pay" @click="pay('<?php echo $order_token; ?>')"><small>Pay</small></button>
-                <button id="cancelButton<?php echo $order_token; ?>" class="btn mx-1 cancel" @click="cancel('<?php echo $order_token; ?>')"><small>Cancel</small></button>
-                <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
-              <?php } else { ?>
-                <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
-              <?php } ?>
-            </td>
-
+            <th class="text-left">Date</th>
+            <th>Price</th>
+            <th class="text-center">Payment Status</th>
+            <th class="text-end">Action</th>
           </tr>
-
-
+        </thead>
+        <tbody>
         <?php
 
-        }
+          foreach($orders as $order) {
+            $created_at = $order->created_at;
+            $total_price = $order->total_price;
+            $payment_status = $order->payment_status;
+            $order_token = $order->order_token;
+            $status = $order->status;
+            if($status == "canceled" || $status == "cancel"){
+              $payment_status = "canceled";
+            }
+            ?>
 
-        if(count($orders) < 1) {
-          echo "<tr><td class='text-center' colspan=4><h2>Orders not found</h2></td></tr>";
-        }
-      ?>
+            <tr>
 
-      </tbody>
+              <td style="min-width: 150px;"><?php echo $created_at; ?></td>
+              <td><?php echo '£' . $total_price; ?></td>
+              <td class="text-center" id="status<?php echo $order_token; ?>"><?php echo $payment_status; ?></td>
 
-    </table>
+              <!--Action-->
+              <td class="text-end" style="min-width: 250px;">
+                <?php if($payment_status === 'pending') { ?>
+                  <button id="payButton<?php echo $order_token; ?>" class="btn mx-1 pay" @click="pay('<?php echo $order_token; ?>')"><small>Pay</small></button>
+                  <button id="cancelButton<?php echo $order_token; ?>" class="btn mx-1 cancel" @click="cancel('<?php echo $order_token; ?>')"><small>Cancel</small></button>
+                  <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
+                <?php } else { ?>
+                  <a href="<?php echo get_home_url(); ?>/order-details/?order_token=<?php echo $order_token; ?>" class="btn ms-1 view"><small>View</small></a>
+                <?php } ?>
+              </td>
+
+            </tr>
+
+
+          <?php
+
+          }
+
+          if(count($orders) < 1) {
+            echo "<tr><td class='text-center' colspan=4><h2>Orders not found</h2></td></tr>";
+          }
+        ?>
+
+        </tbody>
+
+      </table>
+    </div>
+
   </div>
+
 
 </div>
 

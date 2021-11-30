@@ -65,11 +65,14 @@ get_header();
 
         echo '<div class="col-md-4">';
           echo '<div class="card">';
-            echo '<div class="card-body text-center">';
+            echo '<div class="card-body text-left">';
               foreach($product as $info) {
-                echo '<h5 class="card-title mb-2">' . $info->title . '</h5>';
+                echo '<h5 class="card-title mb-2 text-center">' . $info->title . '</h5>';
               }
-              echo '<div class="price-wrapper mb-3"><h5>£' . $product->price . '</h5></div>';
+              echo '<div class="price-wrapper mb-3"><h5>Price: £' . $product->price . '</h5></div>';
+              echo '<div class="price-wrapper mb-3"><h5>Qty: ' . $product->quantity . '</h5></div>';
+              echo '<div class="price-wrapper mb-3"><h5>Total: £' . number_format($product->quantity * $product->price, 2) . '</h5></div>';
+
             echo '</div>';
           echo '</div>';
         echo '</div>';
