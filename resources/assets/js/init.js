@@ -1,6 +1,7 @@
 (function () {
   "use strict";
 
+  BASEOBJECT.module.messageRemove();
   BASEOBJECT.nav.init();
   BASEOBJECT.nav.initFooter();
   BASEOBJECT.nav.toggleButton();

@@ -27,6 +27,18 @@ const cart = new Cart();
             cart.updateHeaderCart(response.data.countItems);
           }
         });
+    },
+    messageRemove: function() {
+      const message = document.querySelector(".message");
+      if(message) {
+        const closeButtonEl = `<div class="close">x</div>`;
+        message.insertAdjacentHTML("afterbegin", closeButtonEl);
+        message.addEventListener('click', function(e) {
+          if(e.target.classList.contains("close")) {
+            message.remove();
+          }
+        });
+      }
     }
   }
 })();
