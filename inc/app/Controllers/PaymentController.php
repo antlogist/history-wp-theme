@@ -33,6 +33,7 @@ class PaymentController {
   }
 
   private function paymentCheckReq($transaction_id, $home_url) {
+
     $api_url = api_url . '/api/v1/check-payment?token=' . api_token;
 
     $data = [
@@ -49,6 +50,7 @@ class PaymentController {
         'Content-Length: ' . strlen ($data_string) ]
     );
     $output = curl_exec ($ch);
+    return $output;
   }
 
   private function updateOrder($order_token, $transaction_id, $payment_type, $home_url) {
@@ -88,18 +90,22 @@ class PaymentController {
   }
 
   public function getPaymentStatus($transaction_id, $home_url, $token, $order_token, $payment_type) {
+
     if (!CSRFToken::verifyCSRFToken($token, false)) {
       Session::add('error', "Token mismatch");
       echo json_encode(["fail" => "Token mismatch"]);
       Redirect::to($this->homeUrl);
       exit();
     }
+
     $transaction = $this->paymentCheckReq($transaction_id, $home_url);
     $transaction = json_decode ($transaction);
 
     if ($transaction -> status -> success == 1) {
       $this->updateOrder($order_token, $transaction_id, $payment_type, $home_url);
+      return $transaction;
     }
 
+    return false;
   }
 }
