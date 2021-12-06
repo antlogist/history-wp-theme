@@ -84,7 +84,11 @@ wp_head();
               <li>
                 <a href="<?php echo get_home_url(); ?>/cart"><span class="dashicons dashicons-cart" style="padding-top: 2px;"></span>
                 <span class="cart-count-outer-wrapper">
-                  <span class="cart-count"><?php echo count(Session::get("user_cart")); ?></span>
+                  <span class="cart-count"><?php if($_SESSION["user_cart"]) {
+                      echo count(Session::get("user_cart"));
+                  } else {
+                    echo "0";
+                  } ?></span>
                 </span>
 
                 </a>
