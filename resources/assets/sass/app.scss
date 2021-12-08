@@ -617,6 +617,25 @@ a.newsletter-archive-post-image-link {
   }
 }
 
+//Post pagination
+
+.post-nav-links {
+  text-align: center;
+  .post-page-numbers {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: $color-2;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 25px;
+    &.current {
+      background-color: $color;
+      color: #000000;
+    }
+  }
+}
+
 
 //Photo Archive
 

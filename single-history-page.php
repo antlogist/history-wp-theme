@@ -39,6 +39,9 @@ get_header();
 
               } // end while
             } // end if
+
+            // page links
+            wp_link_pages();
           ?>
         </div>
       </div>
