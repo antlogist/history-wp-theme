@@ -6,7 +6,7 @@ if ( ! defined ('ABSPATH') ) {
 }
 
 function add_pdf_meta_boxes() {
-  $screens = [ 'newsletter', 'will' ];
+  $screens = [ 'newsletter', 'will', 'history-page' ];
   foreach ( $screens as $screen ) {
     add_meta_box(
         'pdf_box_id',

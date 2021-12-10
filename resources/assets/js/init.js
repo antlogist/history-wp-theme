@@ -19,6 +19,11 @@
         BASEOBJECT.pdf.init();
       }
     break;
+    case "historyPage":
+      if(currentPdf !== false && isMobile) {
+        BASEOBJECT.pdf.init();
+      }
+    break;
     case "photoarchivePage":
       if(singleGallery !== false) {
         BASEOBJECT.gallery.init();

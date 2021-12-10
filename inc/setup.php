@@ -53,6 +53,9 @@ function body_id() {
       case 'will':
         return ' id="willPage"';
         break;
+      case 'history-page':
+        return ' id="historyPage"';
+        break;
       default:
       return ' id="singlePage"';
     }
