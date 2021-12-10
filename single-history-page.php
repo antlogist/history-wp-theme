@@ -6,7 +6,13 @@ if ( ! defined ('ABSPATH') ) {
 }
 get_header();
 
+$pdfUrl = get_post_meta($post->ID, "custom_pdf", true);
+
 ?>
+<script>
+  const currentPdf = '<?php echo $pdfUrl; ?>';
+  const isMobile = '<?php echo wp_is_mobile(); ?>';
+</script>
 
 <header id="header" style="background-image: url(<?php if (!get_theme_mod('header_img')) {echo get_template_directory_uri() . "/images/header.jpg";} else { echo esc_url(get_theme_mod('header_img'));} ?>)">
   <div class="container header-container">
@@ -47,6 +53,55 @@ get_header();
       </div>
     </div>
   </div>
+
+
+  <?php if(get_post_meta($post->ID, "custom_pdf", true)) {
+
+    if ( wp_is_mobile() ) {?>
+    <section id="pdfSection" class="text-center">
+      <div class="pdf-pagination mb-2">
+        <button class="prev-pdf"><<</button>
+        <button class="next-pdf">>></button>
+      </div>
+      <div>
+        <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+      </div>
+
+      <canvas id="pdf-canvas"></canvas>
+
+      <div class="pdf-pagination mt-4">
+        <button class="prev-pdf"><<</button>
+        <button class="next-pdf">>></button>
+      </div>
+
+      <div class="buttons-wrapper mt-4">
+        <a href="<?php echo get_post_meta($post->ID, "custom_pdf", true); ?>" class="btn" target="_blank">Open PDF file</a>
+      </div>
+    </section>
+
+  <?php } else { ?>
+
+  <div class="content-wrapper">
+    <div class="row g-0">
+      <div class="col-md-12">
+        <div class="post-wrapper">
+          <object data="<?php echo get_post_meta($post->ID, "custom_pdf", true); ?>" type="application/pdf" width="100%" height="1024px"></object>
+        </div>
+        <div class="buttons-wrapper mt-4 text-center">
+          <a href="<?php echo get_post_meta($post->ID, "custom_pdf", true); ?>" class="btn" target="_blank">Open PDF file</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <?php
+  }
+    } ?>
+
+
+
+
 </div>
 <!--/Content-->
 
