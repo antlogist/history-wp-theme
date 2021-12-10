@@ -5,7 +5,7 @@ $color-3: #152529;
 
 body {
   background-color: #ffffff;
-  font-family: 'Raleway', sans-serif;
+  // font-family: 'Raleway', sans-serif;
   background-size: cover;
   background-attachment: fixed;
   &.active {
@@ -569,7 +569,7 @@ footer {
   background-color: $color-3;
   color: $color;
   h1 {
-    font-family: 'Abril Fatface', cursive;
+    // font-family: 'Abril Fatface', cursive;
   }
 }
 
@@ -582,11 +582,31 @@ footer {
   }
 }
 
+//Empty thumbnail newsletter
 a.newsletter-archive-post-image-link {
   img.newsletter-archive-post-image {
-    max-width: 512px;
+    width: 512px;
+    min-height: 250px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 100%;
+    display: block;
+    margin: 0 auto;
+    background-image: url(../../../images/empty-thumbnail.jpg);
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+//Empty thumbnail card
+.card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  img {
+    width: 512px;
+    min-height: 250px;
+    display: block;
+    margin: 0 auto;
+    background-image: url(../../../images/empty-thumbnail.jpg);
+    background-size: cover;
+    background-position: center center;
   }
 }
 
@@ -640,6 +660,15 @@ a.newsletter-archive-post-image-link {
 //Photo Archive
 
 #photoarchivePage {
+  .archive-gallery-img-container {
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .archive-gallery-img {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     cursor: pointer;
@@ -672,6 +701,7 @@ a.newsletter-archive-post-image-link {
       color: #ffffff;
     }
     .modal-img-outer-wrapper {
+      margin: 0 auto;
       //iPad ver
       @media (min-width: 1024px) {
         padding: 3rem;
