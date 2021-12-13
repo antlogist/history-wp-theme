@@ -18,6 +18,7 @@ get_header();
         <div class="header-title-outer-wrapper">
           <div>
             <h1 class="header-title" id="headerTitle">Wills</h1>
+            <h4 style="color: white">To view any wills please register an account online and click to view</h4>
           </div>
         </div>
       </div>
