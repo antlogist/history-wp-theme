@@ -58,15 +58,20 @@ get_header();
               'paged' => $paged
             ] );
 
-            while($query->have_posts()) {
-              $query->the_post(); ?>
 
-                <div class="post-item mb-5 text-center">
-                  <h2 class="newsletter-archive-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                  <a class="newsletter-archive-post-image-link" href="<?php the_permalink(); ?>"><img class="newsletter-archive-post-image" src="<?php echo get_the_post_thumbnail_url(); ?>" alt=""></a>
-                </div>
+            if ( have_posts() ) {
+              while($query->have_posts()) {
+                $query->the_post(); ?>
 
-          <?php } ?>
+                  <div class="post-item mb-5 text-center">
+                    <h2 class="newsletter-archive-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    <a class="newsletter-archive-post-image-link" href="<?php the_permalink(); ?>"><img class="newsletter-archive-post-image" src="<?php echo get_the_post_thumbnail_url(); ?>" alt=""></a>
+                  </div>
+
+              <?php }
+            } else {
+              echo "<h2 class='text-center py-5'>Sorry, no posts were found.</h2>";
+            } ?>
 
           <div class="archive-pagination-wrapper mt-5">
             <?php
