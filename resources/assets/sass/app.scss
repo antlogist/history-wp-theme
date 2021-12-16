@@ -62,7 +62,8 @@ a {
 }
 
 .btn,
-button {
+button,
+#searchsubmit {
   color: $color-2;
   background-color: $color;
   border: 1px solid transparent;
@@ -311,6 +312,27 @@ nav#navMain {
     min-height: 41px;
   }
 
+  #searchNav {
+    display: block;
+    width: 30px;
+    height: 30px;
+    z-index: 101;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+    //iPad ver
+    @media (min-width: 1024px) {
+      display: none;
+    }
+    a {
+      span {
+        color: $color;
+        font-size: 28px;
+      }
+    }
+  }
+
   .nav-wrapper {
     display: none;
     z-index: 100;
@@ -361,10 +383,25 @@ nav#navMain {
           vertical-align: middle;
         }
 
+        //Search button
+        &#searchLiNav {
+          display: none;
+          @media (min-width: 1024px) {
+            display: inline-block;
+          }
+          a {
+            padding-left: 0;
+            padding-right: 0.25rem;
+            span {
+              font-size: 18px;
+            }
+          }
+        }
+
         a.nav-link {
           display: inline-block;
           position: relative;
-          padding: 0.75rem 1rem 0.75rem 1rem;
+          padding: 0.75rem 0.5rem 0.75rem 0.5rem;
           color: #ffffff;
           width: 100%;
           font-size: 12px;
@@ -410,6 +447,7 @@ nav#navMain {
               }
             }
           }
+
         }
 
         //ul submenu
@@ -585,7 +623,8 @@ footer {
 //Empty thumbnail newsletter
 a.newsletter-archive-post-image-link {
   img.newsletter-archive-post-image {
-    width: 512px;
+    max-width: 512px;
+    width: 100%;
     min-height: 250px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: block;
@@ -722,6 +761,21 @@ a.newsletter-archive-post-image-link {
       margin-top: 0;
       transition-duration: 0.75s;
       transition-property: margin-top;
+    }
+  }
+}
+
+#searchPage {
+  .search-form-wrapper {
+    form {
+      text-align: center;
+      #s {
+        height: 36px;
+        line-height: 36px;
+      }
+      #searchsubmit {
+
+      }
     }
   }
 }

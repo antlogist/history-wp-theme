@@ -23,6 +23,19 @@ import Request from "../Classes/Request.js";
   }
 
   BASEOBJECT.nav.init = function () {
+    const navMain = document.getElementById("navMain");
+    const searchLink = `${baseUrl}?s=`;
+
+    const searchNav = `
+    <li class="li-nav" id="searchNav">
+      <a href="${searchLink}" class="nav-link text-uppercase">
+        <span class="dashicons dashicons-search"></span>
+      </a>
+    </li>
+  `;
+
+    navMain.insertAdjacentHTML("beforeEnd", searchNav);
+
     const navMainWrapper = document.getElementById("navMainWrapper");
     const request = new Request();
 
@@ -37,6 +50,17 @@ import Request from "../Classes/Request.js";
       const ul = document.createElement("ul");
       ul.classList.add("nav-ul-main");
       ul.id = "navMainUl";
+
+
+      const searchNavItem = `
+        <li class="li-nav" id="searchLiNav">
+          <a href="${searchLink}" class="nav-link text-uppercase">
+            <span class="dashicons dashicons-search"></span>
+          </a>
+        </li>
+      `;
+
+      ul.insertAdjacentHTML("beforeEnd", searchNavItem);
 
       const children = {};
 
