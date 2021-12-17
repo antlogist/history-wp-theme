@@ -112,6 +112,24 @@ button {
       color:$color-2;
       opacity: 0.85;
       margin-right: 3px;
+      .dashicons-facebook {
+        &::before {
+          color: #4267B2;
+          border: 1px solid #4267B2;
+        }
+      }
+      .dashicons-instagram {
+        &::before {
+          color: #DD2A7B;
+          border: 1px solid #DD2A7B;
+        }
+      }
+      .dashicons-youtube {
+        &::before {
+          color: #E62117;
+          border: 1px solid #E62117;
+        }
+      }
     }
   }
   ul {
