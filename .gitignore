@@ -1,8 +1,10 @@
 node_modules
 images
+fonts
 package-lock.json
 mix-manifest.json
 style.css
+main.js
 footer.php
 screenshot.jpg
 history-wp-theme.zip
@@ -11,3 +13,4 @@ history-wp-theme.zip
 /dist/js/pdf-legacy
 /dist/js/masonry.pkgd.min.js
 /dist/js/vue
+/dist/images
