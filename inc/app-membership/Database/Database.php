@@ -1,7 +1,5 @@
 <?php
 
-var_dump($_SESSION);
-
 include_once("../../../../../../wp-config.php");
 
 class Database {
