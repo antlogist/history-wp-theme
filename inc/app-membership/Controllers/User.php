@@ -3,7 +3,8 @@
 class User {
   protected $conn;
   protected $table = 'users';
-  protected $email = '';
+  protected $jts_user = null;
+  protected $user = null;
 
   public function __construct() {
 
@@ -25,9 +26,9 @@ class User {
         'Content-Length: ' . strlen ( $data_string ) ]
     );
     $output = curl_exec ($ch);
-    $this->email = json_decode ($output)->data->email;
+    $this->jts_user = json_decode ($output)->data;
 
-    if($this->email === ''){
+    if(!$this->jts_user){
       Session::add('error', "Malicious Activity");
       exit;
     }

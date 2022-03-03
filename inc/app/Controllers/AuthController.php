@@ -5,6 +5,9 @@ include_once('../Classes/Request.php');
 include_once('../Classes/CSRFToken.php');
 include_once('../Classes/Redirect.php');
 include_once('../Classes/Session.php');
+include_once('../../app-membership/Database/Database.php');
+include_once('../../app-membership/Controllers/User.php');
+include_once('../../app-membership/Controllers/UserController.php');
 
 class AuthController {
 
@@ -36,9 +39,15 @@ class AuthController {
         if ($result -> data -> uuid) {
           Session::add('SESSION_USER_UUID', $result->data->uuid);
           Session::add('SESSION_USER_NAME', $result->data->billing_firstname);
+
           if (Session::has('error')) {
             Session::remove('error');
           }
+
+          //Membership
+          $membership = new UserController();
+          $membership->store();
+
           Redirect::to($request->home_url);
         }
       } else {
@@ -131,6 +140,11 @@ class AuthController {
         if ($result->status->success == '1') {
           Session::add('SESSION_USER_UUID', $result->status->message->uuid);
           Session::add('SESSION_USER_NAME', $result->status->message->billing_firstname);
+
+          //Membership
+          $membership = new UserController();
+          $membership->store();
+
           Redirect::to($request->homeUrl);
           exit();
         } else {
