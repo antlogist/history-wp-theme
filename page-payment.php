@@ -12,18 +12,22 @@ if(!isAuthenticated()) {
 
 include_once(get_template_directory() . '/inc/app/Controllers/PaymentController.php');
 
+include_once(get_template_directory() . '/inc/app-membership/Database/Database.php');
+include_once(get_template_directory() . '/inc/app-membership/Controllers/Order.php');
+include_once(get_template_directory() . '/inc/app/Controllers/VieworderController.php');
+include_once(get_template_directory() . '/inc/app-membership/Controllers/OrderController.php');
+
 $transaction_id = $_GET[ 'transaction_id' ];
 $status         = $_GET[ 'status' ];
 $payment_type   = $_GET[ 'payment_type' ];
-
 
 // echo $transaction_id;
 // echo $status;
 // echo $payment_type;
 
-
-
 if ($status == 'success' && $transaction_id) {
+  $orderObj = new OrderController();
+  $order = $orderObj->orderStore($_SESSION["order_token"], get_home_url());
 
   $paymentController = new PaymentController();
   $result = $paymentController->getPaymentStatus($transaction_id, get_home_url(), $_SESSION["token"], $_SESSION["order_token"], $payment_type);

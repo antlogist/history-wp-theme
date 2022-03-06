@@ -48,11 +48,11 @@ get_header();
 
     <div v-else class="row">
       <div class="col-sm-6 col-md-3 mb-3" v-for="product in products" v-cloak>
-        <div class="card">
+        <div class="card h-100">
           <a :href="'./product/?id=' + product.slug">
             <img style="width: 100%" :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0]">
           </a>
-          <div class="card-body text-center" style="min-height: 150px;">
+          <div class="card-body text-center d-flex flex-column justify-content-end">
             <a :href="'./product/?id=' + product.slug">
               <h5 class="card-title mb-2">{{ product.title }}</h5>
             </a>

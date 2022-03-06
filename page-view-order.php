@@ -79,7 +79,7 @@ get_header();
 
             <tr>
 
-              <td style="min-width: 150px;"><?php echo $created_at; ?></td>
+              <td style="min-width: 150px;"><?php echo date_format(date_create($created_at), 'Y-m-d H:i:s'); ?></td>
               <td><?php echo '£' . $total_price; ?></td>
               <td class="text-center" id="status<?php echo $order_token; ?>"><?php echo $payment_status; ?></td>
 
