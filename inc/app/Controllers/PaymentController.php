@@ -5,7 +5,7 @@ include_once('../Classes/Request.php');
 include_once('../Classes/CSRFToken.php');
 include_once('../Classes/Redirect.php');
 include_once('../Classes/Session.php');
-include_once('../Classes/APRequest.php');
+include_once('../Classes/APIRequest.php');
 
 class PaymentController {
 
