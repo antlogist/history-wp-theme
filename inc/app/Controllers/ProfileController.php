@@ -31,6 +31,7 @@ class ProfileController {
     } else {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
+      Session::remove('SESSION_USER_EMAIL');
       Redirect::to($this->homeUrl);
       exit;
     }
@@ -38,6 +39,7 @@ class ProfileController {
     if (!$this->profile->status->success == 1) {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
+      Session::remove('SESSION_USER_EMAIL');
       Redirect::to($this->homeUrl);
     }
 
