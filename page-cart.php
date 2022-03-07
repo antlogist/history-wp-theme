@@ -106,7 +106,7 @@ get_header();
             </thead>
             <tr v-for="item in items">
               <th scope="row">{{ item.index + 1 }}</th>
-              <td><a :href="'./shop/product/?id=' + item.slug"><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></a></td>
+              <td><a v-if="item.image" :href="'./shop/product/?id=' + item.slug"><img :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + item.image.split(',')[0]" alt="" class="w-100" style="max-width: 50px;"></a></td>
               <td style="min-width: 200px;"><a :href="'./shop/product/?id=' + item.slug">{{ item.title }}</a></td>
               <td>{{ item.currency }}{{ item.price }}</td>
               <td style="min-width: 100px;">
