@@ -65,7 +65,7 @@ function body_id() {
     return ' id="archivePage"';
   } elseif (is_page('profile')) {
     return ' id="profilePage"';
-  } elseif (is_page('shop')) {
+  } elseif (is_page('shop') || is_page('membership')) {
     return ' id="shopPage"';
   } elseif (is_page('cart')) {
     return ' id="cartPage"';

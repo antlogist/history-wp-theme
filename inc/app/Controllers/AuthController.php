@@ -39,6 +39,7 @@ class AuthController {
         if ($result -> data -> uuid) {
           Session::add('SESSION_USER_UUID', $result->data->uuid);
           Session::add('SESSION_USER_NAME', $result->data->billing_firstname);
+          Session::add('SESSION_USER_EMAIL', $result->data->email);
 
           if (Session::has('error')) {
             Session::remove('error');
@@ -57,6 +58,9 @@ class AuthController {
         if (Session::has('SESSION_USER_UUID')) {
           Session::remove('SESSION_USER_UUID');
         }
+        if (Session::has('SESSION_USER_EMAIL')) {
+          Session::remove('SESSION_USER_EMAIL');
+        }
         Session::add('error', $result -> message);
         Redirect::to($request->home_url . '/login/');
       }
@@ -71,6 +75,9 @@ class AuthController {
     if (Session::has('SESSION_USER_UUID')) {
       Session::remove('SESSION_USER_UUID');
     }
+    if (Session::has('SESSION_USER_EMAIL')) {
+      Session::remove('SESSION_USER_EMAIL');
+    }
     Session::add('error', "Token mismatch");
     Redirect::to($request->home_url . '/login/');
 
@@ -84,6 +91,7 @@ class AuthController {
       if(isAuthenticated()){
         Session::remove('SESSION_USER_UUID');
         Session::remove('SESSION_USER_NAME');
+        Session::remove('SESSION_USER_EMAIL');
 
         if(!Session::has('user_cart')){
             session_destroy();
@@ -251,6 +259,9 @@ class AuthController {
           }
           if (Session::has('SESSION_USER_UUID')) {
             Session::remove('SESSION_USER_UUID');
+          }
+          if (Session::has('SESSION_USER_EMAIL')) {
+            Session::remove('SESSION_USER_EMAIL');
           }
           Redirect::to($request->homeUrl . '/reset/');
           exit();

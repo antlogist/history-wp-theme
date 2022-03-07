@@ -30,6 +30,7 @@ class VieworderController {
     } else {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
+      Session::remove('SESSION_USER_EMAIL');
       Redirect::to($this->homeUrl);
       exit;
     }
@@ -54,6 +55,7 @@ class VieworderController {
     } else {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
+      Session::remove('SESSION_USER_EMAIL');
       Redirect::to($this->homeUrl);
       exit;
     }
@@ -78,6 +80,7 @@ class VieworderController {
     } else {
       Session::remove('SESSION_USER_UUID');
       Session::remove('SESSION_USER_NAME');
+      Session::remove('SESSION_USER_EMAIL');
       Session::add('error', "Something went wrong");
       echo json_encode(["fail" => "Something went wrong"]);
       exit;

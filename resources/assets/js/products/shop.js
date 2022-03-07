@@ -8,15 +8,23 @@ BASEOBJECT.shop.shopProducts = function () {
     el: "#shop",
     data: {
       products: {},
+      membershipProducts: {},
       count: 0,
       isLoading: true,
       inCart: "",
-      currency: ""
+      currency: "",
+      membershipIds: ["75"]
     },
     methods: {
       getProducts() {
         axios.get(`${themeUrl}/inc/app/Routes/Shop.php`).then (function(resp){
-          app.products = resp["data"]["data"];
+
+          const productsExceptMembership = resp["data"]["data"].filter(item => !app.membershipIds.includes(item["cat_id"]));
+          const productsIncludingMembership = resp["data"]["data"].filter(item => app.membershipIds.includes(item["cat_id"]));
+
+          // app.products = resp["data"]["data"];
+          app.products = productsExceptMembership;
+          app.membershipProducts = productsIncludingMembership;
           app.currency = resp['data']['currency']['symbol'];
           app.isLoading = false;
         })
