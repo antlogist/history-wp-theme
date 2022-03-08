@@ -8,6 +8,8 @@ include_once('../Classes/Session.php');
 include_once('../../app-membership/Database/Database.php');
 include_once('../../app-membership/Controllers/User.php');
 include_once('../../app-membership/Controllers/UserController.php');
+include_once('../../app-membership/Controllers/Order.php');
+include_once('../../app-membership/Controllers/OrderController.php');
 
 class AuthController {
 
@@ -46,8 +48,16 @@ class AuthController {
           }
 
           //Membership
-          $membership = new UserController();
-          $membership->store();
+          $userController = new UserController();
+          $userController->store();
+
+          $orderController = new OrderController();
+          $order = $orderController->getMembershipOrder($_SESSION['SESSION_USER_EMAIL'], 143);
+
+          if($order) {
+            Session::add('SESSION_MEMBERSHIP_ID', 143);
+            Session::add('SESSION_MEMBERSHIP_DATE', $order['createdAt']);
+          }
 
           Redirect::to($request->home_url);
         }

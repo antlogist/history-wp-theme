@@ -32,5 +32,30 @@ class OrderController extends Order {
 
       return $order;
     }
+
+    public function getMembershipOrder(string $email, int $id) {
+
+      $query = "SELECT * from " . $this->table . " WHERE email = '"  . $email . "' AND product_id = '" . $id . "' ORDER BY id DESC LIMIT 1";
+
+      $req = $this->conn->prepare($query);
+      $req->execute();
+      $num = $req->rowCount();
+      // var_dump($email, $item);
+      if($num > 0) {
+
+        $row = $req->fetch(PDO::FETCH_ASSOC);
+        extract($row);
+
+        $membershp = array(
+          'orderId' => $id,
+          'email' => $email,
+          'productId' => $product_id,
+          'createdAt' => $created_at
+        );
+
+        return $membershp;
+      }
+
+    }
 }
 
