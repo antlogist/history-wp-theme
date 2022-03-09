@@ -64,7 +64,7 @@ get_header();
     <div v-else class="row">
       <div class="col-md-4">
         <div class="img-wrapper">
-          <img style="width: 100%" :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0]">
+          <img v-if="product.thumb" style="width: 100%" :src="'<?php echo api_url; ?>/uploads/gallerythumb/' + product.thumb.split(',')[0]">
         </div>
       </div>
       <div class="col-md-8 mt-4 mt-md-0">

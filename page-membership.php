@@ -5,6 +5,11 @@ if ( ! defined ('ABSPATH') ) {
   exit;
 }
 
+if(!isAuthenticated() || $_SESSION['SESSION_MEMBERSHIP_DATE']) {
+  Redirect::to(get_home_url());
+  exit;
+}
+
 get_header();
 
 ?>
