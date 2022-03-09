@@ -44,6 +44,14 @@ get_header();
   if(Session::get("success")) {
     echo '<div class="message success-message">' . Session::get("success") . '</div>';
   }
+
+  if($_SESSION['SESSION_MEMBERSHIP_DATE']) {
+
+    echo '<div class="membership-wrapper mb-5">';
+    echo 'Membership will expire at <span style="color: red;">' . date('Y-m-d', strtotime('+1 year', strtotime($_SESSION['SESSION_MEMBERSHIP_DATE'])) ) . '</span>';
+    echo '</div>';
+
+  }
 ?>
 
 <div class="buttons-wrapper mb-5">
