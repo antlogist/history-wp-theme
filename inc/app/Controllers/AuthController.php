@@ -52,10 +52,10 @@ class AuthController {
           $userController->store();
 
           $orderController = new OrderController();
-          $order = $orderController->getMembershipOrder($_SESSION['SESSION_USER_EMAIL'], 143);
+          $order = $orderController->getMembershipOrder($_SESSION['SESSION_USER_EMAIL'], 162);
 
           if($order) {
-            Session::add('SESSION_MEMBERSHIP_ID', 143);
+            Session::add('SESSION_MEMBERSHIP_ID', 162);
             Session::add('SESSION_MEMBERSHIP_DATE', $order['createdAt']);
           }
 
